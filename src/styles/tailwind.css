@@ -1,16 +1,12 @@
-@import 'tailwindcss';
+@import "tailwindcss";
 
 @theme {
-  --font-sans: Switzer, system-ui, sans-serif;
-
-  --radius-4xl: 2rem;
-}
-
-@keyframes move-x {
-  0% {
-    transform: translateX(var(--move-x-from));
-  }
-  100% {
-    transform: translateX(var(--move-x-to));
-  }
+  /* Your theme variables */
+  --color-primary-1: #825CE5;
+  --color-primary-2: #5F81FF;
+  --color-border: #8b4d26;
+  --color-text: #323232;
+  --color-text-white: #ffffff;
+  --color-background: #f9f9f8;
+  --color-features-bg: #d6d6d6;
 }

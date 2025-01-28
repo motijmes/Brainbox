@@ -6,7 +6,6 @@ import { Gradient } from '@/components/gradient'
 import { Keyboard } from '@/components/keyboard'
 import { Link } from '@/components/link'
 import { LinkedAvatars } from '@/components/linked-avatars'
-import { LogoCloud } from '@/components/logo-cloud'
 import { LogoCluster } from '@/components/logo-cluster'
 import { LogoTimeline } from '@/components/logo-timeline'
 import { Map } from '@/components/map'
@@ -15,65 +14,38 @@ import { Screenshot } from '@/components/screenshot'
 import { Testimonials } from '@/components/testimonials'
 import { Heading, Subheading } from '@/components/text'
 import { ChevronRightIcon } from '@heroicons/react/16/solid'
+import '@/styles/tailwind.css'
+import ImageSlider from '@/components/custom/ImageSlider'
+import LogoCloud from '@/components/logo-cloud'
+import FeatureSection from '@/components/custom/FeatureSection'
+import PlatformFeatures from '@/components/custom/Test'
+import { motion } from 'framer-motion';
+import Hero from '@/components/custom/Hero'
+
 
 export const metadata = {
   description:
     'Radiant helps you sell more by revealing sensitive information about your customers.',
 }
 
-function Hero() {
-  return (
-    <div className="relative">
-      <Gradient className="absolute inset-2 bottom-0 rounded-4xl ring-1 ring-black/5 ring-inset" />
-      <Container className="relative">
-        <Navbar
-          banner={
-            <Link
-              href="/blog/radiant-raises-100m-series-a-from-tailwind-ventures"
-              className="flex items-center gap-1 rounded-full bg-fuchsia-950/35 px-3 py-0.5 text-sm/6 font-medium text-white data-hover:bg-fuchsia-950/30"
-            >
-              Radiant raises $100M Series A from Tailwind Ventures
-              <ChevronRightIcon className="size-4" />
-            </Link>
-          }
-        />
-        <div className="pt-16 pb-24 sm:pt-24 sm:pb-32 md:pt-32 md:pb-48">
-          <h1 className="font-display text-6xl/[0.9] font-medium tracking-tight text-balance text-gray-950 sm:text-8xl/[0.8] md:text-9xl/[0.8]">
-            Close every deal.
-          </h1>
-          <p className="mt-8 max-w-lg text-xl/7 font-medium text-gray-950/75 sm:text-2xl/8">
-            Radiant helps you sell more by revealing sensitive information about
-            your customers.
-          </p>
-          <div className="mt-12 flex flex-col gap-x-6 gap-y-4 sm:flex-row">
-            <Button href="#">Get started</Button>
-            <Button variant="secondary" href="/pricing">
-              See pricing
-            </Button>
-          </div>
-        </div>
-      </Container>
-    </div>
-  )
-}
 
-function FeatureSection() {
-  return (
-    <div className="overflow-hidden">
-      <Container className="pb-24">
-        <Heading as="h2" className="max-w-3xl">
-          A snapshot of your entire sales pipeline.
-        </Heading>
-        <Screenshot
-          width={1216}
-          height={768}
-          src="/screenshots/app.png"
-          className="mt-16 h-[36rem] sm:h-auto sm:w-[76rem]"
-        />
-      </Container>
-    </div>
-  )
-}
+// function FeatureSection() {
+//   return (
+//     <div className="overflow-hidden">
+//       <Container className="pb-24">
+//         <Heading as="h2" className="max-w-3xl">
+//           A snapshot of your entire sales pipeline.
+//         </Heading>
+//         <Screenshot
+//           width={1216}
+//           height={768}
+//           src="/screenshots/app.png"
+//           className="mt-16 h-[36rem] sm:h-auto sm:w-[76rem]"
+//         />
+//       </Container>
+//     </div>
+//   )
+// }
 
 function BentoSection() {
   return (
@@ -193,17 +165,18 @@ export default function Home() {
   return (
     <div className="overflow-hidden">
       <Hero />
-      <main>
-        <Container className="mt-10">
-          <LogoCloud />
-        </Container>
-        <div className="bg-linear-to-b from-white from-50% to-gray-100 py-32">
+      <main className="mt-14">
+        <LogoCloud />
+        <div className="bg-linear-to-b from-white from-50% to-gray-100 py-16 pt-0">
           <FeatureSection />
-          <BentoSection />
         </div>
-        <DarkBentoSection />
+        <div className="bg-linear-to-b from-white from-50% to-gray-100 py-16 pt-0">
+          <PlatformFeatures />
+        </div>
+        {/* <DarkBentoSection /> */}
       </main>
-      <Testimonials />
+      {/* <Testimonials />
+       */}
       <Footer />
     </div>
   )

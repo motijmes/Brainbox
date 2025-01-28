@@ -12,10 +12,11 @@ import { Logo } from './logo'
 import { PlusGrid, PlusGridItem, PlusGridRow } from './plus-grid'
 
 const links = [
-  { href: '/pricing', label: 'Pricing' },
-  { href: '/company', label: 'Company' },
-  { href: '/blog', label: 'Blog' },
-  { href: '/login', label: 'Login' },
+  { href: '/pricing', label: 'Home' },
+  { href: '/company', label: 'About Us' },
+  { href: '/blog', label: 'Pricing' },
+  { href: '/login', label: 'Services' },
+  { href: '/login', label: 'Privacy Policy' },
 ]
 
 function DesktopNav() {
@@ -25,7 +26,7 @@ function DesktopNav() {
         <PlusGridItem key={href} className="relative flex">
           <Link
             href={href}
-            className="flex items-center px-4 py-3 text-base font-medium text-gray-950 bg-blend-multiply data-hover:bg-black/[2.5%]"
+            className="flex items-center px-4 py-3 text-base font-medium text-text-white transition-colors data-hover:bg-text-white/10"
           >
             {label}
           </Link>
@@ -38,7 +39,7 @@ function DesktopNav() {
 function MobileNavButton() {
   return (
     <DisclosureButton
-      className="flex size-12 items-center justify-center self-center rounded-lg data-hover:bg-black/5 lg:hidden"
+      className="flex size-12 items-center justify-center self-center rounded-lg text-text-white data-hover:bg-text-white/10 lg:hidden"
       aria-label="Open main menu"
     >
       <Bars2Icon className="size-6" />
@@ -61,15 +62,18 @@ function MobileNav() {
             }}
             key={href}
           >
-            <Link href={href} className="text-base font-medium text-gray-950">
+            <Link
+              href={href}
+              className="text-base font-medium text-text-white hover:text-text-white/90"
+            >
               {label}
             </Link>
           </motion.div>
         ))}
       </div>
       <div className="absolute left-1/2 w-screen -translate-x-1/2">
-        <div className="absolute inset-x-0 top-0 border-t border-black/5" />
-        <div className="absolute inset-x-0 top-2 border-t border-black/5" />
+        <div className="absolute inset-x-0 top-0 border-t border-text-white/10" />
+        <div className="absolute inset-x-0 top-2 border-t border-text-white/10" />
       </div>
     </DisclosurePanel>
   )
@@ -83,7 +87,7 @@ export function Navbar({ banner }) {
           <div className="relative flex gap-6">
             <PlusGridItem className="py-3">
               <Link href="/" title="Home">
-                <Logo className="h-9" />
+                <Logo className="h-9 text-text-white" />
               </Link>
             </PlusGridItem>
             {banner && (

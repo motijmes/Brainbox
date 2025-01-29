@@ -9,4 +9,18 @@
   --color-text-white: #ffffff;
   --color-background: #f9f9f8;
   --color-features-bg: #d6d6d6;
+
+    --font-sans: Switzer, system-ui, sans-serif;
+    
+    --radius-4xl: 2rem;
+}
+
+@keyframes move-x {
+  0% {
+    transform: translateX(var(--move-x-from));
+  }
+
+  100% {
+    transform: translateX(var(--move-x-to));
+  }
 }

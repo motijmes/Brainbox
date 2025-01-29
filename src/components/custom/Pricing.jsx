@@ -1,13 +1,17 @@
+'use client'
+
 import { Button } from '@/components/button'
 import { Container } from '@/components/container'
 import { Gradient, GradientBackground } from '@/components/gradient'
 import { Heading, Lead, Subheading } from '@/components/text'
+import { motion } from 'framer-motion'
 
 const tiers = [
   {
     name: 'Premium Plan',
     slug: 'premium',
-    description: 'Designed for mid-sized teams looking for advanced automation and enhanced engagement tools.',
+    description:
+      'Designed for mid-sized teams looking for advanced automation and enhanced engagement tools.',
     priceMonthly: 397,
     href: '#',
     highlights: [
@@ -37,7 +41,8 @@ const tiers = [
   {
     name: 'Enterprise Plan',
     slug: 'enterprise',
-    description: 'Tailored for teams or organizations needing comprehensive control and robust analytics.',
+    description:
+      'Tailored for teams or organizations needing comprehensive control and robust analytics.',
     priceMonthly: 997,
     href: '#',
     highlights: [
@@ -67,24 +72,46 @@ const tiers = [
       { section: 'Support', name: 'Account Manager', value: true },
       { section: 'Features', name: 'Website Management', value: true },
     ],
-  }
+  },
 ]
-
 
 function Header() {
   return (
     <Container className="mt-16">
-      <Heading as="h1">Pricing Plans</Heading>
-      <Lead className="mt-6 max-w-3xl">
-        Our pricing plans are crafted to support real estate professionals at every level, from solo agents to large organizations.
-      </Lead>
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.5 }}
+      >
+        <Heading as="h1">Pricing Plans</Heading>
+        <Lead className="mt-6 max-w-3xl">
+          Our pricing plans are crafted to support real estate professionals at
+          every level, from solo agents to large organizations.
+        </Lead>
+      </motion.div>
     </Container>
   )
 }
 
-function FeatureItem({ description, disabled = false }) {
+function PlusIcon(props) {
   return (
-    <li
+    <svg viewBox="0 0 15 15" aria-hidden="true" {...props}>
+      <path clipRule="evenodd" d="M8 0H7v7H0v1h7v7h1V8h7V7H8V0z" />
+    </svg>
+  )
+}
+
+function FeatureItem({ description, disabled = false, delay = 0 }) {
+  return (
+    <motion.li
+      initial={{ opacity: 0, x: -20 }}
+      whileInView={{ opacity: 1, x: 0 }}
+      viewport={{ once: true }}
+      transition={{
+        duration: 0.5,
+        delay: delay,
+      }}
       data-disabled={disabled ? true : undefined}
       className="flex items-start gap-4 text-sm/6 text-gray-950/75 data-disabled:text-gray-950/25"
     >
@@ -93,48 +120,42 @@ function FeatureItem({ description, disabled = false }) {
       </span>
       {disabled && <span className="sr-only">Not included:</span>}
       {description}
-    </li>
-  )
-}
-function PlusIcon(props) {
-  return (
-    <svg viewBox="0 0 15 15" aria-hidden="true" {...props}>
-      <path clipRule="evenodd" d="M8 0H7v7H0v1h7v7h1V8h7V7H8V0z" />
-    </svg>
-  )
-}
-function PricingCards() {
-  return (
-    <div className="relative py-12">
-      <Gradient className="absolute inset-x-2 top-24 bottom-0 rounded-4xl ring-1 ring-black/5 ring-inset" />
-      <Container className="relative">
-        <div className="mx-auto grid max-w-5xl grid-cols-1 justify-center gap-6 md:grid-cols-2">
-          {tiers.map((tier, tierIndex) => (
-            <PricingCard key={tierIndex} tier={tier} />
-          ))}
-        </div>
-      </Container>
-    </div>
+    </motion.li>
   )
 }
 
-function PricingCard({ tier }) {
+function PricingCard({ tier, index }) {
   return (
-    <div className="-m-2 h-full rounded-4xl ring-1 shadow-[inset_0_0_2px_1px_#ffffff4d] ring-black/5">
-      {' '}
-      {/* Added h-full */}
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.5, delay: index * 0.2 }}
+      whileHover={{
+        scale: 1.02,
+        transition: { duration: 0.2 },
+      }}
+      className="-m-2 h-full rounded-4xl ring-1 shadow-[inset_0_0_2px_1px_#ffffff4d] ring-black/5"
+    >
       <div className="h-full rounded-4xl p-2 shadow-md shadow-black/5">
-        {' '}
-        {/* Added h-full */}
         <div className="flex h-full flex-col rounded-3xl bg-white p-6 ring-1 shadow-2xl ring-black/5">
-          {' '}
-          {/* Added flex h-full flex-col */}
-          <div>
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.3, delay: 0.2 }}
+          >
             <Subheading>{tier.name}</Subheading>
             <p className="mt-2 max-w-sm text-sm/6 text-gray-950/75">
               {tier.description}
             </p>
-            <div className="mt-6 flex items-center gap-4">
+            <motion.div
+              className="mt-6 flex items-center gap-4"
+              initial={{ opacity: 0, y: 10 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.3, delay: 0.3 }}
+            >
               <div className="text-4xl font-medium text-gray-950">
                 ${tier.priceMonthly}
               </div>
@@ -142,31 +163,74 @@ function PricingCard({ tier }) {
                 <p>USD</p>
                 <p>per month</p>
               </div>
-            </div>
-            <div className="mt-6">
-              <Button href={tier.href}>Start a free trial</Button>
-            </div>
-          </div>
-          <div className="mt-6 flex-grow">
-            {' '}
-            {/* Added flex-grow */}
+            </motion.div>
+            <motion.div
+              className="mt-6"
+              initial={{ opacity: 0, y: 10 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.3, delay: 0.4 }}
+            >
+              <Button
+                href={tier.href}
+                as={motion.a}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                Start a free trial
+              </Button>
+            </motion.div>
+          </motion.div>
+
+          <motion.div
+            className="mt-6 flex-grow"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.3, delay: 0.5 }}
+          >
             <h3 className="text-sm/6 font-medium text-gray-950">
               Start selling with:
             </h3>
             <ul className="mt-2 space-y-2">
               {tier.highlights.map((props, featureIndex) => (
-                <FeatureItem key={featureIndex} {...props} />
+                <FeatureItem
+                  key={featureIndex}
+                  {...props}
+                  delay={0.6 + featureIndex * 0.1}
+                />
               ))}
             </ul>
-          </div>
+          </motion.div>
         </div>
       </div>
+    </motion.div>
+  )
+}
+
+function PricingCards() {
+  return (
+    <div className="relative py-12">
+      <motion.div
+        initial={{ opacity: 0, scale: 0.95 }}
+        whileInView={{ opacity: 1, scale: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.5 }}
+      >
+        <Gradient className="absolute inset-x-2 top-24 bottom-0 rounded-4xl ring-1 ring-black/5 ring-inset" />
+      </motion.div>
+      <Container className="relative">
+        <div className="mx-auto grid max-w-5xl grid-cols-1 justify-center gap-6 md:grid-cols-2">
+          {tiers.map((tier, tierIndex) => (
+            <PricingCard key={tierIndex} tier={tier} index={tierIndex} />
+          ))}
+        </div>
+      </Container>
     </div>
   )
 }
 
 export default function Pricing() {
-
   return (
     <main className="overflow-hidden">
       <GradientBackground />

@@ -81,8 +81,13 @@ const ImageSlider = () => {
           <CarouselIndicator
             key={index}
             onClick={() => onDotButtonClick(index)}
+            // className={`h-2 w-2 rounded-full transition-colors ${
+            //   index === selectedIndex ? 'bg-primary1' : 'bg-primary-1/50'
+            // }`}
             className={`h-2 w-2 rounded-full transition-colors ${
-              index === selectedIndex ? 'bg-primary1' : 'bg-primary-1/50'
+              index === selectedIndex
+                ? 'bg-primary-1' 
+                : 'bg-primary-light-1/50' 
             }`}
           />
         ))}

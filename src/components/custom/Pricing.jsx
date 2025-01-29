@@ -2,7 +2,7 @@
 
 import { Button } from '@/components/button'
 import { Container } from '@/components/container'
-import { Gradient, GradientBackground } from '@/components/gradient'
+import { Gradient, GradientBackgroundLight, GradientBackgroundSection, GradientLight } from '@/components/gradient'
 import { Heading, Lead, Subheading } from '@/components/text'
 import { motion } from 'framer-motion'
 
@@ -217,10 +217,10 @@ function PricingCards() {
         viewport={{ once: true }}
         transition={{ duration: 0.5 }}
       >
-        <Gradient className="absolute inset-x-2 top-24 bottom-0 rounded-4xl ring-1 ring-black/5 ring-inset" />
+        <GradientLight className="absolute inset-x-2 top-24 bottom-0 rounded-4xl ring-1 ring-black/5 ring-inset" />
       </motion.div>
       <Container className="relative">
-        <div className="mx-auto grid max-w-5xl grid-cols-1 justify-center gap-6 md:grid-cols-2">
+        <div className="mx-auto grid max-w-5xl grid-cols-1 justify-center gap-12 md:grid-cols-2">
           {tiers.map((tier, tierIndex) => (
             <PricingCard key={tierIndex} tier={tier} index={tierIndex} />
           ))}
@@ -232,10 +232,16 @@ function PricingCards() {
 
 export default function Pricing() {
   return (
-    <main className="overflow-hidden">
-      <GradientBackground />
-      <Header />
-      <PricingCards />
+    <main className="relative">
+      <GradientBackgroundSection
+        size="sm"
+        opacity={0.3}
+        position={{ top: '0', right: '0' }}
+      />
+      <div className='overflow-hidden'>
+        <Header />
+        <PricingCards />
+      </div>
     </main>
   )
 }

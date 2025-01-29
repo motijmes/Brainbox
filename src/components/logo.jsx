@@ -2,10 +2,15 @@
 import { clsx } from 'clsx'
 import { motion } from 'framer-motion'
 
-export function Logo({ className }) {
+export function Logo({ className, variant = 'original' }) {
   let transition = {
     duration: 0.5,
     ease: 'easeInOut',
+  }
+
+  const variantStyles = {
+    original: '', // No filters - shows original colored logo
+    light: 'brightness-0 invert', // White version for header
   }
 
   return (
@@ -17,14 +22,22 @@ export function Logo({ className }) {
       <img
         src="/assets/logo.png"
         alt="Logo"
-        className="h-full w-full object-contain  brightness-0 invert transition-all duration-300 hover:opacity-100"
+        className={clsx(
+          'h-full w-full object-contain transition-all duration-300',
+          variantStyles[variant],
+        )}
       />
     </motion.div>
   )
 }
 
 // Smaller mark version if needed
-export function Mark({ className }) {
+export function Mark({ className, variant = 'original' }) {
+  const variantStyles = {
+    original: '', // No filters - shows original colored logo
+    light: 'brightness-0 invert', // White version for header
+  }
+
   return (
     <motion.div
       className={clsx(className, 'relative h-8 w-8')}
@@ -34,7 +47,10 @@ export function Mark({ className }) {
       <img
         src="/assets/logo.png"
         alt="Logo Mark"
-        className="h-full w-full object-contain opacity-90 brightness-0 invert transition-all duration-300 hover:opacity-100"
+        className={clsx(
+          'h-full w-full object-contain transition-all duration-300',
+          variantStyles[variant],
+        )}
       />
     </motion.div>
   )

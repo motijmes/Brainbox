@@ -87,7 +87,7 @@ export function Navbar({ banner }) {
           <div className="relative flex gap-6">
             <PlusGridItem className="py-3">
               <Link href="/" title="Home">
-                <Logo className="h-9 text-text-white" />
+                <Logo className="h-9 text-text-white" variant="light" />
               </Link>
             </PlusGridItem>
             {banner && (

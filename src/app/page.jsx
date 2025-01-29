@@ -45,7 +45,7 @@ export default function Home() {
         <div className="bg-linear-to-b from-white from-50% to-gray-100 py-16">
           <IntegrationSection />
         </div>
-        <div className="bg-linear-to-b from-gray-100 from-50% to-white py-32 pt-0">
+        <div className="bg-linear-to-b from-gray-100 from-50% to-white ">
           <Pricing />
         </div>
       </main>

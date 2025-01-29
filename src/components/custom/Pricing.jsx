@@ -2,9 +2,11 @@
 
 import { Button } from '@/components/button'
 import { Container } from '@/components/container'
-import { Gradient, GradientBackgroundLight, GradientBackgroundSection, GradientLight } from '@/components/gradient'
+import { GradientBackgroundSection, GradientLight } from '@/components/gradient'
 import { Heading, Lead, Subheading } from '@/components/text'
 import { motion } from 'framer-motion'
+import { useState } from 'react'
+import PricingToggle from '../pricing-toggle'
 
 const tiers = [
   {
@@ -75,25 +77,6 @@ const tiers = [
   },
 ]
 
-function Header() {
-  return (
-    <Container className="mt-16">
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.5 }}
-      >
-        <Heading as="h1">Pricing Plans</Heading>
-        <Lead className="mt-6 max-w-3xl">
-          Our pricing plans are crafted to support real estate professionals at
-          every level, from solo agents to large organizations.
-        </Lead>
-      </motion.div>
-    </Container>
-  )
-}
-
 function PlusIcon(props) {
   return (
     <svg viewBox="0 0 15 15" aria-hidden="true" {...props}>
@@ -124,7 +107,19 @@ function FeatureItem({ description, disabled = false, delay = 0 }) {
   )
 }
 
-function PricingCard({ tier, index }) {
+function PricingCard({ tier, index, isAnnual }) {
+  // Calculate the price based on billing period
+  const calculatePrice = () => {
+    if (isAnnual) {
+      const annualPrice = tier.priceMonthly * 12
+      const discount = annualPrice * 0.1 // 10% discount
+      return (annualPrice - discount).toFixed(0)
+    }
+    return tier.priceMonthly
+  }
+
+  const price = calculatePrice()
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -156,12 +151,10 @@ function PricingCard({ tier, index }) {
               viewport={{ once: true }}
               transition={{ duration: 0.3, delay: 0.3 }}
             >
-              <div className="text-4xl font-medium text-gray-950">
-                ${tier.priceMonthly}
-              </div>
+              <div className="text-4xl font-medium text-gray-950">${price}</div>
               <div className="text-sm/5 text-gray-950/75">
                 <p>USD</p>
-                <p>per month</p>
+                <p>per {isAnnual ? 'year' : 'month'}</p>
               </div>
             </motion.div>
             <motion.div
@@ -208,7 +201,7 @@ function PricingCard({ tier, index }) {
   )
 }
 
-function PricingCards() {
+function PricingCards({ isAnnual }) {
   return (
     <div className="relative py-12">
       <motion.div
@@ -222,7 +215,12 @@ function PricingCards() {
       <Container className="relative">
         <div className="mx-auto grid max-w-5xl grid-cols-1 justify-center gap-12 md:grid-cols-2">
           {tiers.map((tier, tierIndex) => (
-            <PricingCard key={tierIndex} tier={tier} index={tierIndex} />
+            <PricingCard
+              key={tierIndex}
+              tier={tier}
+              index={tierIndex}
+              isAnnual={isAnnual}
+            />
           ))}
         </div>
       </Container>
@@ -230,7 +228,33 @@ function PricingCards() {
   )
 }
 
+function Header({ handleBillingChange }) {
+  return (
+    <Container className="mt-16">
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.5 }}
+      >
+        <Heading as="h1">Pricing Plans</Heading>
+        <Lead className="mt-6 max-w-3xl">
+          Our pricing plans are crafted to support real estate professionals at
+          every level, from solo agents to large organizations.
+        </Lead>
+        <PricingToggle onChange={handleBillingChange} />
+      </motion.div>
+    </Container>
+  )
+}
+
 export default function Pricing() {
+  const [isAnnual, setIsAnnual] = useState(true) // Set annual as default
+
+  const handleBillingChange = (isAnnual) => {
+    setIsAnnual(isAnnual)
+  }
+
   return (
     <main className="relative">
       <GradientBackgroundSection
@@ -238,9 +262,9 @@ export default function Pricing() {
         opacity={0.3}
         position={{ top: '0', right: '0' }}
       />
-      <div className='overflow-hidden'>
-        <Header />
-        <PricingCards />
+      <div className="overflow-hidden">
+        <Header handleBillingChange={handleBillingChange} />
+        <PricingCards isAnnual={isAnnual} />
       </div>
     </main>
   )

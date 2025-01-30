@@ -16,7 +16,7 @@ const links = [
   { href: '/about-us', label: 'About Us' },
   { href: '/pricing', label: 'Pricing' },
   { href: '/login', label: 'Services' },
-  { href: '/login', label: 'Privacy Policy' },
+  { href: '/policy', label: 'Privacy Policy' },
 ]
 
 function DesktopNav({isHome}) {

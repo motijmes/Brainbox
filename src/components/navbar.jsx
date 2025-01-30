@@ -12,21 +12,21 @@ import { Logo } from './logo'
 import { PlusGrid, PlusGridItem, PlusGridRow } from './plus-grid'
 
 const links = [
-  { href: '/pricing', label: 'Home' },
+  { href: '/', label: 'Home' },
   { href: '/about-us', label: 'About Us' },
-  { href: '/blog', label: 'Pricing' },
+  { href: '/pricing', label: 'Pricing' },
   { href: '/login', label: 'Services' },
   { href: '/login', label: 'Privacy Policy' },
 ]
 
-function DesktopNav() {
+function DesktopNav({isHome}) {
   return (
     <nav className="relative hidden lg:flex">
       {links.map(({ href, label }) => (
         <PlusGridItem key={href} className="relative flex">
           <Link
             href={href}
-            className="flex items-center px-4 py-3 text-base font-medium text-text-white transition-colors data-hover:bg-text-white/10"
+            className={`flex items-center px-4 py-3 text-base font-medium ${isHome?"text-white transition-colors data-hover:bg-text-white/10" : "text-gray-950 bg-blend-multiply data-hover:bg-text-white/10"}`}
           >
             {label}
           </Link>
@@ -79,15 +79,20 @@ function MobileNav() {
   )
 }
 
-export function Navbar({ banner }) {
+export function Navbar({ banner, section }) {
+  const isAboutUs = section === 'aboutUs'
+  const isHome = section === 'home'
   return (
     <Disclosure as="header" className="pt-12 sm:pt-16">
       <PlusGrid>
-        <PlusGridRow className="relative flex justify-between">
+        <PlusGridRow className="relative flex justify-between " isHome={isHome}>
           <div className="relative flex gap-6">
             <PlusGridItem className="py-3">
               <Link href="/" title="Home">
-                <Logo className="h-9 text-text-white" variant="light" />
+                <Logo
+                  className="h-9 text-text-white"
+                  variant={`${isHome ? 'light' : 'orignal'}`}
+                />
               </Link>
             </PlusGridItem>
             {banner && (
@@ -96,7 +101,7 @@ export function Navbar({ banner }) {
               </div>
             )}
           </div>
-          <DesktopNav />
+          <DesktopNav isHome={isHome} />
           <MobileNavButton />
         </PlusGridRow>
       </PlusGrid>

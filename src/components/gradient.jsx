@@ -36,6 +36,19 @@ export function GradientBackground() {
     </div>
   )
 }
+export function GradientBackgroundOrignal() {
+  return (
+    <div className="relative mx-auto max-w-7xl">
+      <div
+        className={clsx(
+          'absolute -top-44 -right-60 h-60 w-[40rem] transform-gpu md:right-0',
+          'bg-[linear-gradient(115deg,var(--tw-gradient-stops))] from-primary-light-1 from-20% via-primary-1 via-primary-light-2 via-40% via-70% to-primary-2',
+          'rotate-[-10deg] rounded-full blur-3xl',
+        )}
+      />
+    </div>
+  )
+}
 
 export  function GradientBackgroundSection({
   size = 'lg', // sm, md, lg, xl

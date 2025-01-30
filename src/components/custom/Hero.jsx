@@ -57,6 +57,7 @@ function Hero() {
                 </motion.span>
               </Link>
             }
+            section={'home'}
           />
         </motion.div>
 

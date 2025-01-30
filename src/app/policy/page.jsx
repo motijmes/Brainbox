@@ -255,7 +255,7 @@ export default function PrivacyPolicy() {
   return (
     <main className="overflow-hidden">
       <GradientBackgroundOrignal />
-      <Container className="bg-linear-to-b from-white from-50% to-gray-100">
+      <Container className="bg-linear-to-b from-gray-100 from-50% to-white">
         <Navbar section="privacy" />
       </Container>
       <PrivacyContent />

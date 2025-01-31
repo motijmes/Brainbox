@@ -1,4 +1,7 @@
+
+"use client"
 import { PlusGrid, PlusGridItem, PlusGridRow } from '@/components/plus-grid'
+import { motion } from 'framer-motion'
 import { Button } from './button'
 import { Container } from './container'
 import { Link } from './link'
@@ -8,51 +11,106 @@ import { Subheading } from './text'
 function CallToAction() {
   return (
     <div className="relative pt-20 pb-16 text-center sm:py-24">
-      <div className="absolute inset-0 bg-gradient-to-r from-violet-100/50 to-fuchsia-100/50 blur-3xl" />
-      <div className="relative">
+      <motion.div
+        className="absolute inset-0 bg-gradient-to-r from-violet-100/50 to-fuchsia-100/50 blur-3xl"
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        transition={{ duration: 0.8 }}
+        viewport={{ once: true }}
+      />
+      <motion.div
+        className="relative"
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
+        viewport={{ once: true }}
+      >
         <Subheading>Get started</Subheading>
-        <p className="mt-6 bg-gradient-to-r  from-primary-1 to-primary-2 bg-clip-text text-3xl font-medium tracking-tight text-gray-900 text-transparent sm:text-5xl">
+        <motion.p
+          className="mt-6 bg-gradient-to-r from-primary-1 to-primary-2 bg-clip-text text-3xl font-medium tracking-tight text-gray-900 text-transparent sm:text-5xl"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          viewport={{ once: true }}
+        >
           Ready to dive in?
           <br />
           Start your free trial today.
-        </p>
-        <p className="mx-auto mt-6 max-w-xs text-sm/6 text-gray-600">
+        </motion.p>
+        <motion.p
+          className="mx-auto mt-6 max-w-xs text-sm/6 text-gray-600"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.3 }}
+          viewport={{ once: true }}
+        >
           Get the cheat codes for selling and unlock your team&apos;s revenue
           potential.
-        </p>
-        <div className="mt-8">
+        </motion.p>
+        <motion.div
+          className="mt-8"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.4 }}
+          viewport={{ once: true }}
+        >
           <Button
-            className="w-full bg-gradient-to-r  from-primary-1 to-primary-2 text-white shadow-lg transition-all duration-300 hover:from-violet-700 hover:to-fuchsia-700 hover:shadow-xl sm:w-auto"
+            as={motion.a}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            className="w-full bg-gradient-to-r from-primary-1 to-primary-2 text-white shadow-lg transition-all duration-300 hover:from-violet-700 hover:to-fuchsia-700 hover:shadow-xl sm:w-auto"
             href="#"
           >
             Get started
           </Button>
-        </div>
-      </div>
+        </motion.div>
+      </motion.div>
     </div>
   )
 }
 
 function SitemapHeading({ children }) {
   return (
-    <h3 className="bg-gradient-to-r  from-primary-1 to-primary-2 bg-clip-text text-sm/6 font-medium text-gray-900 text-transparent">
+    <motion.h3
+      className="bg-gradient-to-r from-primary-1 to-primary-2 bg-clip-text text-sm/6 font-medium text-gray-900 text-transparent"
+      initial={{ opacity: 0, y: 10 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+    >
       {children}
-    </h3>
+    </motion.h3>
   )
 }
 
-function SitemapLinks({ children }) {
-  return <ul className="mt-6 space-y-4 text-sm/6">{children}</ul>
+function SitemapLinks({ children, delay = 0 }) {
+  return (
+    <motion.ul
+      className="mt-6 space-y-4 text-sm/6"
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      transition={{ duration: 0.5, delay }}
+      viewport={{ once: true }}
+    >
+      {children}
+    </motion.ul>
+  )
 }
 
-function SitemapLink(props) {
+function SitemapLink({ children, href, index }) {
   return (
-    <li>
+    <motion.li
+      initial={{ opacity: 0, x: -20 }}
+      whileInView={{ opacity: 1, x: 0 }}
+      transition={{ duration: 0.5, delay: 0.1 * index }}
+      viewport={{ once: true }}
+    >
       <Link
-        {...props}
+        href={href}
         className="font-medium text-gray-600 transition-colors duration-200 hover:text-violet-600"
-      />
-    </li>
+      >
+        {children}
+      </Link>
+    </motion.li>
   )
 }
 
@@ -61,27 +119,41 @@ function Sitemap() {
     <>
       <div>
         <SitemapHeading>Navigation</SitemapHeading>
-        <SitemapLinks>
-          <SitemapLink href="/about-us">About Us</SitemapLink>
-          <SitemapLink href="/pricing">Pricing</SitemapLink>
-          <SitemapLink href="/services">Services</SitemapLink>
-          <SitemapLink href="/private-policy">Private Policy</SitemapLink>
+        <SitemapLinks delay={0.2}>
+          <SitemapLink href="/about-us" index={0}>
+            About Us
+          </SitemapLink>
+          <SitemapLink href="/pricing" index={1}>
+            Pricing
+          </SitemapLink>
+          <SitemapLink href="/services" index={2}>
+            Services
+          </SitemapLink>
+          <SitemapLink href="/private-policy" index={3}>
+            Private Policy
+          </SitemapLink>
         </SitemapLinks>
       </div>
       <div>
         <SitemapHeading>Contact</SitemapHeading>
-        <SitemapLinks>
-          <SitemapLink href="mailto:info@accessibleagents.com">
+        <SitemapLinks delay={0.3}>
+          <SitemapLink href="mailto:info@accessibleagents.com" index={0}>
             info@accessibleagents.com
           </SitemapLink>
-          <SitemapLink href="tel:832-900-2881">832-900-2881</SitemapLink>
+          <SitemapLink href="tel:832-900-2881" index={1}>
+            832-900-2881
+          </SitemapLink>
         </SitemapLinks>
       </div>
       <div>
         <SitemapHeading>Connect With Us</SitemapHeading>
-        <SitemapLinks>
-          <SitemapLink href="#">Facebook</SitemapLink>
-          <SitemapLink href="#">Instagram</SitemapLink>
+        <SitemapLinks delay={0.4}>
+          <SitemapLink href="#" index={0}>
+            Facebook
+          </SitemapLink>
+          <SitemapLink href="#" index={1}>
+            Instagram
+          </SitemapLink>
         </SitemapLinks>
       </div>
     </>
@@ -107,41 +179,79 @@ function SocialIconInstagram(props) {
 function SocialLinks() {
   return (
     <>
-      <Link
-        href="https://facebook.com"
-        target="_blank"
-        aria-label="Visit us on Facebook"
-        className="text-gray-600 transition-colors duration-200 hover:text-violet-600"
+      <motion.div
+        initial={{ opacity: 0, x: -10 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        transition={{ duration: 0.5 }}
+        viewport={{ once: true }}
       >
-        <SocialIconFacebook className="size-5" />
-      </Link>
-      <Link
-        href="https://instagram.com"
-        target="_blank"
-        aria-label="Visit us on Instagram"
-        className="text-gray-600 transition-colors duration-200 hover:text-fuchsia-600"
+        <Link
+          href="https://facebook.com"
+          target="_blank"
+          aria-label="Visit us on Facebook"
+          className="text-gray-600 transition-colors duration-200 hover:text-violet-600"
+        >
+          <SocialIconFacebook className="size-5" />
+        </Link>
+      </motion.div>
+      <motion.div
+        initial={{ opacity: 0, x: -10 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        transition={{ duration: 0.5, delay: 0.1 }}
+        viewport={{ once: true }}
       >
-        <SocialIconInstagram className="size-5" />
-      </Link>
+        <Link
+          href="https://instagram.com"
+          target="_blank"
+          aria-label="Visit us on Instagram"
+          className="text-gray-600 transition-colors duration-200 hover:text-fuchsia-600"
+        >
+          <SocialIconInstagram className="size-5" />
+        </Link>
+      </motion.div>
     </>
   )
 }
 
 function Copyright() {
   return (
-    <div className="text-sm/6 text-gray-600">
+    <motion.div
+      className="text-sm/6 text-gray-600"
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      transition={{ duration: 0.5 }}
+      viewport={{ once: true }}
+    >
       &copy; {new Date().getFullYear()} AccessibleAgents. All rights reserved
-    </div>
+    </motion.div>
   )
 }
 
 export function Footer() {
   return (
     <footer className="relative overflow-hidden pt-16">
-      <div className="absolute inset-0 bg-gradient-to-b from-white to-violet-50" />
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,theme(colors.violet.50/0.8),transparent_50%)]" />
+      <motion.div
+        className="absolute inset-0 bg-gradient-to-b from-white to-violet-50"
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        transition={{ duration: 0.8 }}
+        viewport={{ once: true }}
+      />
+      <motion.div
+        className="absolute inset-0 bg-[radial-gradient(circle_at_top,theme(colors.violet.50/0.8),transparent_50%)]"
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        transition={{ duration: 0.8, delay: 0.2 }}
+        viewport={{ once: true }}
+      />
       <div className="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80">
-        <div className="relative left-[calc(50%-20rem)] aspect-[1155/678] w-[72.1875rem] -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-violet-200 to-fuchsia-200 opacity-20 sm:left-[calc(50%-30rem)]" />
+        <motion.div
+          className="relative left-[calc(50%-20rem)] aspect-[1155/678] w-[72.1875rem] -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-violet-200 to-fuchsia-200 opacity-20 sm:left-[calc(50%-30rem)]"
+          initial={{ opacity: 0, scale: 0.9 }}
+          whileInView={{ opacity: 0.2, scale: 1 }}
+          transition={{ duration: 1 }}
+          viewport={{ once: true }}
+        />
       </div>
       <Container className="relative">
         <CallToAction />
@@ -150,7 +260,14 @@ export function Footer() {
             <div className="grid grid-cols-2 gap-y-10 pb-6 lg:grid-cols-6 lg:gap-8">
               <div className="col-span-2 flex">
                 <PlusGridItem className="pt-6 lg:pb-6">
-                  <Logo className="h-9" />
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5 }}
+                    viewport={{ once: true }}
+                  >
+                    <Logo className="h-9" />
+                  </motion.div>
                 </PlusGridItem>
               </div>
               <div className="col-span-2 grid grid-cols-2 gap-x-8 gap-y-12 lg:col-span-4 lg:grid-cols-subgrid lg:pt-6">

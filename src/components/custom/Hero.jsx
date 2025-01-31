@@ -38,7 +38,7 @@ function Hero() {
           <Navbar
             banner={
               <Link
-                href="/blog/radiant-raises-100m-series-a-from-tailwind-ventures"
+                href="/"
                 className="group flex items-center gap-1 rounded-full bg-fuchsia-950/35 px-3 py-0.5 text-sm/6 font-medium text-white transition-colors duration-200 hover:bg-fuchsia-950/30"
               >
                 <motion.span
@@ -46,7 +46,7 @@ function Hero() {
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.6, delay: 0.4 }}
                 >
-                  Radiant raises $100M Series A from Tailwind Ventures
+                  Start Your Free Trial
                 </motion.span>
                 <motion.span
                   initial={{ opacity: 0, x: -10 }}

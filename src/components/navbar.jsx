@@ -15,7 +15,7 @@ const links = [
   { href: '/', label: 'Home' },
   { href: '/about-us', label: 'About Us' },
   { href: '/pricing', label: 'Pricing' },
-  { href: '/login', label: 'Services' },
+  { href: '/demo', label: 'Demo' },
   { href: '/policy', label: 'Privacy Policy' },
 ]
 

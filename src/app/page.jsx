@@ -23,6 +23,8 @@ import { motion } from 'framer-motion';
 import Hero from '@/components/custom/Hero'
 import Pricing from '@/components/custom/Pricing'
 import IntegrationSection from '@/components/custom/IntegrationSection'
+import VideoShowcase from '@/components/custom/DemoShowcase'
+import Userflow from '@/components/custom/Test'
 
 
 export const metadata = {
@@ -36,6 +38,13 @@ export default function Home() {
       <Hero />
       <main className="mt-14">
         <LogoCloud />
+
+        <div className="bg-gradient-to-b from-white via-gray-100 to-white py-16 pt-0">
+          <Userflow />
+        </div>
+        <div className="bg-gradient-to-b from-white via-gray-100 to-white py-16 pt-0">
+          <VideoShowcase />
+        </div>
         <div className="bg-linear-to-b from-white from-50% to-gray-100 py-16 pt-0">
           <FeatureSection />
         </div>
@@ -45,7 +54,7 @@ export default function Home() {
         <div className="bg-linear-to-b from-white from-50% to-gray-100 py-16">
           <IntegrationSection />
         </div>
-        <div className="bg-linear-to-b from-gray-100 from-50% to-white ">
+        <div className="bg-linear-to-b from-gray-100 from-50% to-white">
           <Pricing />
         </div>
       </main>

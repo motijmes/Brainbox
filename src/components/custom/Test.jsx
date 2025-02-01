@@ -1,57 +1,129 @@
-"use client"
-import React, { forwardRef, useRef, useEffect, useState } from "react";
-import { Mail, SearchCheck, Linkedin, Calendar, SparklesIcon } from 'lucide-react';
-import { motion } from 'framer-motion';
-import { GradientBackgroundSection } from "../gradient";
+'use client'
+import { motion } from 'framer-motion'
+import {
+  Calendar,
+  CheckCircle2,
+  Linkedin,
+  Loader2,
+  Mail,
+  SearchCheck,
+  SparklesIcon,
+} from 'lucide-react'
+import { forwardRef, useEffect, useRef, useState } from 'react'
+import { GradientBackgroundSection } from '../gradient'
 
-const Circle = forwardRef(({ className, children, text }, ref) => {
+const Circle = forwardRef(({ className, children, text, status }, ref) => {
+  const getBackgroundColor = () => {
+    switch (status) {
+      case 'loading':
+        return 'bg-amber-50'
+      case 'success':
+        return 'bg-green-50'
+      default:
+        return 'bg-white/80'
+    }
+  }
+
+  const getTextColor = () => {
+    switch (status) {
+      case 'loading':
+        return 'text-amber-700'
+      case 'success':
+        return 'text-green-700'
+      default:
+        return 'text-gray-700'
+    }
+  }
+
+  const getIcon = () => {
+    switch (status) {
+      case 'loading':
+        return <Loader2 className="mr-2 h-4 w-4 animate-spin text-amber-500" />
+      case 'success':
+        return <CheckCircle2 className="mr-2 h-4 w-4 text-green-500" />
+      default:
+        return null
+    }
+  }
+
   return (
-    <div className={`flex gap-3 items-center opacity-0 transition-all duration-500 ${className}`}
-         ref={ref}>
-      <div className="z-10 flex size-12 items-center justify-center rounded-full bg-white p-2 shadow-lg ring-1 ring-black/5">
+    <div
+      className={`flex items-center gap-3 transition-all duration-500 ${status === 'hidden' ? 'translate-y-4 opacity-0' : 'translate-y-0 opacity-100'} ${className}`}
+      ref={ref}
+    >
+      <div className="z-10 flex size-12 items-center justify-center rounded-full bg-white p-2 ring-1 shadow-lg ring-black/5">
         {children}
       </div>
-      <div className="text-gray-700 text-sm font-medium px-4 py-2 bg-white/80 rounded-xl shadow-sm ring-1 ring-black/5 backdrop-blur-sm">
-        {text}
+      <div
+        className={`flex items-center px-4 py-2 text-sm font-medium ${getBackgroundColor()} rounded-xl ring-1 shadow-sm ring-black/5 backdrop-blur-sm transition-colors duration-300`}
+      >
+        {getIcon()}
+        <span className={`${getTextColor()} transition-colors duration-300`}>
+          {text}
+        </span>
       </div>
     </div>
-  );
-});
+  )
+})
 
-Circle.displayName = "Circle";
+Circle.displayName = 'Circle'
 
 export default function ModernUserflow() {
-  const containerRef = useRef(null);
-  const div1Ref = useRef(null);
-  const div2Ref = useRef(null);
-  const div3Ref = useRef(null);
-  const div4Ref = useRef(null);
-  const div5Ref = useRef(null);
-  const [positions, setPositions] = useState([]);
-  const [animated, setAnimated] = useState(false);
+  const containerRef = useRef(null)
+  const [statuses, setStatuses] = useState([
+    'hidden',
+    'hidden',
+    'hidden',
+    'hidden',
+    'hidden',
+  ])
 
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setAnimated(true);
-      const circles = [div1Ref, div2Ref, div3Ref, div4Ref, div5Ref];
-      circles.forEach((circle, index) => {
-        if (circle.current) {
-          circle.current.style.opacity = '1';
-          circle.current.style.transform = 'translateY(0)';
-          circle.current.style.transitionDelay = `${index * 0.5}s`;
-        }
-      });
-    }, 100);
-    return () => clearTimeout(timer);
-  }, []);
+useEffect(() => {
+  const processStep = (index) => {
+    if (index >= statuses.length) {
+      // Reset all states to hidden after a delay
+      setTimeout(() => {
+        setStatuses(['hidden', 'hidden', 'hidden', 'hidden', 'hidden'])
+        // Start the process again
+        setTimeout(() => processStep(0), 300)
+      }, 500)
+      return
+    }
+
+    // Set current step to loading
+    setStatuses((prev) => {
+      const newStatuses = [...prev]
+      newStatuses[index] = 'loading'
+      return newStatuses
+    })
+
+    // After 1.5 seconds, set to success and start next step
+    setTimeout(() => {
+      setStatuses((prev) => {
+        const newStatuses = [...prev]
+        newStatuses[index] = 'success'
+        return newStatuses
+      })
+      processStep(index + 1)
+    }, 1500)
+  }
+
+  // Start with first step after a small delay
+  const initialTimer = setTimeout(() => processStep(0), 100)
+
+  // Cleanup
+  return () => {
+    clearTimeout(initialTimer)
+  }
+}, [])
 
   return (
-    <div className="relative  ">
-    <GradientBackgroundSection
-            size="md"
-            opacity={0.3}
-            position={{ top: '0', right: '0' }}
-          />
+    <div className="relative">
+      <GradientBackgroundSection
+        size="md"
+        opacity={0.3}
+        position={{ top: '0', right: '0' }}
+      />
       {/* Background decoration */}
       <div className="absolute inset-0 -z-10">
         <motion.div
@@ -187,27 +259,31 @@ export default function ModernUserflow() {
 
               <div className="flex size-full flex-col items-stretch justify-between">
                 <div className="flex flex-col gap-16">
-                  <Circle ref={div1Ref} text="Receive lead">
+                  <Circle text="Receive lead" status={statuses[0]}>
                     <Mail size={20} className="text-primary-1" />
                   </Circle>
-                  <Circle ref={div2Ref} text="Lead research" className="ml-4">
+                  <Circle
+                    text="Lead research"
+                    className="ml-4"
+                    status={statuses[1]}
+                  >
                     <SearchCheck size={20} className="text-primary-1" />
                   </Circle>
                   <Circle
-                    ref={div3Ref}
                     text="Personalised outreach"
                     className="ml-6"
+                    status={statuses[2]}
                   >
                     <Linkedin size={20} className="text-primary-1" />
                   </Circle>
                   <Circle
-                    ref={div4Ref}
                     text="Respond to objections"
                     className="ml-4"
+                    status={statuses[3]}
                   >
                     <Linkedin size={20} className="text-primary-1" />
                   </Circle>
-                  <Circle ref={div5Ref} text="Confirm/Book meeting">
+                  <Circle text="Confirm/Book meeting" status={statuses[4]}>
                     <Calendar size={20} className="text-primary-1" />
                   </Circle>
                 </div>

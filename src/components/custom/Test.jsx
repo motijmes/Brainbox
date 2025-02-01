@@ -2,6 +2,7 @@
 import React, { forwardRef, useRef, useEffect, useState } from "react";
 import { Mail, SearchCheck, Linkedin, Calendar, SparklesIcon } from 'lucide-react';
 import { motion } from 'framer-motion';
+import { GradientBackgroundSection } from "../gradient";
 
 const Circle = forwardRef(({ className, children, text }, ref) => {
   return (
@@ -45,7 +46,12 @@ export default function ModernUserflow() {
   }, []);
 
   return (
-    <div className="relative overflow-hidden py-24">
+    <div className="relative  ">
+    <GradientBackgroundSection
+            size="md"
+            opacity={0.3}
+            position={{ top: '0', right: '0' }}
+          />
       {/* Background decoration */}
       <div className="absolute inset-0 -z-10">
         <motion.div

@@ -39,7 +39,7 @@ export default function Home() {
       <main className="mt-14">
         <LogoCloud />
 
-        <div className="bg-gradient-to-b from-white via-gray-100 to-white py-16 pt-0">
+        <div className="bg-gradient-to-b from-white via-gray-100 to-white py-16 ">
           <Userflow />
         </div>
         <div className="bg-gradient-to-b from-white via-gray-100 to-white py-16 pt-0">

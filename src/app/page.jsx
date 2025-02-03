@@ -25,11 +25,11 @@ import Pricing from '@/components/custom/Pricing'
 import IntegrationSection from '@/components/custom/IntegrationSection'
 import VideoShowcase from '@/components/custom/DemoShowcase'
 import Userflow from '@/components/custom/Test'
+import DemoShowcaseTabs from '@/components/custom/DemoShowcaseTabs'
 
 
 export const metadata = {
-  description:
-    'Radiant helps you sell more by revealing sensitive information about your customers.',
+  description: 'All-in-One Platform for Realtors, by Realtors',
 }
 
 export default function Home() {
@@ -39,12 +39,15 @@ export default function Home() {
       <main className="mt-14">
         <LogoCloud />
 
-        <div className="bg-gradient-to-b from-white via-gray-100 to-white py-16 ">
+        <div className="bg-gradient-to-b from-white via-gray-100 to-white py-16">
           <Userflow />
         </div>
-        <div className="bg-gradient-to-b from-white via-gray-100 to-white py-16 pt-0">
-          <VideoShowcase />
+        <div className="bg-gradient-to-b from-white via-gray-100 to-white py-16">
+          <DemoShowcaseTabs />
         </div>
+        {/* <div className="bg-gradient-to-b from-white via-gray-100 to-white py-16 pt-0">
+          <VideoShowcase />
+        </div> */}
         <div className="bg-linear-to-b from-white from-50% to-gray-100 py-16 pt-0">
           <FeatureSection />
         </div>

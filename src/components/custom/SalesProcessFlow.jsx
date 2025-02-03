@@ -7,6 +7,7 @@ import {
   Loader2,
   PenSquare,
   Search,
+  Facebook,
 } from 'lucide-react'
 import React from 'react'
 
@@ -171,7 +172,7 @@ const SalesProcessFlow = ({ className = '', isAnimating = true }) => {
         <div className="flex size-full flex-col items-stretch justify-between">
           <div className="flex flex-col gap-6">
             <Circle text="Create Winning Ads-Using AI" status={statuses[0]}>
-              <PenSquare size={20} className="text-primary-1" />
+              <Facebook size={20} className="text-primary-1" />
             </Circle>
             <Circle text="Capture Leads" className="ml-4" status={statuses[1]}>
               <Search size={20} className="text-primary-1" />

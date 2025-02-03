@@ -14,16 +14,20 @@ import {
   Globe,
   Mail,
   MessageSquare,
+  Instagram,
+  MessageCircle,
+  MessagesSquare,
+  Linkedin,
 } from 'lucide-react'
 import { forwardRef, useRef } from 'react'
 import { GradientBackgroundSection } from '../gradient'
 import { AnimatedBeam } from './animated-beam'
-
+import { Logo } from '../logo'
 const Circle = forwardRef(({ className, children }, ref) => {
   return (
     <div
       ref={ref}
-      className="z-10 flex size-12 items-center justify-center rounded-full border-2 border-primary-1 bg-white p-3 shadow-[0_0_20px_-12px_rgba(0,0,0,0.8)]"
+      className={`z-10 flex items-center justify-center rounded-full border-2 border-primary-1 bg-white p-3 shadow-[0_0_20px_-12px_rgba(0,0,0,0.8)]`}
     >
       {children}
     </div>
@@ -37,8 +41,13 @@ export function BeamFlowDemo() {
   // Left side refs
   const sourceRefs = {
     facebook: useRef(null),
-    website: useRef(null),
+    instagram: useRef(null),
+    sms: useRef(null),
+
+     whatsapp: useRef(null),
     email: useRef(null),
+    liveChat: useRef(null),
+    linkedin: useRef(null)
   }
   // Center ref
   const botRef = useRef(null)
@@ -161,41 +170,47 @@ export function BeamFlowDemo() {
               className="relative mx-auto flex h-[500px] w-full max-w-lg items-center justify-center overflow-hidden rounded-2xl bg-white/80 p-10 ring-1 shadow-2xl shadow-black/5 ring-black/5 backdrop-blur-sm"
               ref={containerRef}
             >
+              {/* Omnichannel Bot Tag */}
+              <div className="absolute top-14 inline-flex items-center gap-2 rounded-full bg-primary-1/10 px-4 py-2 text-sm font-medium text-nowrap text-primary-1">
+                <BrainCircuit className="h-4 w-4" />
+                Omnichannel Bot
+              </div>
               <div className="flex w-full items-center justify-between">
-                {/* Left Column - Sources */}
+                {/* Left Column - 3 Sources */}
                 <div className="flex flex-col gap-12">
                   <Circle ref={sourceRefs.facebook}>
                     <Facebook className="h-6 w-6 text-primary-1" />
                   </Circle>
-                  <Circle ref={sourceRefs.website}>
-                    <Globe className="h-6 w-6 text-primary-1" />
+                  <Circle ref={sourceRefs.instagram}>
+                    <Instagram className="h-6 w-6 text-primary-1" />
                   </Circle>
-                  <Circle ref={sourceRefs.email}>
-                    <Mail className="h-6 w-6 text-primary-1" />
+                  <Circle ref={sourceRefs.sms}>
+                    <MessageSquare className="h-6 w-6 text-primary-1" />
                   </Circle>
                 </div>
 
                 {/* Center - Bot */}
-                <Circle ref={botRef} className="size-20">
-                  <Bot className="h-10 w-10 text-primary-1" />
+                <Circle ref={botRef} className="">
+                  {/* <Bot className="h-10 w-10 text-primary-1" /> */}
+                  <Logo
+                  className="h-9 text-text-white"
+                  variant={'orignal'}
+                />
                 </Circle>
 
-                {/* Right Column - Actions */}
+                {/* Right Column - 4 Sources */}
                 <div className="flex flex-col gap-8">
-                  <Circle ref={targetRefs.collect}>
-                    <FileCheck className="h-6 w-6 text-primary-1" />
+                  <Circle ref={sourceRefs.whatsapp}>
+                    <MessageCircle className="h-6 w-6 text-primary-1" />
                   </Circle>
-                  <Circle ref={targetRefs.book}>
-                    <Calendar className="h-6 w-6 text-primary-1" />
+                  <Circle ref={sourceRefs.email}>
+                    <Mail className="h-6 w-6 text-primary-1" />
                   </Circle>
-                  <Circle ref={targetRefs.followup}>
-                    <BrainCircuit className="h-6 w-6 text-primary-1" />
+                  <Circle ref={sourceRefs.liveChat}>
+                    <MessagesSquare className="h-6 w-6 text-primary-1" />
                   </Circle>
-                  <Circle ref={targetRefs.availability}>
-                    <Clock className="h-6 w-6 text-primary-1" />
-                  </Circle>
-                  <Circle ref={targetRefs.closing}>
-                    <CheckCircle2 className="h-6 w-6 text-primary-1" />
+                  <Circle ref={sourceRefs.linkedin}>
+                    <Linkedin className="h-6 w-6 text-primary-1" />
                   </Circle>
                 </div>
               </div>

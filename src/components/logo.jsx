@@ -15,7 +15,7 @@ export function Logo({ className, variant = 'original' }) {
 
   return (
     <motion.div
-      className={clsx(className, 'relative h-8 w-32')}
+      className={clsx(className, 'relative min-h-8 min-w-32')}
       whileHover={{ scale: 1.05 }}
       transition={transition}
     >

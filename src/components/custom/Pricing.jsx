@@ -16,6 +16,16 @@ const tiers = [
       'Perfect starting point for businesses needing basic CRM and communication tools.',
     priceMonthly: 75,
     href: '#',
+    usageCosts: {
+      additionalUsers: '$10/user/month',
+      emailMarketing: '$0.01/email',
+      socialPosts: '100 posts/month included',
+    },
+    addOns: {
+      seoWebsite: '$1000 one-time',
+      facebookAdsIntegration: '$50/month',
+      developmentRate: '$100/hour',
+    },
     highlights: [
       { description: 'Basic CRM Access' },
       { description: 'Up to 10 Users' },
@@ -42,6 +52,17 @@ const tiers = [
       'Enhanced text-based communication suite with AI chatbot capabilities.',
     priceMonthly: 150,
     href: '#',
+    usageCosts: {
+      sms: '$0.1/message',
+      whatsapp: '$0.05/message',
+      facebookMessenger: 'Included',
+      instagramDM: 'Included',
+    },
+    addOns: {
+      seoWebsite: '$1000 one-time',
+      googleAdsIntegration: '$75/month',
+      developmentRate: '$100/hour',
+    },
     highlights: [
       { description: 'All Essential Features' },
       { description: 'AI Chatbot' },
@@ -68,6 +89,17 @@ const tiers = [
       'Advanced text automation with enhanced AI capabilities and marketing features.',
     priceMonthly: 275,
     href: '#',
+    usageCosts: {
+      sms: '$0.1/message',
+      mms: '$0.2/message',
+      emailCampaigns: 'Unlimited',
+      socialBoosts: '$50 credit/month',
+    },
+    addOns: {
+      seoWebsite: '$1000 one-time',
+      marketingAutomation: '$150/month',
+      developmentRate: '$100/hour',
+    },
     highlights: [
       { description: 'All Text Basic Features' },
       { description: 'Enhanced AI Text' },
@@ -94,6 +126,16 @@ const tiers = [
       'Entry-level voice automation with essential AI calling features.',
     priceMonthly: 400,
     href: '#',
+    usageCosts: {
+      voiceCalls: '$0.4/minute',
+      voicemailTranscription: 'Included',
+      callRecording: '$0.1/minute',
+    },
+    addOns: {
+      seoWebsite: '$1000 one-time',
+      callCenterSetup: '$200/month',
+      developmentRate: '$100/hour',
+    },
     highlights: [
       { description: 'Voice AI Features' },
       { description: 'Call Tracking' },
@@ -120,6 +162,18 @@ const tiers = [
       'Complete voice solution with advanced AI capabilities and enterprise features.',
     priceMonthly: 900,
     href: '#',
+    usageCosts: {
+      voiceCalls: '$0.4/minute',
+      internationalCalls: 'Custom rates',
+      customIVR: 'Included',
+      enterpriseAPI: 'Included',
+    },
+    addOns: {
+      seoWebsite: '$1000 one-time',
+      enterpriseIntegration: '$300/month',
+      developmentRate: '$100/hour',
+      weeklyDevelopment: '3 hours included',
+    },
     highlights: [
       { description: 'All Voice Basic Features' },
       { description: 'Advanced Voice AI' },
@@ -174,11 +228,12 @@ function FeatureItem({ description, disabled = false, delay = 0 }) {
 }
 
 function PricingCard({ tier, index, isAnnual }) {
-  // Calculate the price based on billing period
+  const [isFlipped, setIsFlipped] = useState(false)
+
   const calculatePrice = () => {
     if (isAnnual) {
       const annualPrice = tier.priceMonthly * 12
-      const discount = annualPrice * 0.1 // 10% discount
+      const discount = annualPrice * 0.1
       return (annualPrice - discount).toFixed(0)
     }
     return tier.priceMonthly
@@ -186,84 +241,132 @@ function PricingCard({ tier, index, isAnnual }) {
 
   const price = calculatePrice()
 
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.5, delay: index * 0.2 }}
-      whileHover={{
-        scale: 1.02,
-        transition: { duration: 0.2 },
-      }}
-      className="-m-2 h-full rounded-4xl ring-1 shadow-[inset_0_0_2px_1px_#ffffff4d] ring-black/5"
-    >
-      <div className="h-full rounded-4xl p-2 shadow-md shadow-black/5">
-        <div className="flex h-full flex-col rounded-3xl bg-white p-6 ring-1 shadow-2xl ring-black/5">
-          <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.3, delay: 0.2 }}
-          >
-            <Subheading>{tier.name}</Subheading>
-            <p className="mt-2 max-w-sm text-sm/6 text-gray-950/75">
-              {tier.description}
-            </p>
-            <motion.div
-              className="mt-6 flex items-center gap-4"
-              initial={{ opacity: 0, y: 10 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.3, delay: 0.3 }}
-            >
-              <div className="text-4xl font-medium text-gray-950">${price}</div>
-              <div className="text-sm/5 text-gray-950/75">
-                <p>USD</p>
-                <p>per {isAnnual ? 'year' : 'month'}</p>
-              </div>
-            </motion.div>
-            <motion.div
-              className="mt-6"
-              initial={{ opacity: 0, y: 10 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.3, delay: 0.4 }}
-            >
-              <Button
-                href={tier.href}
-                as={motion.a}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                Start a free trial
-              </Button>
-            </motion.div>
-          </motion.div>
+  const handleMouseEnter = (e) => {
+    // Check if the mouse entered from a button element
+    if (!e.target.closest('button')) {
+      setIsFlipped(true)
+    }
+  }
 
-          <motion.div
-            className="mt-6 flex-grow"
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.3, delay: 0.5 }}
-          >
-            <h3 className="text-sm/6 font-medium text-gray-950">
-              Start selling with:
-            </h3>
-            <ul className="mt-2 space-y-2">
-              {tier.highlights.map((props, featureIndex) => (
-                <FeatureItem
-                  key={featureIndex}
-                  {...props}
-                  delay={0.6 + featureIndex * 0.1}
-                />
-              ))}
-            </ul>
-          </motion.div>
+  const handleMouseLeave = (e) => {
+    // Check if the mouse left to a button element
+    if (!e.target.closest('button')) {
+      setIsFlipped(false)
+    }
+  }
+
+  return (
+    <div
+      className="perspective-1000 relative h-[600px] w-full"
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+    >
+      <div
+        className={`transform-style-3d relative h-full w-full transition-transform duration-500 ${
+          isFlipped ? 'rotate-y-180' : ''
+        }`}
+      >
+        {/* Front of card */}
+        <div className="absolute h-full w-full backface-hidden">
+          <div className="h-full rounded-4xl p-2 shadow-md shadow-black/5">
+            <div className="flex h-full flex-col rounded-3xl bg-white p-6 ring-1 shadow-2xl ring-black/5">
+              <div>
+                <h3 className="text-base font-semibold text-gray-900">
+                  {tier.name}
+                </h3>
+                <p className="mt-2 text-sm text-gray-500">{tier.description}</p>
+                <div className="mt-6 flex items-center gap-4">
+                  <div className="text-4xl font-medium text-gray-900">
+                    ${price}
+                  </div>
+                  <div className="text-sm text-gray-500">
+                    <p>USD</p>
+                    <p>per {isAnnual ? 'year' : 'month'}</p>
+                  </div>
+                </div>
+                <div className="relative z-10 mt-6">
+                  {' '}
+                  {/* Added z-index */}
+                  <Button
+                    href={tier.href}
+                    className="relative w-full"
+                    onMouseEnter={(e) => {
+                      e.stopPropagation()
+                      setIsFlipped(false)
+                    }}
+                  >
+                    Start free trial
+                  </Button>
+                </div>
+              </div>
+              <div className="mt-8">
+                <h4 className="text-sm font-medium text-gray-900">
+                  Features include:
+                </h4>
+                <ul className="mt-4 space-y-3">
+                  {tier.highlights.map((feature, index) => (
+                    <FeatureItem key={index} {...feature} />
+                  ))}
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Back of card */}
+        <div className="absolute h-full w-full rotate-y-180 backface-hidden">
+          <div className="h-full rounded-4xl p-2 shadow-md shadow-black/5">
+            <div className="flex h-full flex-col rounded-3xl bg-white p-6 ring-1 shadow-2xl ring-black/5">
+              <h3 className="text-base font-semibold text-gray-900">
+                Additional Details
+              </h3>
+
+              {/* Usage Costs */}
+              <div className="mt-3">
+                <h4 className="text-sm font-medium text-gray-900">
+                  Usage Costs:
+                </h4>
+                <ul className="mt-1 space-y-1 text-sm text-gray-500">
+                  {Object.entries(tier.usageCosts).map(([key, value]) => (
+                    <li key={key} className="flex justify-between">
+                      <span>{key.replace(/([A-Z])/g, ' $1').trim()}:</span>
+                      <span>{value}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              {/* Add-ons */}
+              <div className="mt-5">
+                <h4 className="text-sm font-medium text-gray-900">
+                  Available Add-ons:
+                </h4>
+                <ul className="mt-1 space-y-1 text-sm text-gray-500">
+                  {Object.entries(tier.addOns).map(([key, value]) => (
+                    <li key={key} className="flex justify-between">
+                      <span>{key.replace(/([A-Z])/g, ' $1').trim()}:</span>
+                      <span>{value}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              {/* Additional Features */}
+              <div className="mt-5">
+                <h4 className="text-sm font-medium text-gray-900">
+                  All Features:
+                </h4>
+                <ul className="mt-1 space-y-1 text-sm text-gray-500">
+                  {tier.features.map((feature, index) => (
+                    <li key={index}>{feature.name}</li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-    </motion.div>
+    </div>
   )
 }
 
@@ -283,28 +386,41 @@ function PricingCards({ isAnnual }) {
         <GradientLight className="absolute inset-x-2 top-24 bottom-0 rounded-4xl ring-1 ring-black/5 ring-inset" />
       </motion.div>
       <Container className="relative">
-        {/* First row - 3 cards */}
-        <div className="mx-auto mb-8 grid max-w-7xl grid-cols-1 gap-8 md:grid-cols-3">
-          {firstRowTiers.map((tier, index) => (
-            <PricingCard
-              key={index}
-              tier={tier}
-              index={index}
-              isAnnual={isAnnual}
-            />
-          ))}
-        </div>
-
-        {/* Second row - 2 cards centered */}
-        <div className="mx-auto grid max-w-5xl grid-cols-1 justify-center gap-8 md:grid-cols-2">
-          {secondRowTiers.map((tier, index) => (
-            <PricingCard
-              key={index + 3}
-              tier={tier}
-              index={index + 3}
-              isAnnual={isAnnual}
-            />
-          ))}
+        <div className="flex flex-col items-center">
+          {' '}
+          {/* Added wrapper for centering */}
+          {/* First row - 3 cards */}
+          <div className="mx-auto mb-8 flex w-full max-w-5xl flex-col justify-center gap-8 md:flex-row">
+            {firstRowTiers.map((tier, index) => (
+              <div className=" max-w-[360px] min-w-[360px] flex-1">
+                {' '}
+                {/* Added max-width */}
+                <PricingCard
+                  key={index}
+                  tier={tier}
+                  index={index}
+                  isAnnual={isAnnual}
+                  className="h-full w-full"
+                />
+              </div>
+            ))}
+          </div>
+          {/* Second row - 2 cards */}
+          <div className="mx-auto mb-8 flex w-full max-w-5xl flex-col justify-center gap-8 md:flex-row">
+            {secondRowTiers.map((tier, index) => (
+              <div className=" max-w-[360px] min-w-[360px] flex-1">
+                {' '}
+                {/* Added max-width */}
+                <PricingCard
+                  key={index}
+                  tier={tier}
+                  index={index}
+                  isAnnual={isAnnual}
+                  className="h-full w-full"
+                />
+              </div>
+            ))}
+          </div>
         </div>
       </Container>
     </div>

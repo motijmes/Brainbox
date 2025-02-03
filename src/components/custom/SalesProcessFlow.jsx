@@ -1,14 +1,13 @@
 import {
   Calendar,
   CheckCircle2,
-  Linkedin,
-  Loader2,
   Mail,
+  Loader2,
   SearchCheck,
+  MessageCircle,
+  MessageCircleQuestion,
 } from 'lucide-react'
 import React from 'react'
-
-
 
 // Original Circle component remains the same
 const Circle = React.forwardRef(
@@ -119,7 +118,7 @@ const SalesProcessFlow = ({ className = '' }) => {
 
   return (
     <div className={`relative ${className}`}>
-      <div className="relative flex max-h-[700px] w-full max-w-[600px] min-w-[430px] items-center justify-center overflow-hidden rounded-2xl bg-transparent p-12 ring-1 shadow-2xl shadow-white/10 ring-white/20 backdrop-blur-md bg-gradient-to-r from-violet-100/50 to-fuchsia-100/50">
+      <div className="relative flex max-h-[700px] w-full max-w-[600px] min-w-[430px] items-center justify-center overflow-hidden rounded-2xl bg-transparent bg-gradient-to-r from-violet-100/50 to-fuchsia-100/50 p-12 ring-1 shadow-2xl shadow-white/10 ring-white/20 backdrop-blur-md">
         <svg
           className="absolute top-2 left-12 h-full"
           width="60"
@@ -164,14 +163,14 @@ const SalesProcessFlow = ({ className = '' }) => {
               className="ml-6"
               status={statuses[2]}
             >
-              <Linkedin size={20} className="text-primary-1" />
+              <MessageCircle size={20} className="text-primary-1" />
             </Circle>
             <Circle
               text="Respond to objections"
               className="ml-4"
               status={statuses[3]}
             >
-              <Linkedin size={20} className="text-primary-1" />
+              <MessageCircleQuestion size={20} className="text-primary-1" />
             </Circle>
             <Circle text="Confirm/Book meeting" status={statuses[4]}>
               <Calendar size={20} className="text-primary-1" />

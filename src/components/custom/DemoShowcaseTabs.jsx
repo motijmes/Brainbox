@@ -46,7 +46,7 @@ const DemoShowcase = () => {
     {
       badge: { icon: BarChart3, text: 'Sales Automation' },
       title: {
-        regular: 'Turn Leads into ',
+        regular: '24/7 Virtual Assistant ',
         gradient: 'Customers on Autopilot',
       },
       description:
@@ -66,7 +66,7 @@ const DemoShowcase = () => {
     {
       badge: { icon: MessagesSquare, text: 'Customer Support' },
       title: {
-        regular: 'Deliver Exceptional ',
+        regular: 'Smart Chatbot in Action ',
         gradient: 'Customer Support',
       },
       description:

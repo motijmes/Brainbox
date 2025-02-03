@@ -392,7 +392,7 @@ function PricingCards({ isAnnual }) {
           {/* First row - 3 cards */}
           <div className="mx-auto mb-8 flex w-full max-w-5xl flex-col justify-center gap-8 md:flex-row">
             {firstRowTiers.map((tier, index) => (
-              <div className=" max-w-[360px] min-w-[360px] flex-1">
+              <div className=" max-w-[360px] min-w-[360px] flex-1" key={index}>
                 {' '}
                 {/* Added max-width */}
                 <PricingCard
@@ -408,7 +408,7 @@ function PricingCards({ isAnnual }) {
           {/* Second row - 2 cards */}
           <div className="mx-auto mb-8 flex w-full max-w-5xl flex-col justify-center gap-8 md:flex-row">
             {secondRowTiers.map((tier, index) => (
-              <div className=" max-w-[360px] min-w-[360px] flex-1">
+              <div className=" max-w-[360px] min-w-[360px] flex-1" key={index}>
                 {' '}
                 {/* Added max-width */}
                 <PricingCard

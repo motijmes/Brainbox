@@ -6,61 +6,81 @@ import { PlayIcon, SparklesIcon, XMarkIcon } from '@heroicons/react/24/outline'
 import { AnimatePresence, motion } from 'framer-motion'
 import { CheckCircle2 } from 'lucide-react'
 import { useState } from 'react'
+import { BarChart3, MessagesSquare } from 'lucide-react'
+
+// Video Player Component
+const VideoPlayer = ({ video }) => {
+  if (video.type === 'youtube') {
+    return (
+      <iframe
+        src={video.videoSrc}
+        className="h-full w-full rounded-2xl border-2 border-white/10 bg-black/50 shadow-2xl"
+        allowFullScreen
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+      />
+    )
+  }
+
+  return (
+    <video
+      key={video.videoSrc}
+      controls
+      autoPlay
+      className="h-full w-full rounded-2xl border-2 border-white/10 bg-black/50 shadow-2xl"
+    >
+      <source src={video.videoSrc} type="video/mp4" />
+      <source src={video.videoSrc.replace('.mp4', '.webm')} type="video/webm" />
+      Your browser does not support the video tag.
+    </video>
+  )
+}
 
 const VideoShowcase = () => {
   const [isPlaying, setIsPlaying] = useState(false)
   const [activeVideo, setActiveVideo] = useState(0)
 
-  const demos = [
-    {
-      badge: { icon: SparklesIcon, text: 'Lead Management' },
-      title: {
-        regular: 'Capture and Nurture ',
-        gradient: 'Every Lead',
+    const demos = [
+      {
+        badge: { icon: BarChart3, text: 'Sales Automation' },
+        title: {
+          regular: 'Turn Leads into ',
+          gradient: 'Customers on Autopilot',
+        },
+        description:
+          'Automate your sales process with intelligent workflows. Our AI-driven system handles the routine tasks while you focus on what matters most – closing deals and building lasting connections.',
+        icon: BarChart3,
+        video: {
+          type: 'direct',
+          videoSrc: '/demos/0202.mp4',
+        },
+        features: [
+          { icon: CheckCircle2, text: 'AI-powered lead qualification' },
+          { icon: CheckCircle2, text: 'Automated follow-up sequences' },
+          { icon: CheckCircle2, text: 'Smart meeting scheduling' },
+          { icon: CheckCircle2, text: 'Performance analytics dashboard' },
+        ],
       },
-      description:
-        'Streamline your lead capture and nurturing process with intelligent automation. Our AI-driven system ensures no opportunity slips through the cracks, maximizing your conversion potential.',
-      videoSrc: 'https://www.youtube.com/embed/jcImHWNOjrU',
-      thumbnailSrc: '/assets/demoThumbnail.jpg',
-      features: [
-        { icon: CheckCircle2, text: 'Automated lead qualification' },
-        { icon: CheckCircle2, text: 'Smart follow-up sequences' },
-        { icon: CheckCircle2, text: 'Pipeline visualization' },
-      ],
-    },
-    {
-      badge: { icon: SparklesIcon, text: 'Email Marketing' },
-      title: {
-        regular: 'Deploy Sophisticated ',
-        gradient: 'Email Campaigns',
+      {
+        badge: { icon: MessagesSquare, text: 'Customer Support' },
+        title: {
+          regular: 'Deliver Exceptional ',
+          gradient: 'Customer Support',
+        },
+        description:
+          'Transform your customer support with AI-powered automation. Provide instant responses, route tickets intelligently, and maintain high satisfaction levels around the clock.',
+        icon: MessagesSquare,
+        video: {
+          type: 'direct',
+          videoSrc: '/demos/text_chatbot_demo.mkv',
+        },
+        features: [
+          { icon: CheckCircle2, text: 'Intelligent ticket routing' },
+          { icon: CheckCircle2, text: '24/7 AI customer support' },
+          { icon: CheckCircle2, text: 'Automated response suggestions' },
+          { icon: CheckCircle2, text: 'Customer satisfaction tracking' },
+        ],
       },
-      description:
-        'Create and deploy sophisticated email campaigns with smart automation. Reach your audience at the right time with personalized content that drives engagement and results.',
-      videoSrc: 'https://www.youtube.com/embed/jcImHWNOjrU',
-      thumbnailSrc: '/assets/demoThumbnail.jpg',
-      features: [
-        { icon: CheckCircle2, text: 'AI-powered content suggestions' },
-        { icon: CheckCircle2, text: 'Advanced segmentation' },
-        { icon: CheckCircle2, text: 'Performance analytics' },
-      ],
-    },
-    {
-      badge: { icon: SparklesIcon, text: 'Task Automation' },
-      title: {
-        regular: 'Automate Your ',
-        gradient: 'Daily Tasks',
-      },
-      description:
-        'Let our intelligent system handle your routine tasks while you focus on growing your business. From follow-ups to scheduling, automation handles it all.',
-      videoSrc: 'https://www.youtube.com/embed/jcImHWNOjrU',
-      thumbnailSrc: '/assets/demoThumbnail.jpg',
-      features: [
-        { icon: CheckCircle2, text: 'Smart task prioritization' },
-        { icon: CheckCircle2, text: 'Automated workflows' },
-        { icon: CheckCircle2, text: 'Integration capabilities' },
-      ],
-    },
-  ]
+    ]
 
   const handleVideoClick = (index) => {
     setActiveVideo(index)
@@ -215,16 +235,23 @@ const VideoShowcase = () => {
                       </div>
                     </div>
 
-                    {/* Video thumbnail */}
+                    {/* Video preview */}
                     <motion.div
                       className="group relative cursor-pointer overflow-hidden rounded-xl"
                       onClick={() => handleVideoClick(index)}
                     >
-                      <motion.img
-                        src={demo.thumbnailSrc}
-                        alt={demo.title.regular + demo.title.gradient}
-                        className="h-full w-full transform object-cover transition-transform duration-700 hover:scale-105"
-                      />
+                      {demo.video.type === 'direct' ? (
+                        <video
+                          src={demo.video.videoSrc}
+                          className="h-full w-full transform object-cover transition-transform duration-700 hover:scale-105"
+                          autoPlay
+                          muted
+                          loop
+                          playsInline
+                        />
+                      ) : (
+                        <div className="aspect-video bg-gray-100" />
+                      )}
 
                       <div className="absolute inset-0 flex items-center justify-center bg-black/20 opacity-0 transition-opacity group-hover:opacity-100">
                         <motion.div
@@ -275,12 +302,7 @@ const VideoShowcase = () => {
                 <XMarkIcon className="h-6 w-6" />
               </motion.button>
 
-              <iframe
-                src={demos[activeVideo].videoSrc}
-                className="h-full w-full rounded-2xl border-2 border-white/10 bg-black/50 shadow-2xl"
-                allowFullScreen
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              />
+              <VideoPlayer video={demos[activeVideo].video} />
             </motion.div>
           </motion.div>
         )}

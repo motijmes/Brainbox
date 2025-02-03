@@ -49,7 +49,7 @@ const ContactPage = () => {
             Get in Touch
           </motion.div>
           <h2 className="font-display text-3xl/tight font-medium tracking-tight sm:text-4xl/tight">
-            <span className="text-text">Let's Start a </span>
+            <span className="text-text">Let&apos;s Start a </span>
             <span className="bg-gradient-to-r from-primary-1 to-primary-2 bg-clip-text text-transparent">
               Conversation
             </span>
@@ -72,10 +72,12 @@ const ContactPage = () => {
                   transition={{ delay: 0.1 }}
                   viewport={{ once: true }}
                 >
-                  <label className="block text-sm font-medium text-gray-700">Name</label>
+                  <label className="block text-sm font-medium text-gray-700">
+                    Name
+                  </label>
                   <input
                     type="text"
-                    className="mt-1 block w-full rounded-lg border border-gray-300 px-4 py-2 focus:border-primary-1 focus:outline-none focus:ring-2 focus:ring-primary-1/20"
+                    className="mt-1 block w-full rounded-lg border border-gray-300 px-4 py-2 focus:border-primary-1 focus:ring-2 focus:ring-primary-1/20 focus:outline-none"
                     placeholder="Your name"
                   />
                 </motion.div>
@@ -86,10 +88,12 @@ const ContactPage = () => {
                   transition={{ delay: 0.2 }}
                   viewport={{ once: true }}
                 >
-                  <label className="block text-sm font-medium text-gray-700">Email</label>
+                  <label className="block text-sm font-medium text-gray-700">
+                    Email
+                  </label>
                   <input
                     type="email"
-                    className="mt-1 block w-full rounded-lg border border-gray-300 px-4 py-2 focus:border-primary-1 focus:outline-none focus:ring-2 focus:ring-primary-1/20"
+                    className="mt-1 block w-full rounded-lg border border-gray-300 px-4 py-2 focus:border-primary-1 focus:ring-2 focus:ring-primary-1/20 focus:outline-none"
                     placeholder="you@example.com"
                   />
                 </motion.div>
@@ -100,10 +104,12 @@ const ContactPage = () => {
                   transition={{ delay: 0.3 }}
                   viewport={{ once: true }}
                 >
-                  <label className="block text-sm font-medium text-gray-700">Message</label>
+                  <label className="block text-sm font-medium text-gray-700">
+                    Message
+                  </label>
                   <textarea
                     rows={4}
-                    className="mt-1 block w-full rounded-lg border border-gray-300 px-4 py-2 focus:border-primary-1 focus:outline-none focus:ring-2 focus:ring-primary-1/20"
+                    className="mt-1 block w-full rounded-lg border border-gray-300 px-4 py-2 focus:border-primary-1 focus:ring-2 focus:ring-primary-1/20 focus:outline-none"
                     placeholder="Your message"
                   />
                 </motion.div>
@@ -112,7 +118,7 @@ const ContactPage = () => {
               <motion.button
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
-                className="w-full rounded-lg bg-gradient-to-r from-primary-1 to-primary-2 px-8 py-3 text-center text-sm font-medium text-white hover:opacity-90 focus:outline-none focus:ring-2 focus:ring-primary-1/20"
+                className="w-full rounded-lg bg-gradient-to-r from-primary-1 to-primary-2 px-8 py-3 text-center text-sm font-medium text-white hover:opacity-90 focus:ring-2 focus:ring-primary-1/20 focus:outline-none"
               >
                 Send Message
               </motion.button>
@@ -174,7 +180,7 @@ const ContactPage = () => {
         </div>
       </Container>
     </div>
-  );
+  )
 };
 
 export default ContactPage;

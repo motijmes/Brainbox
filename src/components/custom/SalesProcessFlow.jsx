@@ -1,15 +1,15 @@
 import {
+  BadgeCheck,
+  Bot,
   Calendar,
   CheckCircle2,
-  Mail,
+  HandshakeIcon,
   Loader2,
-  SearchCheck,
-  MessageCircle,
-  MessageCircleQuestion,
+  PenSquare,
+  Search,
 } from 'lucide-react'
 import React from 'react'
 
-// Original Circle component remains the same
 const Circle = React.forwardRef(
   ({ className, children, text, status }, ref) => {
     const getBackgroundColor = () => {
@@ -74,8 +74,11 @@ const Circle = React.forwardRef(
 
 Circle.displayName = 'Circle'
 
-const SalesProcessFlow = ({ className = '' }) => {
+const SalesProcessFlow = ({ className = '', isAnimating = true }) => {
   const [statuses, setStatuses] = React.useState([
+    'hidden',
+    'hidden',
+    'hidden',
     'hidden',
     'hidden',
     'hidden',
@@ -84,10 +87,25 @@ const SalesProcessFlow = ({ className = '' }) => {
   ])
 
   React.useEffect(() => {
+    if (!isAnimating) {
+      // Show all steps as success when animation is paused
+      setStatuses(new Array(8).fill('success'))
+      return
+    }
+
     const processStep = (index) => {
       if (index >= statuses.length) {
         setTimeout(() => {
-          setStatuses(['hidden', 'hidden', 'hidden', 'hidden', 'hidden'])
+          setStatuses([
+            'hidden',
+            'hidden',
+            'hidden',
+            'hidden',
+            'hidden',
+            'hidden',
+            'hidden',
+            'hidden',
+          ])
           setTimeout(() => processStep(0), 300)
         }, 500)
         return
@@ -114,7 +132,7 @@ const SalesProcessFlow = ({ className = '' }) => {
     return () => {
       clearTimeout(initialTimer)
     }
-  }, [])
+  }, [isAnimating,statuses.length]) 
 
   return (
     <div className={`relative ${className}`}>
@@ -151,29 +169,35 @@ const SalesProcessFlow = ({ className = '' }) => {
         </svg>
 
         <div className="flex size-full flex-col items-stretch justify-between">
-          <div className="flex flex-col gap-16">
-            <Circle text="Receive lead" status={statuses[0]}>
-              <Mail size={20} className="text-primary-1" />
+          <div className="flex flex-col gap-6">
+            <Circle text="Create Winning Ads-Using AI" status={statuses[0]}>
+              <PenSquare size={20} className="text-primary-1" />
             </Circle>
-            <Circle text="Lead research" className="ml-4" status={statuses[1]}>
-              <SearchCheck size={20} className="text-primary-1" />
+            <Circle text="Capture Leads" className="ml-4" status={statuses[1]}>
+              <Search size={20} className="text-primary-1" />
+            </Circle>
+            <Circle text="Bot Engages" className="ml-6" status={statuses[2]}>
+              <Bot size={20} className="text-primary-1" />
             </Circle>
             <Circle
-              text="Personalised outreach"
+              text="Gather Information"
               className="ml-6"
-              status={statuses[2]}
-            >
-              <MessageCircle size={20} className="text-primary-1" />
-            </Circle>
-            <Circle
-              text="Respond to objections"
-              className="ml-4"
               status={statuses[3]}
             >
-              <MessageCircleQuestion size={20} className="text-primary-1" />
+              <Search size={20} className="text-primary-1" />
             </Circle>
-            <Circle text="Confirm/Book meeting" status={statuses[4]}>
+            <Circle text="Qualify" status={statuses[4]} className="ml-5">
+              <BadgeCheck size={20} className="text-primary-1" />
+            </Circle>
+            <Circle
+              text="Book Appointment"
+              className="ml-4"
+              status={statuses[5]}
+            >
               <Calendar size={20} className="text-primary-1" />
+            </Circle>
+            <Circle text="Close Sales" status={statuses[6]}>
+              <HandshakeIcon size={20} className="text-primary-1" />
             </Circle>
           </div>
         </div>

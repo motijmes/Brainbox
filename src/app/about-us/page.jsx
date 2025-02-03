@@ -15,6 +15,7 @@ import {
   RocketLaunchIcon,
   BookOpenIcon,
 } from '@heroicons/react/24/solid'
+import ContactPage from '@/components/custom/ContactPage'
 
 function Header() {
   const sections = [
@@ -207,6 +208,9 @@ export default function AboutUs() {
       </Container>
       <div className="bg-linear-to-b from-gray-100 from-50% to-white">
         <Header />
+      </div>
+      <div className="g-gradient-to-b bg-linear-to-b from-white via-gray-100 to-white">
+        <ContactPage />
       </div>
       <Footer />
     </main>

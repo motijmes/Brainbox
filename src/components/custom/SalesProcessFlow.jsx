@@ -137,7 +137,7 @@ const SalesProcessFlow = ({ className = '', isAnimating = true }) => {
 
   return (
     <div className={`relative ${className}`}>
-      <div className="relative flex max-h-[700px] w-full max-w-[600px] min-w-[430px] items-center justify-center overflow-hidden rounded-2xl bg-transparent bg-gradient-to-r from-violet-100/50 to-fuchsia-100/50 p-12 ring-1 shadow-2xl shadow-white/10 ring-white/20 backdrop-blur-md">
+      <div className="relative flex max-h-[700px] w-full max-w-[600px] min-w-[430px] items-center justify-center overflow-hidden rounded-2xl p-12 ring-1 shadow-2xl shadow-white/10 ring-white/20 backdrop-blur-md">
         <svg
           className="absolute top-2 left-12 h-full"
           width="60"
@@ -163,8 +163,8 @@ const SalesProcessFlow = ({ className = '', isAnimating = true }) => {
               y2="520"
               gradientUnits="userSpaceOnUse"
             >
-              <stop stopColor="#7E8095" />
-              <stop offset="1" stopColor="#B6B7C3" stopOpacity="0.2" />
+              <stop stopColor="white" />
+              <stop offset="1" stopColor="white" stopOpacity="0.2" />
             </linearGradient>
           </defs>
         </svg>

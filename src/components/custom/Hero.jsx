@@ -135,7 +135,7 @@ function Hero() {
 
             {/* ImageSlider wrapper with animations */}
             <motion.div
-              className="overflow-hidden rounded-2xl bg-white/95 shadow-[0_8px_30px_rgb(0,0,0,0.12)] backdrop-blur-sm"
+              className="overflow-hidden rounded-2xl "
               whileHover={{
                 scale: 1.02,
                 transition: { duration: 0.3 },

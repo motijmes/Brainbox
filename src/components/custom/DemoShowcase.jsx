@@ -1,58 +1,70 @@
 'use client'
 
+import { Button } from '@/components/button'
 import { Container } from '@/components/container'
 import { PlayIcon, SparklesIcon, XMarkIcon } from '@heroicons/react/24/outline'
 import { AnimatePresence, motion } from 'framer-motion'
+import { CheckCircle2 } from 'lucide-react'
 import { useState } from 'react'
 
 const VideoShowcase = () => {
-  const [activeVideo, setActiveVideo] = useState(0)
   const [isPlaying, setIsPlaying] = useState(false)
+  const [activeVideo, setActiveVideo] = useState(0)
 
   const demos = [
     {
-      title: 'Lead Management',
+      badge: { icon: SparklesIcon, text: 'Lead Management' },
+      title: {
+        regular: 'Capture and Nurture ',
+        gradient: 'Every Lead',
+      },
       description:
-        'Streamline your lead capture and nurturing process with intelligent automation',
+        'Streamline your lead capture and nurturing process with intelligent automation. Our AI-driven system ensures no opportunity slips through the cracks, maximizing your conversion potential.',
       videoSrc: 'https://www.youtube.com/embed/jcImHWNOjrU',
       thumbnailSrc: '/assets/demoThumbnail.jpg',
+      features: [
+        { icon: CheckCircle2, text: 'Automated lead qualification' },
+        { icon: CheckCircle2, text: 'Smart follow-up sequences' },
+        { icon: CheckCircle2, text: 'Pipeline visualization' },
+      ],
     },
     {
-      title: 'Email Marketing',
+      badge: { icon: SparklesIcon, text: 'Email Marketing' },
+      title: {
+        regular: 'Deploy Sophisticated ',
+        gradient: 'Email Campaigns',
+      },
       description:
-        'Create and deploy sophisticated email campaigns with smart automation',
+        'Create and deploy sophisticated email campaigns with smart automation. Reach your audience at the right time with personalized content that drives engagement and results.',
       videoSrc: 'https://www.youtube.com/embed/jcImHWNOjrU',
       thumbnailSrc: '/assets/demoThumbnail.jpg',
+      features: [
+        { icon: CheckCircle2, text: 'AI-powered content suggestions' },
+        { icon: CheckCircle2, text: 'Advanced segmentation' },
+        { icon: CheckCircle2, text: 'Performance analytics' },
+      ],
     },
     {
-      title: 'Lead Management',
+      badge: { icon: SparklesIcon, text: 'Task Automation' },
+      title: {
+        regular: 'Automate Your ',
+        gradient: 'Daily Tasks',
+      },
       description:
-        'Streamline your lead capture and nurturing process with intelligent automation',
+        'Let our intelligent system handle your routine tasks while you focus on growing your business. From follow-ups to scheduling, automation handles it all.',
       videoSrc: 'https://www.youtube.com/embed/jcImHWNOjrU',
       thumbnailSrc: '/assets/demoThumbnail.jpg',
-    },
-    {
-      title: 'Email Marketing',
-      description:
-        'Create and deploy sophisticated email campaigns with smart automation',
-      videoSrc: 'https://www.youtube.com/embed/jcImHWNOjrU',
-      thumbnailSrc: '/assets/demoThumbnail.jpg',
-    },
-    {
-      title: 'Lead Management',
-      description:
-        'Streamline your lead capture and nurturing process with intelligent automation',
-      videoSrc: 'https://www.youtube.com/embed/jcImHWNOjrU',
-      thumbnailSrc: '/assets/demoThumbnail.jpg',
+      features: [
+        { icon: CheckCircle2, text: 'Smart task prioritization' },
+        { icon: CheckCircle2, text: 'Automated workflows' },
+        { icon: CheckCircle2, text: 'Integration capabilities' },
+      ],
     },
   ]
 
-  const handleVideoClick = () => {
+  const handleVideoClick = (index) => {
+    setActiveVideo(index)
     setIsPlaying(true)
-  }
-
-  const handleCloseVideo = () => {
-    setIsPlaying(false)
   }
 
   return (
@@ -101,93 +113,139 @@ const VideoShowcase = () => {
           </h2>
         </motion.div>
 
-        <div className="grid grid-cols-1 gap-8 lg:grid-cols-3">
-          {/* Left sidebar with demo list */}
-          <div className="space-y-2">
-            {demos.map((demo, index) => (
-              <motion.button
-                key={index}
-                onClick={() => setActiveVideo(index)}
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-                transition={{ delay: index * 0.1 }}
-                viewport={{ once: true }}
-                className={`w-full rounded-xl p-4 text-left transition-all duration-300 cursor-pointer ${
-                  activeVideo === index
-                    ? 'bg-primary-1 text-white shadow-lg'
-                    : 'bg-white/80 hover:bg-primary-1/10'
+        {/* Demo Sections */}
+        {demos.map((demo, index) => (
+          <div key={index} className="relative py-20 sm:py-24">
+            <div className="mx-auto max-w-7xl">
+              <div
+                className={`mx-auto flex flex-col gap-12 lg:flex-row lg:items-center lg:gap-16 ${
+                  index % 2 === 1 ? 'lg:flex-row-reverse' : ''
                 }`}
               >
-                <h3
-                  className={`font-medium ${
-                    activeVideo === index ? 'text-white' : 'text-gray-900'
-                  }`}
-                >
-                  {demo.title}
-                </h3>
-                <p
-                  className={`mt-1 text-sm ${
-                    activeVideo === index ? 'text-white/80' : 'text-gray-500'
-                  }`}
-                >
-                  {demo.description}
-                </p>
-              </motion.button>
-            ))}
-          </div>
-
-          {/* Right side video preview */}
-          <div className="lg:col-span-2">
-            <motion.div
-              initial={{ opacity: 0, scale: 0.95 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.5 }}
-              className="relative overflow-hidden rounded-2xl bg-white/80 p-2 ring-1 shadow-2xl shadow-black/5 ring-black/5 backdrop-blur-sm"
-            >
-              {/* Window chrome */}
-              <div className="mb-3 flex items-center gap-2 rounded-xl bg-gray-50/80 p-3">
-                <div className="flex gap-1.5">
-                  <div className="h-3 w-3 rounded-full bg-rose-400" />
-                  <div className="h-3 w-3 rounded-full bg-amber-400" />
-                  <div className="h-3 w-3 rounded-full bg-emerald-400" />
-                </div>
-                <div className="ml-auto flex items-center gap-2">
-                  <SparklesIcon className="h-4 w-4 text-primary-1" />
-                  <span className="text-xs font-medium text-primary-1">
-                    AI Assistant Active
-                  </span>
-                </div>
-              </div>
-
-              {/* Video thumbnail and play button */}
-              <motion.div
-                className="group relative cursor-pointer"
-                onClick={handleVideoClick}
-              >
-                <motion.img
-                  src={demos[activeVideo].thumbnailSrc}
-                  alt={demos[activeVideo].title}
-                  className="w-full rounded-xl object-cover transition-all duration-300 group-hover:brightness-75"
-                />
-
+                {/* Content section */}
                 <motion.div
-                  className="absolute inset-0 flex items-center justify-center"
-                  initial={{ opacity: 0.9 }}
-                  whileHover={{ opacity: 1 }}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6 }}
+                  viewport={{ once: true }}
+                  className="flex-1"
                 >
-                  <motion.div
-                    className="flex h-20 w-20 items-center justify-center rounded-full bg-primary-1/90 shadow-lg backdrop-blur-sm transition-transform duration-300 group-hover:scale-110"
-                    whileHover={{ scale: 1.1 }}
-                  >
-                    <PlayIcon className="h-8 w-8 text-white" />
-                  </motion.div>
+                  {/* Badge */}
+                  <div className="mb-8 inline-flex items-center gap-2 rounded-full bg-primary-1/10 px-4 py-2 text-sm font-medium text-primary-1">
+                    <demo.badge.icon className="h-4 w-4" />
+                    {demo.badge.text}
+                  </div>
+
+                  {/* Title */}
+                  <h2 className="font-display text-3xl/tight font-medium tracking-tight sm:text-4xl/tight">
+                    <span className="text-text">{demo.title.regular}</span>
+                    <span className="bg-gradient-to-r from-primary-1 to-primary-2 bg-clip-text text-transparent">
+                      {demo.title.gradient}
+                    </span>
+                  </h2>
+
+                  {/* Description */}
+                  <p className="mt-4 text-base/relaxed text-text/80">
+                    {demo.description}
+                  </p>
+
+                  {/* Feature list */}
+                  <div className="mt-8 space-y-4">
+                    {demo.features.map((feature, idx) => (
+                      <motion.div
+                        key={idx}
+                        initial={{ opacity: 0, x: -20 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        transition={{ duration: 0.5, delay: idx * 0.1 }}
+                        viewport={{ once: true }}
+                        className="flex items-start gap-3"
+                      >
+                        <feature.icon className="h-6 w-6 flex-none text-primary-1" />
+                        <span className="text-sm/6 text-text/70">
+                          {feature.text}
+                        </span>
+                      </motion.div>
+                    ))}
+                  </div>
+
+                  {/* CTA button */}
+                  <div className="mt-10 flex items-center gap-4">
+                    <Button
+                      variant="custom"
+                      as={motion.button}
+                      whileHover={{ scale: 1.02 }}
+                      whileTap={{ scale: 0.98 }}
+                      onClick={() => handleVideoClick(index)}
+                    >
+                      Watch Demo
+                    </Button>
+                    <a
+                      href="#"
+                      className="text-sm font-medium text-primary-1 hover:text-primary-2"
+                    >
+                      Learn more →
+                    </a>
+                  </div>
                 </motion.div>
-              </motion.div>
-            </motion.div>
+
+                {/* Video preview section */}
+                <motion.div
+                  initial={{ opacity: 0, x: index % 2 === 0 ? 20 : -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.6 }}
+                  viewport={{ once: true }}
+                  className="flex-1"
+                >
+                  <div className="relative rounded-2xl bg-white/80 p-2 ring-1 shadow-2xl shadow-black/5 ring-black/5 backdrop-blur-sm">
+                    {/* Top gradient line */}
+                    <div className="absolute -top-2 right-10 left-10 h-px bg-gradient-to-r from-transparent via-primary-1/20 to-transparent" />
+
+                    {/* Window chrome */}
+                    <div className="mb-3 flex items-center gap-2 rounded-xl bg-gray-50/80 p-3">
+                      <div className="flex gap-1.5">
+                        <div className="h-3 w-3 rounded-full bg-rose-400" />
+                        <div className="h-3 w-3 rounded-full bg-amber-400" />
+                        <div className="h-3 w-3 rounded-full bg-emerald-400" />
+                      </div>
+                      <div className="ml-auto flex items-center gap-2">
+                        <SparklesIcon className="h-4 w-4 text-primary-1" />
+                        <span className="text-xs font-medium text-primary-1">
+                          AI Assistant Active
+                        </span>
+                      </div>
+                    </div>
+
+                    {/* Video thumbnail */}
+                    <motion.div
+                      className="group relative cursor-pointer overflow-hidden rounded-xl"
+                      onClick={() => handleVideoClick(index)}
+                    >
+                      <motion.img
+                        src={demo.thumbnailSrc}
+                        alt={demo.title.regular + demo.title.gradient}
+                        className="h-full w-full transform object-cover transition-transform duration-700 hover:scale-105"
+                      />
+
+                      <div className="absolute inset-0 flex items-center justify-center bg-black/20 opacity-0 transition-opacity group-hover:opacity-100">
+                        <motion.div
+                          className="flex h-20 w-20 items-center justify-center rounded-full bg-[linear-gradient(115deg,var(--tw-gradient-stops))] from-primary-1 from-30% to-primary-2 shadow-lg backdrop-blur-sm"
+                          whileHover={{ scale: 1.1 }}
+                          whileTap={{ scale: 0.95 }}
+                        >
+                          <PlayIcon className="h-8 w-8 text-white" />
+                        </motion.div>
+                      </div>
+                    </motion.div>
+
+                    {/* Decorative elements */}
+                    <div className="absolute -right-6 -bottom-6 h-32 w-32 rounded-full bg-gradient-to-br from-primary-1/30 to-primary-2/30 blur-xl" />
+                    <div className="absolute -top-6 -left-6 h-32 w-32 rounded-full bg-gradient-to-br from-primary-2/30 to-primary-1/30 blur-xl" />
+                  </div>
+                </motion.div>
+              </div>
+            </div>
           </div>
-        </div>
+        ))}
       </Container>
 
       {/* Video Modal */}
@@ -198,7 +256,7 @@ const VideoShowcase = () => {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-sm"
-            onClick={handleCloseVideo}
+            onClick={() => setIsPlaying(false)}
           >
             <motion.div
               initial={{ scale: 0.95, opacity: 0 }}
@@ -209,8 +267,8 @@ const VideoShowcase = () => {
               onClick={(e) => e.stopPropagation()}
             >
               <motion.button
-                className="absolute -top-12 right-0 rounded-full bg-white/10 p-2 text-white backdrop-blur-sm transition-all cursor-pointer hover:bg-white/20"
-                onClick={handleCloseVideo}
+                className="absolute -top-12 right-0 rounded-full bg-white/10 p-2 text-white backdrop-blur-sm transition-all hover:bg-white/20"
+                onClick={() => setIsPlaying(false)}
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.95 }}
               >

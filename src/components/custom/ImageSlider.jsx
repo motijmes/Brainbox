@@ -47,7 +47,7 @@ const ImageSlider = () => {
   ]
 
   return (
-    <div className="relative max-w-lg">
+    <div className="relative  z-10">
       <div className="overflow-hidden rounded-lg" ref={emblaRef}>
         <div className="flex">
           {slides.map((slide, index) => (

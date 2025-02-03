@@ -1,31 +1,15 @@
-import { BentoCard } from '@/components/bento-card'
-import { Button } from '@/components/button'
-import { Container } from '@/components/container'
+
 import { Footer } from '@/components/footer'
-import { Gradient } from '@/components/gradient'
-import { Keyboard } from '@/components/keyboard'
-import { Link } from '@/components/link'
-import { LinkedAvatars } from '@/components/linked-avatars'
-import { LogoCluster } from '@/components/logo-cluster'
-import { LogoTimeline } from '@/components/logo-timeline'
-import { Map } from '@/components/map'
-import { Navbar } from '@/components/navbar'
-import { Screenshot } from '@/components/screenshot'
-import { Testimonials } from '@/components/testimonials'
-import { Heading, Subheading } from '@/components/text'
-import { ChevronRightIcon } from '@heroicons/react/16/solid'
 import '@/styles/tailwind.css'
-import ImageSlider from '@/components/custom/ImageSlider'
 import LogoCloud from '@/components/logo-cloud'
 import FeatureSection from '@/components/custom/FeatureSection'
 import PlatformFeatures from '@/components/custom/PlatformFeatures'
-import { motion } from 'framer-motion';
 import Hero from '@/components/custom/Hero'
 import Pricing from '@/components/custom/Pricing'
 import IntegrationSection from '@/components/custom/IntegrationSection'
-import VideoShowcase from '@/components/custom/DemoShowcase'
 import Userflow from '@/components/custom/Userflow'
 import DemoShowcaseTabs from '@/components/custom/DemoShowcaseTabs'
+import { BeamFlowDemo } from '@/components/ui/animated-beam-demo'
 
 
 export const metadata = {
@@ -39,6 +23,9 @@ export default function Home() {
       <main className="mt-14">
         <LogoCloud />
 
+        <div className="bg-gradient-to-b from-white via-gray-100 to-white py-16">
+          <BeamFlowDemo />
+        </div>
         <div className="bg-gradient-to-b from-white via-gray-100 to-white py-16">
           <Userflow />
         </div>

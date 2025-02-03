@@ -1,23 +1,42 @@
 'use client'
-'use client'
 
-import { useState } from 'react'
+import { Button } from '@/components/button'
 import { Container } from '@/components/container'
+import { Tab } from '@headlessui/react'
 import { PlayIcon, SparklesIcon, XMarkIcon } from '@heroicons/react/24/outline'
+import { clsx } from 'clsx'
 import { AnimatePresence, motion } from 'framer-motion'
 import { CheckCircle2 } from 'lucide-react'
-import { Tab } from '@headlessui/react'
-import { clsx } from 'clsx'
-import { createElement } from 'react'
-import { Button } from '@/components/button'
+import { createElement, useState } from 'react'
 
-import {
-  BarChart3,
-  MessagesSquare,
-  SearchCode,
-  Megaphone,
-  Settings,
-} from 'lucide-react'
+import { BarChart3, MessagesSquare } from 'lucide-react'
+
+// Video Player Component
+const VideoPlayer = ({ video }) => {
+  if (video.type === 'youtube') {
+    return (
+      <iframe
+        src={video.videoSrc}
+        className="h-full w-full rounded-2xl border-2 border-white/10 bg-black/50 shadow-2xl"
+        allowFullScreen
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+      />
+    )
+  }
+
+  return (
+    <video
+      key={video.videoSrc}
+      controls
+      autoPlay
+      className="h-full w-full rounded-2xl border-2 border-white/10 bg-black/50 shadow-2xl"
+    >
+      <source src={video.videoSrc} type="video/mp4" />
+      <source src={video.videoSrc.replace('.mp4', '.webm')} type="video/webm" />
+      Your browser does not support the video tag.
+    </video>
+  )
+}
 
 const DemoShowcase = () => {
   const [selectedIndex, setSelectedIndex] = useState(0)
@@ -33,8 +52,10 @@ const DemoShowcase = () => {
       description:
         'Automate your sales process with intelligent workflows. Our AI-driven system handles the routine tasks while you focus on what matters most – closing deals and building lasting connections.',
       icon: BarChart3,
-      videoSrc: 'https://www.youtube.com/embed/jcImHWNOjrU',
-      thumbnailSrc: '/assets/demoThumbnail.jpg',
+      video: {
+        type: 'direct',
+        videoSrc: '/demos/0202.mp4',
+      },
       features: [
         { icon: CheckCircle2, text: 'AI-powered lead qualification' },
         { icon: CheckCircle2, text: 'Automated follow-up sequences' },
@@ -51,8 +72,10 @@ const DemoShowcase = () => {
       description:
         'Transform your customer support with AI-powered automation. Provide instant responses, route tickets intelligently, and maintain high satisfaction levels around the clock.',
       icon: MessagesSquare,
-      videoSrc: 'https://www.youtube.com/embed/jcImHWNOjrU',
-      thumbnailSrc: '/assets/demoThumbnail.jpg',
+      video: {
+        type: 'direct',
+        videoSrc: '/demos/text_chatbot_demo.mkv',
+      },
       features: [
         { icon: CheckCircle2, text: 'Intelligent ticket routing' },
         { icon: CheckCircle2, text: '24/7 AI customer support' },
@@ -60,7 +83,6 @@ const DemoShowcase = () => {
         { icon: CheckCircle2, text: 'Customer satisfaction tracking' },
       ],
     },
-    // ... other demos with similar structure
   ]
 
   return (
@@ -241,16 +263,23 @@ const DemoShowcase = () => {
                       </div>
                     </div>
 
-                    {/* Video thumbnail */}
+                    {/* Video Preview */}
                     <motion.div
                       className="group relative cursor-pointer overflow-hidden rounded-xl"
                       onClick={() => setIsPlaying(true)}
                     >
-                      <motion.img
-                        src={demo.thumbnailSrc}
-                        alt={demo.title.regular + demo.title.gradient}
-                        className="h-full w-full transform object-cover transition-transform duration-700 hover:scale-105"
-                      />
+                      {demo.video.type === 'direct' ? (
+                        <video
+                          src={demo.video.videoSrc}
+                          className="h-full w-full transform object-cover transition-transform duration-700 hover:scale-105"
+                          autoPlay
+                          muted
+                          loop
+                          playsInline
+                        />
+                      ) : (
+                        <div className="aspect-video bg-gray-100" />
+                      )}
 
                       <div className="absolute inset-0 flex items-center justify-center bg-black/20 opacity-0 transition-opacity group-hover:opacity-100">
                         <motion.div
@@ -301,12 +330,7 @@ const DemoShowcase = () => {
                 <XMarkIcon className="h-6 w-6" />
               </motion.button>
 
-              <iframe
-                src={demos[selectedIndex].videoSrc}
-                className="h-full w-full rounded-2xl border-2 border-white/10 bg-black/50 shadow-2xl"
-                allowFullScreen
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              />
+              <VideoPlayer video={demos[selectedIndex].video} />
             </motion.div>
           </motion.div>
         )}

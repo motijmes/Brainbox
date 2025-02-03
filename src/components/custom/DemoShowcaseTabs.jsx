@@ -264,8 +264,8 @@ const DemoShowcase = () => {
                     </motion.div>
 
                     {/* Decorative elements */}
-                    <div className="absolute -right-6 -bottom-6 h-32 w-32 rounded-full bg-gradient-to-br from-primary-1/30 to-primary-2/30 blur-xl" />
-                    <div className="absolute -top-6 -left-6 h-32 w-32 rounded-full bg-gradient-to-br from-primary-2/30 to-primary-1/30 blur-xl" />
+                    <div className="absolute -right-6 -bottom-6 -z-10 h-[250px] w-[250px] rounded-full bg-gradient-to-br from-primary-1/30 to-primary-2/30 blur-xl" />
+                    <div className="absolute -top-6 -left-6 -z-10 h-[250px] w-[250px] rounded-full bg-gradient-to-br from-primary-2/30 to-primary-1/30 blur-xl" />
                   </motion.div>
                 </div>
               </Tab.Panel>

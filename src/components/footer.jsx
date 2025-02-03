@@ -7,6 +7,8 @@ import { Container } from './container'
 import { Link } from './link'
 import { Logo } from './logo'
 import { Subheading } from './text'
+import { Facebook, Instagram } from 'lucide-react'
+
 
 function CallToAction() {
   return (
@@ -191,7 +193,7 @@ function SocialLinks() {
           aria-label="Visit us on Facebook"
           className="text-gray-600 transition-colors duration-200 hover:text-violet-600"
         >
-          <SocialIconFacebook className="size-5" />
+          <Facebook className="size-5" />
         </Link>
       </motion.div>
       <motion.div
@@ -206,13 +208,12 @@ function SocialLinks() {
           aria-label="Visit us on Instagram"
           className="text-gray-600 transition-colors duration-200 hover:text-fuchsia-600"
         >
-          <SocialIconInstagram className="size-5" />
+          <Instagram className="size-5" />
         </Link>
       </motion.div>
     </>
   )
 }
-
 function Copyright() {
   return (
     <motion.div

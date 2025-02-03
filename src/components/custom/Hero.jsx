@@ -8,6 +8,7 @@ import { Link } from '@/components/link'
 import { Navbar } from '@/components/navbar'
 import { ChevronRightIcon } from '@heroicons/react/16/solid'
 import { motion } from 'framer-motion'
+import SalesProcessFlow from './SalesProcessFlow'
 
 function Hero() {
   // Animation variants for text content
@@ -140,7 +141,8 @@ function Hero() {
                 transition: { duration: 0.3 },
               }}
             >
-              <ImageSlider />
+              {/* <ImageSlider /> */}
+              <SalesProcessFlow />
             </motion.div>
           </motion.div>
         </div>

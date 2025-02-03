@@ -24,7 +24,7 @@ import Hero from '@/components/custom/Hero'
 import Pricing from '@/components/custom/Pricing'
 import IntegrationSection from '@/components/custom/IntegrationSection'
 import VideoShowcase from '@/components/custom/DemoShowcase'
-import Userflow from '@/components/custom/Test'
+import Userflow from '@/components/custom/Userflow'
 import DemoShowcaseTabs from '@/components/custom/DemoShowcaseTabs'
 
 

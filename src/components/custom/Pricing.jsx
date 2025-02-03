@@ -10,69 +10,135 @@ import PricingToggle from '../pricing-toggle'
 
 const tiers = [
   {
-    name: 'Premium Plan',
-    slug: 'premium',
+    name: 'Essential CRM',
+    slug: 'essential',
     description:
-      'Designed for mid-sized teams looking for advanced automation and enhanced engagement tools.',
-    priceMonthly: 397,
+      'Perfect starting point for businesses needing basic CRM and communication tools.',
+    priceMonthly: 75,
     href: '#',
     highlights: [
-      { description: 'All Standard Features' },
-      { description: 'Advanced Automation' },
-      { description: 'Enhanced AI Content' },
-      { description: 'Drip Campaigns' },
-      { description: 'AI Phone Agent' },
-      { description: 'Advanced Analytics' },
-      { description: 'Cost Tracking' },
-      { description: 'Accessible Studio' },
-      { description: 'Custom Templates' },
-      { description: 'Customer Portal' },
+      { description: 'Basic CRM Access' },
+      { description: 'Up to 10 Users' },
+      { description: 'Email Services' },
+      { description: 'Contact Form' },
+      { description: 'Basic Analytics' },
+      { description: 'Social Media Posts' },
+      { description: 'Lead Capture' },
     ],
     features: [
-      { section: 'Features', name: 'Advanced Automation', value: true },
-      { section: 'Features', name: 'Enhanced AI Content', value: true },
-      { section: 'Features', name: 'Drip Campaigns', value: true },
-      { section: 'Features', name: 'AI Phone Agent', value: true },
-      { section: 'Analysis', name: 'Advanced Analytics', value: true },
-      { section: 'Analysis', name: 'Cost Tracking', value: true },
-      { section: 'Features', name: 'Accessible Studio', value: true },
-      { section: 'Features', name: 'Custom Templates', value: true },
-      { section: 'Features', name: 'Customer Portal', value: true },
+      { section: 'Features', name: 'Basic CRM Access', value: true },
+      { section: 'Features', name: 'Up to 10 Users', value: true },
+      { section: 'Communication', name: 'Email Services', value: true },
+      { section: 'Features', name: 'Contact Form', value: true },
+      { section: 'Analysis', name: 'Basic Analytics', value: true },
+      { section: 'Marketing', name: 'Social Media Posts', value: true },
+      { section: 'Features', name: 'Lead Capture', value: true },
     ],
   },
   {
-    name: 'Enterprise Plan',
-    slug: 'enterprise',
+    name: 'AI Text Assistant Basic',
+    slug: 'text-basic',
     description:
-      'Tailored for teams or organizations needing comprehensive control and robust analytics.',
-    priceMonthly: 997,
+      'Enhanced text-based communication suite with AI chatbot capabilities.',
+    priceMonthly: 150,
     href: '#',
     highlights: [
-      { description: 'All Premium Features' },
-      { description: 'AI Lead Scoring' },
-      { description: 'Full Customization' },
-      { description: 'Predictive Insights' },
-      { description: 'Client Portal' },
-      { description: 'Document Management' },
-      { description: 'Team Collaboration' },
-      { description: '200+ Integrations' },
-      { description: 'Social Management' },
-      { description: 'Custom Reporting' },
-      { description: 'Account Manager' },
-      { description: 'Website Management' },
+      { description: 'All Essential Features' },
+      { description: 'AI Chatbot' },
+      { description: 'SMS Automation' },
+      { description: 'WhatsApp Integration' },
+      { description: 'Campaign Tracking' },
+      { description: 'Lead Scoring' },
+      { description: 'Social Media Analytics' },
     ],
     features: [
-      { section: 'Features', name: 'AI Lead Scoring', value: true },
-      { section: 'Features', name: 'Full Customization', value: true },
-      { section: 'Features', name: 'Predictive Insights', value: true },
-      { section: 'Features', name: 'Client Portal', value: true },
-      { section: 'Features', name: 'Document Management', value: true },
-      { section: 'Features', name: 'Team Collaboration', value: true },
-      { section: 'Features', name: '200+ Integrations', value: true },
-      { section: 'Features', name: 'Social Management', value: true },
-      { section: 'Features', name: 'Custom Reporting', value: true },
-      { section: 'Support', name: 'Account Manager', value: true },
-      { section: 'Features', name: 'Website Management', value: true },
+      { section: 'AI', name: 'AI Chatbot', value: true },
+      { section: 'Communication', name: 'SMS Automation', value: true },
+      { section: 'Communication', name: 'WhatsApp Integration', value: true },
+      { section: 'Analysis', name: 'Campaign Tracking', value: true },
+      { section: 'Features', name: 'Lead Scoring', value: true },
+      { section: 'Analysis', name: 'Social Media Analytics', value: true },
+      { section: 'Marketing', name: 'Facebook Messenger', value: true },
+    ],
+  },
+  {
+    name: 'AI Text Assistant Pro',
+    slug: 'text-pro',
+    description:
+      'Advanced text automation with enhanced AI capabilities and marketing features.',
+    priceMonthly: 275,
+    href: '#',
+    highlights: [
+      { description: 'All Text Basic Features' },
+      { description: 'Enhanced AI Text' },
+      { description: 'A/B Testing' },
+      { description: 'ROI Analytics' },
+      { description: 'Conversion Tracking' },
+      { description: 'Email Campaigns' },
+      { description: 'Social Media Boosts' },
+    ],
+    features: [
+      { section: 'AI', name: 'Enhanced AI Text', value: true },
+      { section: 'Marketing', name: 'A/B Testing', value: true },
+      { section: 'Analysis', name: 'ROI Analytics', value: true },
+      { section: 'Analysis', name: 'Conversion Tracking', value: true },
+      { section: 'Communication', name: 'Email Campaigns', value: true },
+      { section: 'Marketing', name: 'Social Media Boosts', value: true },
+      { section: 'Support', name: 'Priority Support', value: true },
+    ],
+  },
+  {
+    name: 'AI Voice Assistant Basic',
+    slug: 'voice-basic',
+    description:
+      'Entry-level voice automation with essential AI calling features.',
+    priceMonthly: 400,
+    href: '#',
+    highlights: [
+      { description: 'Voice AI Features' },
+      { description: 'Call Tracking' },
+      { description: 'Voicemail Transcription' },
+      { description: 'Click-to-Call Ads' },
+      { description: 'Call Recording' },
+      { description: 'Google Business Integration' },
+      { description: 'Basic IVR' },
+    ],
+    features: [
+      { section: 'AI', name: 'Voice AI Features', value: true },
+      { section: 'Analysis', name: 'Call Tracking', value: true },
+      { section: 'Features', name: 'Voicemail Transcription', value: true },
+      { section: 'Marketing', name: 'Click-to-Call Ads', value: true },
+      { section: 'Features', name: 'Call Recording', value: true },
+      { section: 'Integration', name: 'Google Business', value: true },
+      { section: 'Features', name: 'Basic IVR', value: true },
+    ],
+  },
+  {
+    name: 'AI Voice Assistant Pro',
+    slug: 'voice-pro',
+    description:
+      'Complete voice solution with advanced AI capabilities and enterprise features.',
+    priceMonthly: 900,
+    href: '#',
+    highlights: [
+      { description: 'All Voice Basic Features' },
+      { description: 'Advanced Voice AI' },
+      { description: 'Custom IVR' },
+      { description: 'Enterprise API' },
+      { description: 'Omnichannel Analytics' },
+      { description: 'Attribution Modeling' },
+      { description: 'Dedicated Support' },
+      { description: 'Weekly Development' },
+    ],
+    features: [
+      { section: 'AI', name: 'Advanced Voice AI', value: true },
+      { section: 'Features', name: 'Custom IVR', value: true },
+      { section: 'Integration', name: 'Enterprise API', value: true },
+      { section: 'Analysis', name: 'Omnichannel Analytics', value: true },
+      { section: 'Analysis', name: 'Attribution Modeling', value: true },
+      { section: 'Support', name: 'Dedicated Support', value: true },
+      { section: 'Support', name: 'Weekly Development', value: true },
+      { section: 'Support', name: '8-Hour Response', value: true },
     ],
   },
 ]
@@ -202,6 +268,10 @@ function PricingCard({ tier, index, isAnnual }) {
 }
 
 function PricingCards({ isAnnual }) {
+  // Split tiers into two rows
+  const firstRowTiers = tiers.slice(0, 3)
+  const secondRowTiers = tiers.slice(3, 5)
+
   return (
     <div className="relative py-12">
       <motion.div
@@ -213,12 +283,25 @@ function PricingCards({ isAnnual }) {
         <GradientLight className="absolute inset-x-2 top-24 bottom-0 rounded-4xl ring-1 ring-black/5 ring-inset" />
       </motion.div>
       <Container className="relative">
-        <div className="mx-auto grid max-w-5xl grid-cols-1 justify-center gap-12 md:grid-cols-2">
-          {tiers.map((tier, tierIndex) => (
+        {/* First row - 3 cards */}
+        <div className="mx-auto mb-8 grid max-w-7xl grid-cols-1 gap-8 md:grid-cols-3">
+          {firstRowTiers.map((tier, index) => (
             <PricingCard
-              key={tierIndex}
+              key={index}
               tier={tier}
-              index={tierIndex}
+              index={index}
+              isAnnual={isAnnual}
+            />
+          ))}
+        </div>
+
+        {/* Second row - 2 cards centered */}
+        <div className="mx-auto grid max-w-5xl grid-cols-1 justify-center gap-8 md:grid-cols-2">
+          {secondRowTiers.map((tier, index) => (
+            <PricingCard
+              key={index + 3}
+              tier={tier}
+              index={index + 3}
               isAnnual={isAnnual}
             />
           ))}
@@ -227,7 +310,6 @@ function PricingCards({ isAnnual }) {
     </div>
   )
 }
-
 function Header({ handleBillingChange }) {
   return (
     <Container className="mt-16">

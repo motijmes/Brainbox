@@ -36,10 +36,10 @@ function DesktopNav({isHome}) {
   )
 }
 
-function MobileNavButton() {
+function MobileNavButton({ isHome }) {
   return (
     <DisclosureButton
-      className="flex size-12 items-center justify-center self-center rounded-lg text-text-white data-hover:bg-text-white/10 lg:hidden"
+      className={`flex size-12 items-center justify-center self-center rounded-lg  data-hover:bg-text-white/10 lg:hidden ${isHome ? 'text-white' : 'text-primary-1'}`}
       aria-label="Open main menu"
     >
       <Bars2Icon className="size-6" />
@@ -47,7 +47,7 @@ function MobileNavButton() {
   )
 }
 
-function MobileNav() {
+function MobileNav({ isHome }) {
   return (
     <DisclosurePanel className="lg:hidden">
       <div className="flex flex-col gap-6 py-4">
@@ -64,7 +64,7 @@ function MobileNav() {
           >
             <Link
               href={href}
-              className="text-base font-medium text-text-white hover:text-text-white/90"
+              className={`text-base font-medium ${isHome ? 'text-text-white hover:text-text-white/90' : 'text-primary-1 hover:text-text-primary-1/90'}`}
             >
               {label}
             </Link>
@@ -85,7 +85,7 @@ export function Navbar({ banner, section }) {
   return (
     <Disclosure as="header" className="pt-12 sm:pt-16">
       <PlusGrid>
-        <PlusGridRow className="relative flex justify-between " isHome={isHome}>
+        <PlusGridRow className="relative flex justify-between" isHome={isHome}>
           <div className="relative flex gap-6">
             <PlusGridItem className="py-3">
               <Link href="/" title="Home">
@@ -102,10 +102,10 @@ export function Navbar({ banner, section }) {
             )}
           </div>
           <DesktopNav isHome={isHome} />
-          <MobileNavButton />
+          <MobileNavButton isHome={isHome} />
         </PlusGridRow>
       </PlusGrid>
-      <MobileNav />
+      <MobileNav isHome={isHome} />
     </Disclosure>
   )
 }

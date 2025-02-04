@@ -11,7 +11,6 @@ import { motion } from 'framer-motion'
 import SalesProcessFlow from './SalesProcessFlow'
 
 function Hero() {
-  // Animation variants for text content
   const textVariants = {
     hidden: { opacity: 0, y: 20 },
     visible: {
@@ -26,11 +25,9 @@ function Hero() {
 
   return (
     <div className="relative">
-      {/* Using existing Gradient component */}
       <Gradient className="absolute inset-2 bottom-0 rounded-4xl ring-1 ring-black/5 ring-inset" />
 
       <Container className="relative text-white">
-        {/* Animated Navbar */}
         <motion.div
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
@@ -62,10 +59,11 @@ function Hero() {
           />
         </motion.div>
 
-        <div className="flex items-center justify-between pt-16 pb-24 sm:pt-24 sm:pb-32 md:pt-32 md:pb-48">
+        {/* Changed to flex-col on mobile, row on larger screens */}
+        <div className="flex flex-col items-center justify-between pt-8 pb-12 sm:pt-16 sm:pb-20 lg:flex-row lg:pt-24 lg:pb-32">
           {/* Left side - Animated text content */}
           <motion.div
-            className="max-w-2xl"
+            className="mb-12 w-full lg:mb-0 lg:max-w-2xl"
             initial="hidden"
             animate="visible"
             variants={{
@@ -78,14 +76,14 @@ function Hero() {
           >
             <motion.h1
               variants={textVariants}
-              className="font-display text-3xl/[0.9] font-medium tracking-tight sm:text-8xl/[0.8] md:text-7xl/[0.8]"
+              className="font-display text-4xl/tight font-medium tracking-tight sm:text-5xl lg:text-7xl/[0.8]"
             >
               All-in-One Platform for Realtors, by Realtors
             </motion.h1>
 
             <motion.p
               variants={textVariants}
-              className="mt-8 max-w-3xl text-xl/7 font-medium text-white/75 sm:text-2xl/8"
+              className="mt-6 max-w-3xl text-lg/7 font-medium text-white/75 sm:text-xl/8 lg:mt-8"
             >
               This platform, designed by real estate pros, understands your
               needs. With tools like lead management, automated follow-ups, and
@@ -95,7 +93,7 @@ function Hero() {
 
             <motion.div
               variants={textVariants}
-              className="mt-12 flex flex-col gap-x-6 gap-y-4 sm:flex-row"
+              className="mt-8 flex flex-col gap-x-6 gap-y-4 sm:flex-row lg:mt-12"
             >
               <Button
                 href="#"
@@ -114,12 +112,12 @@ function Hero() {
 
           {/* Right side - Animated Carousel */}
           <motion.div
-            className="relative"
+            className="relative w-full lg:w-auto"
             initial={{ opacity: 0, x: 40 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.6 }}
           >
-            {/* Animated glow effect */}
+            {/* Adjusted glow effect container */}
             <motion.div
               className="absolute -inset-0.5 -z-10 rounded-2xl bg-white/15 blur-2xl"
               animate={{
@@ -133,15 +131,14 @@ function Hero() {
               }}
             />
 
-            {/* ImageSlider wrapper with animations */}
+            {/* Made the wrapper responsive */}
             <motion.div
-              className="overflow-hidden rounded-2xl "
+              className="mx-auto w-full max-w-md overflow-hidden rounded-2xl lg:max-w-none"
               whileHover={{
                 scale: 1.02,
                 transition: { duration: 0.3 },
               }}
             >
-              {/* <ImageSlider /> */}
               <SalesProcessFlow />
             </motion.div>
           </motion.div>
@@ -150,5 +147,4 @@ function Hero() {
     </div>
   )
 }
-
 export default Hero

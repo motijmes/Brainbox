@@ -2,61 +2,115 @@
 
 const LogoCloud = () => {
   return (
-    <div className="bg-white/95 py-16 backdrop-blur-sm sm:py-16">
-      <div className="mx-auto max-w-7xl px-6 lg:px-8">
-        <div className="mx-auto flex items-center justify-between">
+    <div className="bg-white/95 py-8 backdrop-blur-sm sm:py-12 lg:py-16">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        {/* Grid on mobile, flex on desktop */}
+        <div className="mx-auto grid grid-cols-2 gap-8 sm:grid-cols-4 md:grid-cols-5 lg:hidden">
           <img
             alt="REMAX"
             src="/assets/partner1.png"
             width={158}
             height={48}
-            className=" w-auto object-contain"
+            className="h-8 w-auto object-contain"
           />
           <img
             alt="Keller Williams"
             src="/assets/partner4.png"
             width={158}
             height={48}
-            className=" w-auto object-contain"
+            className="h-8 w-auto object-contain"
           />
           <img
             alt="EXIT"
             src="/assets/partner5.png"
             width={158}
             height={48}
-            className=" w-auto object-contain"
+            className="h-8 w-auto object-contain"
           />
           <img
             alt="eXp"
             src="/assets/partner2.png"
             width={158}
             height={48}
-            className=" w-auto object-contain"
+            className="h-8 w-auto object-contain"
           />
           <img
             alt="eXp"
             src="/assets/partner6.png"
             width={158}
             height={48}
-            className=" w-auto object-contain"
+            className="h-8 w-auto object-contain"
           />
           <img
             alt="eXp"
             src="/assets/partner7.png"
             width={158}
             height={48}
-            className=" w-auto object-contain"
+            className="h-8 w-auto object-contain"
           />
           <img
             alt="COMPASS"
             src="/assets/partner3.png"
             width={158}
             height={48}
-            className=" w-auto object-contain"
+            className="h-8 w-auto object-contain"
           />
         </div>
 
-        <div className="mt-10 flex justify-center">
+        {/* Original flex layout for desktop */}
+        <div className="mx-auto hidden items-center justify-between lg:flex">
+          <img
+            alt="REMAX"
+            src="/assets/partner1.png"
+            width={158}
+            height={48}
+            className="w-auto object-contain"
+          />
+          <img
+            alt="Keller Williams"
+            src="/assets/partner4.png"
+            width={158}
+            height={48}
+            className="w-auto object-contain"
+          />
+          <img
+            alt="EXIT"
+            src="/assets/partner5.png"
+            width={158}
+            height={48}
+            className="w-auto object-contain"
+          />
+          <img
+            alt="eXp"
+            src="/assets/partner2.png"
+            width={158}
+            height={48}
+            className="w-auto object-contain"
+          />
+          <img
+            alt="eXp"
+            src="/assets/partner6.png"
+            width={158}
+            height={48}
+            className="w-auto object-contain"
+          />
+          <img
+            alt="eXp"
+            src="/assets/partner7.png"
+            width={158}
+            height={48}
+            className="w-auto object-contain"
+          />
+          <img
+            alt="COMPASS"
+            src="/assets/partner3.png"
+            width={158}
+            height={48}
+            className="w-auto object-contain"
+          />
+        </div>
+
+        <div className="mt-8 flex justify-center sm:mt-10">
           <p className="relative rounded-full bg-primary-1/5 px-4 py-1.5 text-sm/6 text-text ring-1 ring-primary-1/10">
             <span className="hidden md:inline">
               Trusted by thousands of real estate professionals nationwide.{' '}

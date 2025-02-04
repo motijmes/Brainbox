@@ -88,7 +88,7 @@ const VideoShowcase = () => {
   }
 
   return (
-    <div className="relative overflow-hidden py-24">
+    <div className="relative overflow-hidden py-12 md:py-24">
       {/* Background decoration */}
       <div className="absolute inset-0 -z-10">
         <motion.div
@@ -107,13 +107,13 @@ const VideoShowcase = () => {
         />
       </div>
 
-      <Container>
+      <Container >
         {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="mb-16 text-center"
+          className="mb-8 md:mb-16 text-center"
         >
           <motion.div
             initial={{ opacity: 0, y: 10 }}
@@ -135,7 +135,7 @@ const VideoShowcase = () => {
 
         {/* Demo Sections */}
         {demos.map((demo, index) => (
-          <div key={index} className="relative py-20 sm:py-24">
+          <div key={index} className="relative py-12 sm:py-24">
             <div className="mx-auto max-w-7xl">
               <div
                 className={`mx-auto flex flex-col gap-12 lg:flex-row lg:items-center lg:gap-16 ${

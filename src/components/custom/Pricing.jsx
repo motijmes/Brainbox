@@ -226,7 +226,6 @@ function FeatureItem({ description, disabled = false, delay = 0 }) {
     </motion.li>
   )
 }
-
 function PricingCard({ tier, index, isAnnual }) {
   const [isFlipped, setIsFlipped] = useState(false)
 
@@ -242,14 +241,12 @@ function PricingCard({ tier, index, isAnnual }) {
   const price = calculatePrice()
 
   const handleMouseEnter = (e) => {
-    // Check if the mouse entered from a button element
     if (!e.target.closest('button')) {
       setIsFlipped(true)
     }
   }
 
   const handleMouseLeave = (e) => {
-    // Check if the mouse left to a button element
     if (!e.target.closest('button')) {
       setIsFlipped(false)
     }
@@ -257,7 +254,7 @@ function PricingCard({ tier, index, isAnnual }) {
 
   return (
     <div
-      className="perspective-1000 relative h-[600px] w-full"
+      className="perspective-1000 relative h-[600px] w-full min-w-[280px]"
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
@@ -269,27 +266,27 @@ function PricingCard({ tier, index, isAnnual }) {
         {/* Front of card */}
         <div className="absolute h-full w-full backface-hidden">
           <div className="h-full rounded-4xl p-2 shadow-md shadow-black/5">
-            <div className="flex h-full flex-col rounded-3xl bg-white p-6 ring-1 shadow-2xl ring-black/5">
+            <div className="flex h-full flex-col rounded-3xl bg-white p-4 ring-1 shadow-2xl ring-black/5 sm:p-6">
               <div>
-                <h3 className="text-base font-semibold text-gray-900">
+                <h3 className="text-base font-semibold break-words text-gray-900">
                   {tier.name}
                 </h3>
-                <p className="mt-2 text-sm text-gray-500">{tier.description}</p>
+                <p className="mt-2 line-clamp-2 text-sm text-gray-500">
+                  {tier.description}
+                </p>
                 <div className="mt-6 flex items-center gap-4">
-                  <div className="text-4xl font-medium text-gray-900">
+                  <div className="text-3xl font-medium text-gray-900 sm:text-4xl">
                     ${price}
                   </div>
-                  <div className="text-sm text-gray-500">
+                  <div className="text-xs text-gray-500 sm:text-sm">
                     <p>USD</p>
                     <p>per {isAnnual ? 'year' : 'month'}</p>
                   </div>
                 </div>
                 <div className="relative z-10 mt-6">
-                  {' '}
-                  {/* Added z-index */}
                   <Button
                     href={tier.href}
-                    className="relative w-full"
+                    className="relative w-full text-sm"
                     onMouseEnter={(e) => {
                       e.stopPropagation()
                       setIsFlipped(false)
@@ -299,11 +296,11 @@ function PricingCard({ tier, index, isAnnual }) {
                   </Button>
                 </div>
               </div>
-              <div className="mt-8">
+              <div className="mt-6 sm:mt-8">
                 <h4 className="text-sm font-medium text-gray-900">
                   Features include:
                 </h4>
-                <ul className="mt-4 space-y-3">
+                <ul className="mt-4 space-y-2 overflow-y-auto sm:space-y-3">
                   {tier.highlights.map((feature, index) => (
                     <FeatureItem key={index} {...feature} />
                   ))}
@@ -316,7 +313,7 @@ function PricingCard({ tier, index, isAnnual }) {
         {/* Back of card */}
         <div className="absolute h-full w-full rotate-y-180 backface-hidden">
           <div className="h-full rounded-4xl p-2 shadow-md shadow-black/5">
-            <div className="flex h-full flex-col rounded-3xl bg-white p-6 ring-1 shadow-2xl ring-black/5">
+            <div className="flex h-full flex-col overflow-y-auto rounded-3xl bg-white p-4 ring-1 shadow-2xl ring-black/5 sm:p-6">
               <h3 className="text-base font-semibold text-gray-900">
                 Additional Details
               </h3>
@@ -326,11 +323,11 @@ function PricingCard({ tier, index, isAnnual }) {
                 <h4 className="text-sm font-medium text-gray-900">
                   Usage Costs:
                 </h4>
-                <ul className="mt-1 space-y-1 text-sm text-gray-500">
+                <ul className="mt-1 space-y-1 text-xs text-gray-500 sm:text-sm">
                   {Object.entries(tier.usageCosts).map(([key, value]) => (
-                    <li key={key} className="flex justify-between">
+                    <li key={key} className="flex justify-between gap-2">
                       <span>{key.replace(/([A-Z])/g, ' $1').trim()}:</span>
-                      <span>{value}</span>
+                      <span className="text-right">{value}</span>
                     </li>
                   ))}
                 </ul>
@@ -341,11 +338,11 @@ function PricingCard({ tier, index, isAnnual }) {
                 <h4 className="text-sm font-medium text-gray-900">
                   Available Add-ons:
                 </h4>
-                <ul className="mt-1 space-y-1 text-sm text-gray-500">
+                <ul className="mt-1 space-y-1 text-xs text-gray-500 sm:text-sm">
                   {Object.entries(tier.addOns).map(([key, value]) => (
-                    <li key={key} className="flex justify-between">
+                    <li key={key} className="flex justify-between gap-2">
                       <span>{key.replace(/([A-Z])/g, ' $1').trim()}:</span>
-                      <span>{value}</span>
+                      <span className="text-right">{value}</span>
                     </li>
                   ))}
                 </ul>
@@ -356,7 +353,7 @@ function PricingCard({ tier, index, isAnnual }) {
                 <h4 className="text-sm font-medium text-gray-900">
                   All Features:
                 </h4>
-                <ul className="mt-1 space-y-1 text-sm text-gray-500">
+                <ul className="mt-1 space-y-1 text-xs text-gray-500 sm:text-sm">
                   {tier.features.map((feature, index) => (
                     <li key={index}>{feature.name}</li>
                   ))}
@@ -371,7 +368,6 @@ function PricingCard({ tier, index, isAnnual }) {
 }
 
 function PricingCards({ isAnnual }) {
-  // Split tiers into two rows
   const firstRowTiers = tiers.slice(0, 3)
   const secondRowTiers = tiers.slice(3, 5)
 
@@ -383,43 +379,43 @@ function PricingCards({ isAnnual }) {
         viewport={{ once: true }}
         transition={{ duration: 0.5 }}
       >
-        <GradientLight className="absolute inset-x-2 top-24 bottom-0 rounded-4xl ring-1 ring-black/5 ring-inset" />
+        <GradientLight className="absolute inset-0 rounded-4xl ring-1 ring-black/5 ring-inset" />
       </motion.div>
+
       <Container className="relative">
         <div className="flex flex-col items-center">
-          {' '}
-          {/* Added wrapper for centering */}
-          {/* First row - 3 cards */}
-          <div className="mx-auto mb-8 flex w-full max-w-5xl flex-col justify-center gap-8 md:flex-row">
-            {firstRowTiers.map((tier, index) => (
-              <div className=" max-w-[360px] min-w-[360px] flex-1" key={index}>
-                {' '}
-                {/* Added max-width */}
-                <PricingCard
-                  key={index}
-                  tier={tier}
-                  index={index}
-                  isAnnual={isAnnual}
-                  className="h-full w-full"
-                />
-              </div>
-            ))}
+          {/* First row */}
+          <div className="w-full">
+            {/* Grid wrapper */}
+            <div className="mx-auto grid max-w-[1200px] grid-cols-1 gap-8 lg:grid-cols-3">
+              {firstRowTiers.map((tier, index) => (
+                <div key={index} className="mx-auto w-full max-w-[360px]">
+                  <PricingCard
+                    tier={tier}
+                    index={index}
+                    isAnnual={isAnnual}
+                    className="h-full w-full"
+                  />
+                </div>
+              ))}
+            </div>
           </div>
-          {/* Second row - 2 cards */}
-          <div className="mx-auto mb-8 flex w-full max-w-5xl flex-col justify-center gap-8 md:flex-row">
-            {secondRowTiers.map((tier, index) => (
-              <div className=" max-w-[360px] min-w-[360px] flex-1" key={index}>
-                {' '}
-                {/* Added max-width */}
-                <PricingCard
-                  key={index}
-                  tier={tier}
-                  index={index}
-                  isAnnual={isAnnual}
-                  className="h-full w-full"
-                />
-              </div>
-            ))}
+
+          {/* Second row */}
+          <div className="mt-8 w-full">
+            {/* Grid wrapper with offset for 2 cards */}
+            <div className="mx-auto grid max-w-[800px] grid-cols-1 gap-8 md:grid-cols-2">
+              {secondRowTiers.map((tier, index) => (
+                <div key={index} className="mx-auto w-full max-w-[360px]">
+                  <PricingCard
+                    tier={tier}
+                    index={index}
+                    isAnnual={isAnnual}
+                    className="h-full w-full"
+                  />
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </Container>

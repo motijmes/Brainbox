@@ -1,5 +1,6 @@
 "use client"
 import { motion } from 'framer-motion'
+import { GradientBorder } from '../gradient'
 
 const IntegrationSection = () => {
   const integrations = [
@@ -55,7 +56,7 @@ const IntegrationSection = () => {
               whileInView={{ opacity: 1 }}
               transition={{ duration: 0.4, delay: 0.2 }}
               viewport={{ once: true }}
-              className="text-text"
+              className="bg-gradient-to-r from-primary-1 to-primary-2 bg-clip-text text-transparent"
             >
               Integrations
             </motion.span>
@@ -65,7 +66,7 @@ const IntegrationSection = () => {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.4, delay: 0.3 }}
             viewport={{ once: true }}
-            className="mx-auto mt-4 max-w-2xl text-lg text-text/80"
+            className="mx-auto mt-4 max-w-2xl text-lg text-primary-3"
           >
             Seamlessly integrates with over 200+ platforms, including major
             social media channels, to simplify your marketing and communication
@@ -90,41 +91,45 @@ const IntegrationSection = () => {
                 <motion.div
                   initial={{ opacity: 0.8 }}
                   whileHover={{ opacity: 1 }}
-                  className="relative rounded-2xl bg-white/80 p-6 ring-1 ring-black/5 backdrop-blur-sm transition-all duration-300 hover:shadow-lg hover:ring-primary-1/20"
+                  className=""
                 >
-                  {/* Background Gradient */}
-                  <motion.div
-                    initial={{ opacity: 0 }}
-                    whileHover={{ opacity: 0.1 }}
-                    transition={{ duration: 0.3 }}
-                    className={`absolute inset-0 rounded-2xl bg-gradient-to-br ${integration.color}`}
-                  />
+                  <GradientBorder>
+                    <div className="relative rounded-2xl bg-background-2 p-6 ring-1 backdrop-blur-sm transition-all duration-300 hover:shadow-lg hover:ring-primary-1/20">
+                      {/* Background Gradient */}
+                      <motion.div
+                        initial={{ opacity: 0 }}
+                        whileHover={{ opacity: 0.1 }}
+                        transition={{ duration: 0.3 }}
+                        className={`absolute inset-0 rounded-2xl bg-gradient-to-br ${integration.color}`}
+                      />
 
-                  {/* Logo Image */}
-                  <motion.div
-                    className="relative flex h-16 items-center justify-center"
-                    whileHover={{ scale: 1.1 }}
-                    transition={{ duration: 0.3 }}
-                  >
-                    <img
-                      src={integration.logo}
-                      alt={integration.name}
-                      className="h-12 w-auto"
-                    />
-                  </motion.div>
+                      {/* Logo Image */}
+                      <motion.div
+                        className="relative flex h-16 items-center justify-center"
+                        whileHover={{ scale: 1.1 }}
+                        transition={{ duration: 0.3 }}
+                      >
+                        <img
+                          src={integration.logo}
+                          alt={integration.name}
+                          className="h-12 w-auto"
+                        />
+                      </motion.div>
 
-                  {/* Integration Name */}
-                  <motion.div
-                    initial={{ opacity: 0, y: 5 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.3, delay: 0.2 }}
-                    viewport={{ once: true }}
-                    className="mt-4 text-center"
-                  >
-                    <p className="text-sm font-medium text-gray-600">
-                      {integration.name}
-                    </p>
-                  </motion.div>
+                      {/* Integration Name */}
+                      <motion.div
+                        initial={{ opacity: 0, y: 5 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.3, delay: 0.2 }}
+                        viewport={{ once: true }}
+                        className="mt-4 text-center"
+                      >
+                        <p className="text-sm font-medium text-primary-2">
+                          {integration.name}
+                        </p>
+                      </motion.div>
+                    </div>
+                  </GradientBorder>
                 </motion.div>
 
                 {/* Decorative Elements */}

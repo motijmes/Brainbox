@@ -73,7 +73,7 @@ function Header() {
     <div className="relative rounded-2xl bg-white/80 p-2 ring-1 shadow-2xl shadow-black/5 ring-black/5 backdrop-blur-sm">
       <div className="absolute -top-2 right-10 left-10 h-px bg-gradient-to-r from-transparent via-primary-1/20 to-transparent" />
 
-      <div className="mb-3 flex items-center gap-2 rounded-xl bg-gray-50/80 p-3">
+      <div className="mb-3 flex items-center gap-2 rounded-xl bg-background-2 p-3">
         <div className="flex gap-1.5">
           <div className="h-3 w-3 rounded-full bg-rose-400" />
           <div className="h-3 w-3 rounded-full bg-amber-400" />
@@ -92,7 +92,7 @@ function Header() {
         whileInView={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.5 }}
         viewport={{ once: true }}
-        className="relative overflow-hidden rounded-xl bg-gray-50/80"
+        className="relative overflow-hidden rounded-xl bg-background-2"
       >
         <div className="aspect-[4/3] w-full overflow-hidden">
           <img
@@ -110,10 +110,10 @@ function Header() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
             viewport={{ once: true }}
-            className="flex items-center gap-2 rounded-full bg-white/90 px-4 py-2 shadow-lg backdrop-blur-sm"
+            className="flex items-center gap-2 rounded-full bg-background-2 px-4 py-2 shadow-lg backdrop-blur-sm"
           >
             <SparklesIcon className="h-4 w-4 text-primary-1" />
-            <span className="text-sm font-medium text-gray-900">
+            <span className="text-sm font-medium text-primary-2">
               {section.badge.text}
             </span>
           </motion.div>

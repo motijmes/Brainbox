@@ -10,6 +10,7 @@ import {
 } from '@heroicons/react/24/solid'
 import { motion } from 'framer-motion'
 import { Button } from '../button'
+import { GradientBorder } from '../gradient'
 
 const FeatureSection = () => {
   const sections = [
@@ -67,20 +68,20 @@ const FeatureSection = () => {
   ]
 
 const renderImageInterface = (section, index) => (
-  <div className="relative rounded-2xl bg-white/80 p-2 ring-1 shadow-2xl shadow-black/5 ring-black/5 backdrop-blur-sm">
+  <div className="relative rounded-2xl bg-background-2 p-2 ring-1 shadow-2xl shadow-black/5 ring-black/5 backdrop-blur-sm">
     {/* Top gradient line */}
     <div className="absolute -top-2 right-10 left-10 h-px bg-gradient-to-r from-transparent via-primary-1/20 to-transparent" />
 
     {/* Header with window controls and AI status */}
-    <div className="mb-3 flex items-center gap-2 rounded-xl bg-gray-50/80 p-3">
+    <div className="mb-3 flex items-center gap-2 rounded-xl bg-background-2 p-3">
       <div className="flex gap-1.5">
         <div className="h-3 w-3 rounded-full bg-rose-400" />
         <div className="h-3 w-3 rounded-full bg-amber-400" />
         <div className="h-3 w-3 rounded-full bg-emerald-400" />
       </div>
       <div className="ml-auto flex items-center gap-2">
-        <SparklesIcon className="h-4 w-4 text-primary-1" />
-        <span className="text-xs font-medium text-primary-1">
+        <SparklesIcon className="h-4 w-4 text-primary-2" />
+        <span className="text-xs font-medium text-primary-2">
           AI Assistant Active
         </span>
       </div>
@@ -92,7 +93,7 @@ const renderImageInterface = (section, index) => (
       whileInView={{ opacity: 1, scale: 1 }}
       transition={{ duration: 0.5 }}
       viewport={{ once: true }}
-      className="relative overflow-hidden rounded-xl bg-gray-50/80"
+      className="relative overflow-hidden rounded-xl bg-background-2"
     >
       {/* Main image */}
       <div className="aspect-[4/3] w-full overflow-hidden">
@@ -113,10 +114,10 @@ const renderImageInterface = (section, index) => (
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2 }}
           viewport={{ once: true }}
-          className="flex items-center gap-2 rounded-full bg-white/90 px-4 py-2 shadow-lg backdrop-blur-sm"
+          className="flex items-center gap-2 rounded-full border-primary-2 border-[1px] bg-background-2 px-4 py-2 shadow-lg backdrop-blur-sm"
         >
-          <SparklesIcon className="h-4 w-4 text-primary-1" />
-          <span className="text-sm font-medium text-gray-900">
+          <SparklesIcon className="h-4 w-4 text-primary-2 " />
+          <span className="text-sm font-medium text-primary-2">
             {section.badge.text}
           </span>
         </motion.div>
@@ -154,21 +155,23 @@ const renderImageInterface = (section, index) => (
                 className="flex-1"
               >
                 {/* Badge */}
-                <div className="mb-8 inline-flex items-center gap-2 rounded-full bg-primary-1/10 px-4 py-2 text-sm font-medium text-primary-1">
+                <div className="mb-8 inline-flex items-center gap-2 rounded-full border-[1px] border-primary-2 bg-background-2 px-4 py-2 text-sm font-medium text-primary-2">
                   <section.badge.icon className="h-4 w-4" />
                   {section.badge.text}
                 </div>
 
                 {/* Title */}
                 <h2 className="font-display text-3xl/tight font-medium tracking-tight sm:text-4xl/tight">
-                  <span className="text-text">{section.title.regular}</span>
+                  <span className="text-primary-3">
+                    {section.title.regular}
+                  </span>
                   <span className="bg-gradient-to-r from-primary-1 to-primary-2 bg-clip-text text-transparent">
                     {section.title.gradient}
                   </span>
                 </h2>
 
                 {/* Description */}
-                <p className="mt-4 text-base/relaxed text-text/80">
+                <p className="mt-4 text-base/relaxed text-primary-3">
                   {section.description}
                 </p>
 
@@ -183,8 +186,8 @@ const renderImageInterface = (section, index) => (
                       viewport={{ once: true }}
                       className="flex items-start gap-3"
                     >
-                      <feature.icon className="h-6 w-6 flex-none text-primary-1" />
-                      <span className="text-sm/6 text-text/70">
+                      <feature.icon className="h-6 w-6 flex-none text-primary-2" />
+                      <span className="text-sm/6 text-primary-3">
                         {feature.text}
                       </span>
                     </motion.div>
@@ -195,7 +198,7 @@ const renderImageInterface = (section, index) => (
                 {index === 0 && (
                   <div className="mt-10 flex items-center gap-4">
                     <Button
-                      variant="custom"
+                      className={'bg-primary-2 text-white hover:bg-hover-1'}
                       as={motion.button}
                       whileHover={{ scale: 1.02 }}
                       whileTap={{ scale: 0.98 }}
@@ -204,7 +207,7 @@ const renderImageInterface = (section, index) => (
                     </Button>
                     <a
                       href="#"
-                      className="text-sm font-medium text-primary-1 hover:text-primary-2"
+                      className="text-sm font-medium text-primary-2 hover:text-hover-1"
                     >
                       Learn more →
                     </a>
@@ -213,15 +216,17 @@ const renderImageInterface = (section, index) => (
               </motion.div>
 
               {/* Mockup section */}
-              <motion.div
-                initial={{ opacity: 0, x: index % 2 === 0 ? 20 : -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.6 }}
-                viewport={{ once: true }}
-                className="flex-1"
-              >
-                {renderImageInterface(section, index)}
-              </motion.div>
+              <GradientBorder className="relative mx-auto w-full max-w-lg">
+                <motion.div
+                  initial={{ opacity: 0, x: index % 2 === 0 ? 20 : -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.6 }}
+                  viewport={{ once: true }}
+                  className="flex-1"
+                >
+                  {renderImageInterface(section, index)}
+                </motion.div>
+              </GradientBorder>
             </div>
           </div>
         </div>

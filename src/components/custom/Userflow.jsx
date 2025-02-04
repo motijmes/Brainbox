@@ -48,21 +48,23 @@ export default function ModernUserflow() {
             className="flex-1"
           >
             {/* Badge */}
-            <div className="mb-8 inline-flex items-center gap-2 rounded-full bg-primary-1/10 px-4 py-2 text-sm font-medium text-primary-1">
+            <div className="mb-8 inline-flex items-center gap-2 rounded-full border border-primary-2 bg-primary-1/10 px-4 py-2 text-sm font-medium text-primary-2">
               <SparklesIcon className="h-4 w-4" />
               Sales Automation
             </div>
 
             {/* Title */}
             <h2 className="font-display text-3xl/tight font-medium tracking-tight sm:text-4xl/tight">
-              <span className="text-text">Work every lead and scale your </span>
+              <span className="text-primary-3">
+                Work every lead and scale your{' '}
+              </span>
               <span className="bg-gradient-to-r from-primary-1 to-primary-2 bg-clip-text text-transparent">
                 sales activity
               </span>
             </h2>
 
             {/* Description */}
-            <p className="mt-4 text-base/relaxed text-text/80">
+            <p className="mt-4 text-base/relaxed text-primary-3">
               Automate your sales process and turn leads into customers on
               autopilot. Our intelligent system handles the routine tasks while
               you focus on closing deals.
@@ -84,8 +86,8 @@ export default function ModernUserflow() {
                   viewport={{ once: true }}
                   className="flex items-start gap-3"
                 >
-                  <feature.icon className="h-6 w-6 flex-none text-primary-1" />
-                  <span className="text-sm/6 text-text/70">{feature.text}</span>
+                  <feature.icon className="h-6 w-6 flex-none text-primary-2" />
+                  <span className="text-sm/6 text-primary-3">{feature.text}</span>
                 </motion.div>
               ))}
             </div>
@@ -100,7 +102,7 @@ export default function ModernUserflow() {
             >
               <a
                 href="#"
-                className="inline-flex items-center gap-2 text-sm font-medium text-primary-1 hover:text-primary-2"
+                className="inline-flex items-center gap-2 text-sm font-medium text-primary-2 hover:text-hover-1"
               >
                 Learn more <span aria-hidden="true">→</span>
               </a>
@@ -116,7 +118,7 @@ export default function ModernUserflow() {
             className="flex-1"
           >
             {/* <SalesProcessFlow /> */}
-            <ImageSlider/>
+            <ImageSlider />
           </motion.div>
         </div>
       </div>

@@ -10,6 +10,7 @@ import { CheckCircle2 } from 'lucide-react'
 import { createElement, useState } from 'react'
 
 import { BarChart3, MessagesSquare } from 'lucide-react'
+import { GradientBorder } from '../gradient'
 
 // Video Player Component
 const VideoPlayer = ({ video }) => {
@@ -118,13 +119,13 @@ const DemoShowcase = () => {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
             viewport={{ once: true }}
-            className="mb-8 inline-flex items-center gap-2 rounded-full bg-primary-1/10 px-4 py-2 text-sm font-medium text-primary-1"
+            className="mb-8 inline-flex items-center gap-2 rounded-full border-primary-2 bg-background-2 px-4 py-2 text-sm font-medium text-primary-2"
           >
             <SparklesIcon className="h-4 w-4" />
             Product Demo
           </motion.div>
           <h2 className="font-display text-3xl/tight font-medium tracking-tight sm:text-4xl/tight">
-            <span className="text-text">See How It </span>
+            <span className="text-primary-3">See How It </span>
             <span className="bg-gradient-to-r from-primary-1 to-primary-2 bg-clip-text text-transparent">
               Works in Action
             </span>
@@ -134,26 +135,26 @@ const DemoShowcase = () => {
         <Tab.Group selectedIndex={selectedIndex} onChange={setSelectedIndex}>
           {/* Tab Navigation */}
           <div className="mb-16 flex justify-center">
-            <div className="inline-flex rounded-xl bg-white/80 p-2">
+            <div className="inline-flex rounded-xl bg-background-2 p-2 gap-2">
               {demos.map((demo) => (
                 <Tab
                   key={demo.title.regular}
-                  className="focus:outline-none focus-visible:outline-none"
+                  className="focus:outline-none focus-visible:outline-none text-primary-2 hover:text-hover-1 flex gap-2 border-[2px] rounded-lg border-primary-2"
                 >
                   {({ selected }) => (
                     <div
                       className={clsx(
-                        'relative flex items-center gap-2 rounded-lg px-6 py-3 text-sm font-medium',
+                        'relative flex items-center gap-2  px-6 py-3 text-sm font-medium',
                         'transition-all duration-200',
                         selected
-                          ? 'bg-[linear-gradient(115deg,var(--tw-gradient-stops))] from-primary-1 from-30% to-primary-2 text-white shadow-sm'
-                          : 'text-gray-600 hover:text-primary-1',
+                          ? ' bg-primary-2 text-white shadow-sm'
+                          : '',
                       )}
                     >
                       {createElement(demo.icon, {
                         className: clsx(
                           'h-5 w-5',
-                          selected ? 'text-white' : 'text-gray-500',
+                          selected ? 'text-white' : 'text-primary-2',
                         ),
                       })}
                       <span>{demo.title.regular.trim()}</span>
@@ -180,21 +181,23 @@ const DemoShowcase = () => {
                     className="flex flex-col justify-center"
                   >
                     {/* Badge */}
-                    <div className="mb-8 inline-flex items-center gap-2 rounded-full bg-primary-1/10 px-4 py-2 text-sm font-medium text-primary-1">
+                    <div className="mb-8 inline-flex items-center gap-2 rounded-full border-[1px] border-primary-2 bg-background-2 px-4 py-2 text-sm font-medium text-primary-2">
                       <demo.badge.icon className="h-4 w-4" />
                       {demo.badge.text}
                     </div>
 
                     {/* Title */}
                     <h2 className="font-display text-3xl/tight font-medium tracking-tight sm:text-4xl/tight">
-                      <span className="text-text">{demo.title.regular}</span>
+                      <span className="text-primary-3">
+                        {demo.title.regular}
+                      </span>
                       <span className="bg-gradient-to-r from-primary-1 to-primary-2 bg-clip-text text-transparent">
                         {demo.title.gradient}
                       </span>
                     </h2>
 
                     {/* Description */}
-                    <p className="mt-4 text-base/relaxed text-text/80">
+                    <p className="mt-4 text-base/relaxed text-primary-3">
                       {demo.description}
                     </p>
 
@@ -211,8 +214,8 @@ const DemoShowcase = () => {
                           }}
                           className="flex items-start gap-3"
                         >
-                          <feature.icon className="h-6 w-6 flex-none text-primary-1" />
-                          <span className="text-sm/6 text-text/70">
+                          <feature.icon className="h-6 w-6 flex-none text-primary-2" />
+                          <span className="text-sm/6 text-primary-3">
                             {feature.text}
                           </span>
                         </motion.div>
@@ -222,7 +225,7 @@ const DemoShowcase = () => {
                     {/* CTA Button */}
                     <div className="mt-10 flex items-center gap-4">
                       <Button
-                        variant="custom"
+                        className={'bg-primary-2 text-white hover:bg-hover-1'}
                         as={motion.button}
                         whileHover={{ scale: 1.02 }}
                         whileTap={{ scale: 0.98 }}
@@ -231,7 +234,7 @@ const DemoShowcase = () => {
                       </Button>
                       <a
                         href="#"
-                        className="text-sm font-medium text-primary-1 hover:text-primary-2"
+                        className="text-sm font-medium text-primary-2 hover:text-hover-1"
                       >
                         Learn more →
                       </a>
@@ -239,63 +242,65 @@ const DemoShowcase = () => {
                   </motion.div>
 
                   {/* Right side video preview */}
-                  <motion.div
-                    initial={{ opacity: 0, scale: 0.95 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 0.5 }}
-                    className="relative overflow-hidden rounded-2xl bg-white/80 p-2 ring-1 shadow-2xl shadow-black/5 ring-black/5 backdrop-blur-sm"
-                  >
-                    {/* Top gradient line */}
-                    <div className="absolute -top-2 right-10 left-10 h-px bg-gradient-to-r from-transparent via-primary-1/20 to-transparent" />
-
-                    {/* Window chrome */}
-                    <div className="mb-3 flex items-center gap-2 rounded-xl bg-gray-50/80 p-3">
-                      <div className="flex gap-1.5">
-                        <div className="h-3 w-3 rounded-full bg-rose-400" />
-                        <div className="h-3 w-3 rounded-full bg-amber-400" />
-                        <div className="h-3 w-3 rounded-full bg-emerald-400" />
-                      </div>
-                      <div className="ml-auto flex items-center gap-2">
-                        <SparklesIcon className="h-4 w-4 text-primary-1" />
-                        <span className="text-xs font-medium text-primary-1">
-                          AI Assistant Active
-                        </span>
-                      </div>
-                    </div>
-
-                    {/* Video Preview */}
+                  <GradientBorder className="relative mx-auto w-full max-w-lg ">
                     <motion.div
-                      className="group relative cursor-pointer overflow-hidden rounded-xl"
-                      onClick={() => setIsPlaying(true)}
+                      initial={{ opacity: 0, scale: 0.95 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      transition={{ duration: 0.5 }}
+                      className="relative overflow-hidden rounded-2xl bg-background-2 p-2 ring-1 shadow-2xl shadow-black/5 ring-black/5 backdrop-blur-sm"
                     >
-                      {demo.video.type === 'direct' ? (
-                        <video
-                          src={demo.video.videoSrc}
-                          className="h-full w-full scale-105 transform object-cover"
-                          autoPlay
-                          muted
-                          loop
-                          playsInline
-                        />
-                      ) : (
-                        <div className="aspect-video bg-gray-100" />
-                      )}
+                      {/* Top gradient line */}
+                      <div className="absolute -top-2 right-10 left-10 h-px bg-gradient-to-r from-transparent via-primary-1/20 to-transparent" />
 
-                      <div className="absolute inset-0 flex items-center justify-center bg-black/20">
-                        <motion.div
-                          className="flex h-20 w-20 items-center justify-center rounded-full bg-[linear-gradient(115deg,var(--tw-gradient-stops))] from-primary-1 from-30% to-primary-2 shadow-lg backdrop-blur-sm"
-                          whileHover={{ scale: 1.1 }}
-                          whileTap={{ scale: 0.95 }}
-                        >
-                          <PlayIcon className="h-8 w-8 text-white" />
-                        </motion.div>
+                      {/* Window chrome */}
+                      <div className="mb-3 flex items-center gap-2 rounded-xl bg-background-2 p-3">
+                        <div className="flex gap-1.5">
+                          <div className="h-3 w-3 rounded-full bg-rose-400" />
+                          <div className="h-3 w-3 rounded-full bg-amber-400" />
+                          <div className="h-3 w-3 rounded-full bg-emerald-400" />
+                        </div>
+                        <div className="ml-auto flex items-center gap-2">
+                          <SparklesIcon className="h-4 w-4 text-primary-2" />
+                          <span className="text-xs font-medium text-primary-2">
+                            AI Assistant Active
+                          </span>
+                        </div>
                       </div>
-                    </motion.div>
 
-                    {/* Decorative elements */}
-                    <div className="absolute -right-6 -bottom-6 -z-10 h-[250px] w-[250px] rounded-full bg-gradient-to-br from-primary-1/30 to-primary-2/30 blur-xl" />
-                    <div className="absolute -top-6 -left-6 -z-10 h-[250px] w-[250px] rounded-full bg-gradient-to-br from-primary-2/30 to-primary-1/30 blur-xl" />
-                  </motion.div>
+                      {/* Video Preview */}
+                      <motion.div
+                        className="group relative cursor-pointer overflow-hidden rounded-xl"
+                        onClick={() => setIsPlaying(true)}
+                      >
+                        {demo.video.type === 'direct' ? (
+                          <video
+                            src={demo.video.videoSrc}
+                            className="h-full w-full scale-105 transform object-cover"
+                            autoPlay
+                            muted
+                            loop
+                            playsInline
+                          />
+                        ) : (
+                          <div className="aspect-video bg-gray-100" />
+                        )}
+
+                        <div className="absolute inset-0 flex items-center justify-center bg-black/20">
+                          <motion.div
+                            className="flex h-20 w-20 items-center justify-center rounded-full bg-[linear-gradient(115deg,var(--tw-gradient-stops))] from-primary-1 from-30% to-primary-2 shadow-lg backdrop-blur-sm"
+                            whileHover={{ scale: 1.1 }}
+                            whileTap={{ scale: 0.95 }}
+                          >
+                            <PlayIcon className="h-8 w-8 text-white" />
+                          </motion.div>
+                        </div>
+                      </motion.div>
+
+                      {/* Decorative elements */}
+                      <div className="absolute -right-6 -bottom-6 -z-10 h-[250px] w-[250px] rounded-full bg-gradient-to-br from-primary-1/30 to-primary-2/30 blur-xl" />
+                      <div className="absolute -top-6 -left-6 -z-10 h-[250px] w-[250px] rounded-full bg-gradient-to-br from-primary-2/30 to-primary-1/30 blur-xl" />
+                    </motion.div>
+                  </GradientBorder>
                 </div>
               </Tab.Panel>
             ))}

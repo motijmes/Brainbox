@@ -6,7 +6,7 @@ export function Gradient({ className, ...props }) {
       {...props}
       className={clsx(
         className,
-        'bg-[linear-gradient(115deg,var(--tw-gradient-stops))] from-primary-1 from-30% to-primary-2 sm:bg-[linear-gradient(145deg,var(--tw-gradient-stops))]',
+        'bg-[linear-gradient(115deg,var(--tw-gradient-stops))] from-background-1 from-30% to-background-2 sm:bg-[linear-gradient(145deg,var(--tw-gradient-stops))]',
       )}
     />
   )
@@ -17,7 +17,7 @@ export function GradientLight({ className, ...props }) {
       {...props}
       className={clsx(
         className,
-        'bg-[linear-gradient(115deg,var(--tw-gradient-stops))] from-primary-1 from-10% to-primary-light-2 sm:bg-[linear-gradient(145deg,var(--tw-gradient-stops))]',
+        'to-background-light-2 bg-[linear-gradient(115deg,var(--tw-gradient-stops))] from-background-1 from-10% sm:bg-[linear-gradient(145deg,var(--tw-gradient-stops))]',
       )}
     />
   )
@@ -29,7 +29,7 @@ export function GradientBackground() {
       <div
         className={clsx(
           'absolute -top-44 -right-60 h-60 w-[36rem] transform-gpu md:right-0',
-          'bg-[linear-gradient(115deg,var(--tw-gradient-stops))] from-primary-1 from-30% to-primary-2',
+          'bg-[linear-gradient(115deg,var(--tw-gradient-stops))] from-background-1 from-30% to-background-2',
           'rotate-[-10deg] rounded-full blur-3xl',
         )}
       />
@@ -42,7 +42,7 @@ export function GradientBackgroundOrignal() {
       <div
         className={clsx(
           'absolute -top-44 -right-60 h-60 w-[40rem] transform-gpu md:right-0',
-          'bg-[linear-gradient(115deg,var(--tw-gradient-stops))] from-primary-light-1 from-20% via-primary-1 via-primary-light-2 via-40% via-70% to-primary-2',
+          'from-background-light-1 via-background-light-2 bg-[linear-gradient(115deg,var(--tw-gradient-stops))] from-20% via-background-1 via-40% via-70% to-background-2',
           'rotate-[-10deg] rounded-full blur-3xl',
         )}
       />
@@ -50,7 +50,7 @@ export function GradientBackgroundOrignal() {
   )
 }
 
-export  function GradientBackgroundSection({
+export function GradientBackgroundSection({
   size = 'lg', // sm, md, lg, xl
   opacity = 0.8,
   position = { top: '-11rem', right: '-15rem' },
@@ -63,14 +63,14 @@ export  function GradientBackgroundSection({
   }
 
   return (
-    <div className="absolute inset-0 ">
+    <div className="absolute inset-0">
       <div
         className={clsx(
           'absolute transform-gpu',
           sizeClasses[size],
           'rounded-full',
           'bg-[radial-gradient(circle_at_30%_30%,var(--tw-gradient-stops))]',
-          'from-primary-1 from-30% to-primary-2',
+          'from-background-1 from-30% to-background-2',
         )}
         style={{
           top: position.top,
@@ -84,6 +84,46 @@ export  function GradientBackgroundSection({
           `,
         }}
       />
+    </div>
+  )
+}
+
+export const GradientBorder = ({
+  children,
+  gradientColors = ['#fafc75', '#f724de'],
+  borderRadius = '16px',
+  padding = '2px',
+  boxShadow = '0 5px 35px #1e222812',
+  className = '',
+}) => {
+  const gradientBgStyle = {
+    background: `linear-gradient(144deg, ${gradientColors[0]}, ${gradientColors[1]})`,
+    borderRadius,
+    padding,
+    boxShadow,
+  }
+
+  // Calculate inner border radius to maintain smooth curves
+  const innerRadiusNum = parseInt(borderRadius) - parseInt(padding)
+  const innerBorderRadius = `${innerRadiusNum+2}px`
+
+  return (
+    <div
+      className={clsx('relative overflow-hidden h-fit', className)}
+      style={gradientBgStyle}
+    >
+      <div
+        className="relative h-full w-full bg-background-2"
+        style={{
+          borderRadius: innerBorderRadius,
+          // Add a subtle blur to soften the edge between gradient and background
+          backdropFilter: 'blur(1px)',
+          // Optional: add a very subtle inner shadow for depth
+          boxShadow: 'inset 0 0 0 1px rgba(255, 255, 255, 0.05)',
+        }}
+      >
+        {children}
+      </div>
     </div>
   )
 }

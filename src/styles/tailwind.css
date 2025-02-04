@@ -2,20 +2,27 @@
 
 @theme {
   /* Your theme variables */
-  --color-primary-1: #825CE5;
-  --color-primary-2: #5F81FF;
+  /* --color-primary-1: #825CE5;
+  --color-primary-2: #5F81FF; */
    --color-primary-light-1: #b49def;
    --color-primary-light-2: #9fb3ff;
   --color-border: #8b4d26;
   --color-text: #323232;
   --color-text-white: #ffffff;
-  --color-background: #f9f9f8;
+  /* --color-background: #f9f9f8; */
   --color-features-bg: #d6d6d6;
-
     --font-sans: Switzer, system-ui, sans-serif;
-    
     --radius-4xl: 2rem;
+
+    /* new colors */
+  --color-background-1: #000;
+  --color-background-2: #181618;
+  --color-primary-1:#fafc75;
+  --color-primary-2:#f724de;
+  --color-primary-3:#f4f0e5;
+  --color-hover-1:#e600e6;
 }
+
 
 @keyframes move-x {
   0% {

@@ -25,26 +25,26 @@ export default function Home() {
         <LogoCloud />
 
         {/* Keep py-16 for desktop, reduce for mobile */}
-        <div className="bg-gradient-to-b from-white via-gray-100 to-white py-8 sm:py-12 md:py-16">
+        <div className=" py-8 sm:py-12 md:py-16">
           <BeamFlowDemo />
         </div>
-        <div className="bg-gradient-to-b from-white via-gray-100 to-white py-8 sm:py-12 md:py-16">
+        <div className=" py-8 sm:py-12 md:py-16">
           <Userflow />
         </div>
-        <div className="bg-gradient-to-b from-white via-gray-100 to-white py-8 sm:py-12 md:py-16">
+        <div className=" py-8 sm:py-12 md:py-16">
           <DemoShowcaseTabs />
         </div>
 
-        <div className="bg-linear-to-b from-white from-50% to-gray-100 py-8 pt-0 sm:py-12 sm:pt-0 md:py-16 md:pt-0">
+        <div className=" py-8 pt-0 sm:py-12 sm:pt-0 md:py-16 md:pt-0">
           <FeatureSection />
         </div>
-        <div className="bg-linear-to-b from-white from-50% to-gray-100">
+        <div className="">
           <PlatformFeatures />
         </div>
-        <div className="bg-linear-to-b from-white from-50% to-gray-100 py-8 sm:py-12 md:py-16">
+        <div className=" py-8 sm:py-12 md:py-16">
           <IntegrationSection />
         </div>
-        <div className="bg-linear-to-b from-gray-100 from-50% to-white">
+        <div className="">
           <Pricing />
         </div>
       </main>

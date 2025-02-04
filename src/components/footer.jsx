@@ -14,7 +14,7 @@ function CallToAction() {
   return (
     <div className="relative pt-20 pb-16 text-center sm:py-24">
       <motion.div
-        className="absolute inset-0 bg-gradient-to-r from-violet-100/50 to-fuchsia-100/50 blur-3xl"
+        className=""
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         transition={{ duration: 0.8 }}
@@ -27,9 +27,9 @@ function CallToAction() {
         transition={{ duration: 0.6 }}
         viewport={{ once: true }}
       >
-        <Subheading>Get started</Subheading>
+        <Subheading className={"text-primary-3"}>Get started</Subheading>
         <motion.p
-          className="mt-6 bg-gradient-to-r from-primary-1 to-primary-2 bg-clip-text text-3xl font-medium tracking-tight text-gray-900 text-transparent sm:text-5xl"
+          className="mt-6 bg-gradient-to-r from-primary-1 to-primary-2 bg-clip-text text-3xl font-medium tracking-tight  text-transparent sm:text-5xl"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
@@ -40,7 +40,7 @@ function CallToAction() {
           Start your free trial today.
         </motion.p>
         <motion.p
-          className="mx-auto mt-6 max-w-xs text-sm/6 text-gray-600"
+          className="mx-auto mt-6 max-w-xs text-sm/6 text-primary-3"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.3 }}
@@ -60,7 +60,7 @@ function CallToAction() {
             as={motion.a}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="w-full bg-gradient-to-r from-primary-1 to-primary-2 text-white shadow-lg transition-all duration-300 hover:from-violet-700 hover:to-fuchsia-700 hover:shadow-xl sm:w-auto"
+            className="bg-primary-2 hover:bg-hover-1 text-primary-3"
             href="#"
           >
             Get started
@@ -74,7 +74,7 @@ function CallToAction() {
 function SitemapHeading({ children }) {
   return (
     <motion.h3
-      className="bg-gradient-to-r from-primary-1 to-primary-2 bg-clip-text text-sm/6 font-medium text-gray-900 text-transparent"
+      className="bg-gradient-to-r from-primary-1 to-primary-2 bg-clip-text text-sm/6 font-medium text-primary-2 text-transparent"
       initial={{ opacity: 0, y: 10 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
@@ -108,7 +108,7 @@ function SitemapLink({ children, href, index }) {
     >
       <Link
         href={href}
-        className="font-medium text-gray-600 transition-colors duration-200 hover:text-violet-600 break-words"
+        className="font-medium text-primary-3 transition-colors duration-200 hover:text-violet-600 break-words"
       >
         {children}
       </Link>
@@ -175,7 +175,7 @@ function SocialLinks() {
           href="https://facebook.com"
           target="_blank"
           aria-label="Visit us on Facebook"
-          className="text-gray-600 transition-colors duration-200 hover:text-violet-600"
+          className="text-primary-3 transition-colors duration-200 hover:text-violet-600"
         >
           <Facebook className="size-5" />
         </Link>
@@ -190,7 +190,7 @@ function SocialLinks() {
           href="https://instagram.com"
           target="_blank"
           aria-label="Visit us on Instagram"
-          className="text-gray-600 transition-colors duration-200 hover:text-fuchsia-600"
+          className="text-primary-3 transition-colors duration-200 hover:text-fuchsia-600"
         >
           <Instagram className="size-5" />
         </Link>
@@ -201,7 +201,7 @@ function SocialLinks() {
 function Copyright() {
   return (
     <motion.div
-      className="text-sm/6 text-gray-600"
+      className="text-sm/6 text-primary-3"
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
       transition={{ duration: 0.5 }}
@@ -214,16 +214,16 @@ function Copyright() {
 
 export function Footer() {
   return (
-    <footer className="relative overflow-hidden pt-8 md:pt-16">
+    <footer className="relative overflow-hidden pt-8 md:pt-16 bg-background-2">
       <motion.div
-        className="absolute inset-0 bg-gradient-to-b from-white to-violet-50"
+        className=""
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         transition={{ duration: 0.8 }}
         viewport={{ once: true }}
       />
       <motion.div
-        className="absolute inset-0 bg-[radial-gradient(circle_at_top,theme(colors.violet.50/0.8),transparent_50%)]"
+        className=""
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         transition={{ duration: 0.8, delay: 0.2 }}
@@ -231,7 +231,7 @@ export function Footer() {
       />
       <div className="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80">
         <motion.div
-          className="relative left-[calc(50%-20rem)] aspect-[1155/678] w-[72.1875rem] -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-violet-200 to-fuchsia-200 opacity-20 sm:left-[calc(50%-30rem)]"
+          className="relative left-[calc(50%-20rem)] aspect-[1155/678] w-[72.1875rem] -translate-x-1/2 rotate-[30deg] opacity-20 sm:left-[calc(50%-30rem)]"
           initial={{ opacity: 0, scale: 0.9 }}
           whileInView={{ opacity: 0.2, scale: 1 }}
           transition={{ duration: 1 }}

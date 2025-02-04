@@ -30,16 +30,7 @@ const variants = {
     'before:opacity-0 before:transition-opacity',
     'hover:before:opacity-100',
   ),
-  hero: clsx(
-    'inline-flex items-center justify-center px-6 py-3',
-    'rounded-full bg-white',
-    'text-base font-medium',
-    'transition-all duration-300',
-    'shadow-md hover:shadow-lg',
-    // Instead of gradient text, we'll use solid color that matches your brand
-    'text-primary-1',
-    'hover:text-primary-2',
-  ),
+
   secondary: clsx(
     'relative inline-flex items-center justify-center px-4 py-[calc(--spacing(2)-1px)]',
     'rounded-full border border-transparent bg-white/15 ring-1 shadow-md ring-[#D15052]/15',
@@ -52,6 +43,12 @@ const variants = {
     'rounded-lg border border-transparent ring-1 shadow-sm ring-black/10',
     'text-sm font-medium whitespace-nowrap text-gray-950',
     'data-disabled:bg-transparent data-disabled:opacity-40 data-hover:bg-gray-50',
+  ),
+  trial: clsx(
+    'inline-flex items-center justify-center px-4 py-[calc(--spacing(2)-1px)]',
+    'rounded-full border border-primary-2 bg-background-2 text-primary-2',
+    'hover:text-hover-1',
+    'text-base font-medium whitespace-nowrap',
   ),
 }
 

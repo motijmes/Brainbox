@@ -7,27 +7,24 @@ import {
   Bot,
   BrainCircuit,
   Calendar,
-  CheckCircle2,
-  Clock,
   Facebook,
   FileCheck,
-  Globe,
-  Mail,
-  MessageSquare,
   Instagram,
-  MessageCircle,
-  MessagesSquare,
   Linkedin,
+  Mail,
+  MessageCircle,
+  MessageSquare,
+  MessagesSquare,
 } from 'lucide-react'
 import { forwardRef, useRef } from 'react'
-import { GradientBackgroundSection } from '../gradient'
-import { AnimatedBeam } from './animated-beam'
+import { GradientBackgroundSection, GradientBorder } from '../gradient'
 import { Logo } from '../logo'
+import { AnimatedBeam } from './animated-beam'
 const Circle = forwardRef(({ className, children }, ref) => {
   return (
     <div
       ref={ref}
-      className={`z-10 flex items-center justify-center rounded-full border-2 border-primary-1 bg-white p-3 shadow-[0_0_20px_-12px_rgba(0,0,0,0.8)]`}
+      className={`z-10 flex items-center justify-center rounded-full border-2 border-primary-2 bg-background-2 p-3 shadow-[0_0_20px_-12px_rgba(0,0,0,0.8)]`}
     >
       {children}
     </div>
@@ -44,10 +41,10 @@ export function BeamFlowDemo() {
     instagram: useRef(null),
     sms: useRef(null),
 
-     whatsapp: useRef(null),
+    whatsapp: useRef(null),
     email: useRef(null),
     liveChat: useRef(null),
-    linkedin: useRef(null)
+    linkedin: useRef(null),
   }
   // Center ref
   const botRef = useRef(null)
@@ -96,21 +93,21 @@ export function BeamFlowDemo() {
             className="flex-1"
           >
             {/* Badge */}
-            <div className="mb-8 inline-flex items-center gap-2 rounded-full bg-primary-1/10 px-4 py-2 text-sm font-medium text-primary-1">
+            <div className="mb-8 inline-flex items-center gap-2 rounded-full border border-primary-2 bg-background-2 px-4 py-2 text-sm font-medium text-primary-2">
               <SparklesIcon className="h-4 w-4" />
               AI-Powered Flow
             </div>
 
             {/* Title */}
             <h2 className="font-display text-3xl/tight font-medium tracking-tight sm:text-4xl/tight">
-              <span className="text-text">Seamless </span>
+              <span className="text-white">Seamless </span>
               <span className="bg-gradient-to-r from-primary-1 to-primary-2 bg-clip-text text-transparent">
                 Lead Flow Automation
               </span>
             </h2>
 
             {/* Description */}
-            <p className="mt-4 text-base/relaxed text-text/80">
+            <p className="mt-4 text-base/relaxed text-primary-3">
               Our intelligent system connects all your lead sources with
               automated follow-ups, scheduling, and conversion optimization to
               maximize your sales potential.
@@ -135,8 +132,10 @@ export function BeamFlowDemo() {
                   viewport={{ once: true }}
                   className="flex items-start gap-3"
                 >
-                  <feature.icon className="h-6 w-6 flex-none text-primary-1" />
-                  <span className="text-sm/6 text-text/70">{feature.text}</span>
+                  <feature.icon className="h-6 w-6 flex-none text-primary-2" />
+                  <span className="text-sm/6 text-primary-3">
+                    {feature.text}
+                  </span>
                 </motion.div>
               ))}
             </div>
@@ -151,7 +150,7 @@ export function BeamFlowDemo() {
             >
               <a
                 href="#"
-                className="inline-flex items-center gap-2 text-sm font-medium text-primary-1 hover:text-primary-2"
+                className="hover:text-hover-2 inline-flex items-center gap-2 text-sm font-medium text-primary-2"
               >
                 Learn more <ArrowRight className="h-4 w-4" />
               </a>
@@ -166,85 +165,84 @@ export function BeamFlowDemo() {
             viewport={{ once: true }}
             className="flex-1"
           >
-            <div
-              className="relative mx-auto flex h-[500px] w-full max-w-lg items-center justify-center overflow-hidden rounded-2xl bg-white/80 p-10 ring-1 shadow-2xl shadow-black/5 ring-black/5 backdrop-blur-sm"
-              ref={containerRef}
-            >
-              {/* Omnichannel Bot Tag */}
-              <div className="absolute top-14 inline-flex items-center gap-2 rounded-full bg-primary-1/10 px-4 py-2 text-sm font-medium text-nowrap text-primary-1">
-                <BrainCircuit className="h-4 w-4" />
-                Omnichannel Bot
-              </div>
-              <div className="flex w-full items-center justify-between">
-                {/* Left Column - 3 Sources */}
-                <div className="flex flex-col gap-12">
-                  <Circle ref={sourceRefs.facebook}>
-                    <Facebook className="h-6 w-6 text-primary-1" />
+            <GradientBorder className="relative mx-auto w-full max-w-lg">
+              <div
+                className="relative flex h-[500px] w-full items-center justify-center overflow-hidden p-10 shadow-2xl shadow-black/5 ring-black/5 backdrop-blur-sm"
+                ref={containerRef}
+              >
+                {/* Omnichannel Bot Tag */}
+                <div className="absolute top-14 inline-flex items-center gap-2 rounded-full border-primary-2 border-[1px] bg-background-2 px-4 py-2 text-sm font-medium text-nowrap text-primary-2">
+                  <BrainCircuit className="h-4 w-4" />
+                  Omnichannel Bot
+                </div>
+                <div className="flex w-full items-center justify-between">
+                  {/* Left Column - 3 Sources */}
+                  <div className="flex flex-col gap-12">
+                    <Circle ref={sourceRefs.facebook}>
+                      <Facebook className="h-6 w-6 text-primary-2" />
+                    </Circle>
+                    <Circle ref={sourceRefs.instagram}>
+                      <Instagram className="h-6 w-6 text-primary-2" />
+                    </Circle>
+                    <Circle ref={sourceRefs.sms}>
+                      <MessageSquare className="h-6 w-6 text-primary-2" />
+                    </Circle>
+                  </div>
+
+                  {/* Center - Bot */}
+                  <Circle ref={botRef} className="">
+                    {/* <Bot className="h-10 w-10 text-primary-2" /> */}
+                    <Logo className="h-9 text-primary-2" variant={'orignal'} />
                   </Circle>
-                  <Circle ref={sourceRefs.instagram}>
-                    <Instagram className="h-6 w-6 text-primary-1" />
-                  </Circle>
-                  <Circle ref={sourceRefs.sms}>
-                    <MessageSquare className="h-6 w-6 text-primary-1" />
-                  </Circle>
+
+                  {/* Right Column - 4 Sources */}
+                  <div className="flex flex-col gap-8">
+                    <Circle ref={sourceRefs.whatsapp}>
+                      <MessageCircle className="h-6 w-6 text-primary-2" />
+                    </Circle>
+                    <Circle ref={sourceRefs.email}>
+                      <Mail className="h-6 w-6 text-primary-2" />
+                    </Circle>
+                    <Circle ref={sourceRefs.liveChat}>
+                      <MessagesSquare className="h-6 w-6 text-primary-2" />
+                    </Circle>
+                    <Circle ref={sourceRefs.linkedin}>
+                      <Linkedin className="h-6 w-6 text-primary-2" />
+                    </Circle>
+                  </div>
                 </div>
 
-                {/* Center - Bot */}
-                <Circle ref={botRef} className="">
-                  {/* <Bot className="h-10 w-10 text-primary-1" /> */}
-                  <Logo
-                  className="h-9 text-text-white"
-                  variant={'orignal'}
-                />
-                </Circle>
+                {/* Beams */}
+                {Object.entries(sourceRefs).map(([key, ref], index) => (
+                  <AnimatedBeam
+                    key={key}
+                    containerRef={containerRef}
+                    fromRef={ref}
+                    toRef={botRef}
+                    curvature={index === 1 ? 0 : index === 0 ? -30 : 30}
+                    gradientStartColor="color-primary-1"
+                    gradientStopColor="color-primary-2"
+                  />
+                ))}
 
-                {/* Right Column - 4 Sources */}
-                <div className="flex flex-col gap-8">
-                  <Circle ref={sourceRefs.whatsapp}>
-                    <MessageCircle className="h-6 w-6 text-primary-1" />
-                  </Circle>
-                  <Circle ref={sourceRefs.email}>
-                    <Mail className="h-6 w-6 text-primary-1" />
-                  </Circle>
-                  <Circle ref={sourceRefs.liveChat}>
-                    <MessagesSquare className="h-6 w-6 text-primary-1" />
-                  </Circle>
-                  <Circle ref={sourceRefs.linkedin}>
-                    <Linkedin className="h-6 w-6 text-primary-1" />
-                  </Circle>
-                </div>
+                {Object.entries(targetRefs).map(([key, ref], index) => (
+                  <AnimatedBeam
+                    key={key}
+                    containerRef={containerRef}
+                    fromRef={ref}
+                    toRef={botRef}
+                    curvature={index === 2 ? 0 : index < 2 ? -30 : 30}
+                    gradientStartColor="color-primary-2"
+                    gradientStopColor="color-primary-1"
+                    reverse
+                  />
+                ))}
+
+                {/* Decorative elements */}
+                {/* <div className="absolute -right-6 -bottom-6 h-32 w-32 rounded-full bg-gradient-to-br from-primary-1/30 to-primary-2/30 blur-xl" />
+              <div className="absolute -top-6 -left-6 h-32 w-32 rounded-full bg-gradient-to-br from-primary-2/30 to-primary-1/30 blur-xl" /> */}
               </div>
-
-              {/* Beams */}
-              {Object.entries(sourceRefs).map(([key, ref], index) => (
-                <AnimatedBeam
-                  key={key}
-                  containerRef={containerRef}
-                  fromRef={ref}
-                  toRef={botRef}
-                  curvature={index === 1 ? 0 : index === 0 ? -30 : 30}
-                  gradientStartColor="color-primary-1"
-                  gradientStopColor="color-primary-2"
-                />
-              ))}
-
-              {Object.entries(targetRefs).map(([key, ref], index) => (
-                <AnimatedBeam
-                  key={key}
-                  containerRef={containerRef}
-                  fromRef={ref}
-                  toRef={botRef}
-                  curvature={index === 2 ? 0 : index < 2 ? -30 : 30}
-                  gradientStartColor="color-primary-2"
-                  gradientStopColor="color-primary-1"
-                  reverse
-                />
-              ))}
-
-              {/* Decorative elements */}
-              <div className="absolute -right-6 -bottom-6 h-32 w-32 rounded-full bg-gradient-to-br from-primary-1/30 to-primary-2/30 blur-xl" />
-              <div className="absolute -top-6 -left-6 h-32 w-32 rounded-full bg-gradient-to-br from-primary-2/30 to-primary-1/30 blur-xl" />
-            </div>
+            </GradientBorder>
           </motion.div>
         </div>
       </div>

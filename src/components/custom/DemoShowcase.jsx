@@ -221,7 +221,7 @@ const VideoShowcase = () => {
                     <div className="absolute -top-2 right-10 left-10 h-px bg-gradient-to-r from-transparent via-primary-1/20 to-transparent" />
 
                     {/* Window chrome */}
-                    <div className="mb-3 flex items-center gap-2 rounded-xl bg-gray-50/80 p-3">
+                    <div className="mb-3 flex items-center gap-2 rounded-xl bg-background-2 p-3">
                       <div className="flex gap-1.5">
                         <div className="h-3 w-3 rounded-full bg-rose-400" />
                         <div className="h-3 w-3 rounded-full bg-amber-400" />

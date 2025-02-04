@@ -37,7 +37,7 @@ function Hero() {
             banner={
               <Link
                 href="/"
-                className="group flex items-center gap-1 rounded-full bg-fuchsia-950/35 px-3 py-0.5 text-sm/6 font-medium text-white transition-colors duration-200 hover:bg-fuchsia-950/30"
+                className="group flex items-center gap-1 rounded-full bg-background-1 px-3 py-0.5 text-sm/6 font-medium text-primary-2 border-primary-2 border-[1px] transition-colors duration-200 hover:bg-fuchsia-950/30"
               >
                 <motion.span
                   initial={{ opacity: 0, x: -20 }}
@@ -76,14 +76,17 @@ function Hero() {
           >
             <motion.h1
               variants={textVariants}
-              className="font-display text-4xl/tight font-medium tracking-tight sm:text-5xl lg:text-7xl/[0.8]"
+              className="font-display text-4xl/tight text-primary-3 font-medium tracking-tight  sm:text-5xl lg:text-7xl/[0.8]"
             >
-              All-in-One Platform for Realtors, by Realtors
+              All-in-One Platform{' '}
+              <span className="bg-gradient-to-r from-primary-1 to-primary-2 bg-clip-text text-transparent">
+                for Realtors, by Realtors
+              </span>
             </motion.h1>
 
             <motion.p
               variants={textVariants}
-              className="mt-6 max-w-3xl text-lg/7 font-medium text-white/75 sm:text-xl/8 lg:mt-8"
+              className="mt-6 max-w-3xl text-lg/7 font-medium text-primary-3 sm:text-xl/8 lg:mt-8"
             >
               This platform, designed by real estate pros, understands your
               needs. With tools like lead management, automated follow-ups, and
@@ -97,13 +100,13 @@ function Hero() {
             >
               <Button
                 href="#"
-                variant="hero"
                 as={motion.a}
                 whileHover={{
                   scale: 1.05,
                   transition: { duration: 0.2 },
                 }}
                 whileTap={{ scale: 0.95 }}
+                className={"bg-primary-2 hover:bg-hover-1 text-white"}
               >
                 Try It Risk Free!
               </Button>

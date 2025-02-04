@@ -2,7 +2,7 @@
 
 import { Button } from '@/components/button'
 import { Container } from '@/components/container'
-import { GradientBackgroundSection, GradientLight } from '@/components/gradient'
+import { GradientBackgroundSection, GradientBorder, GradientLight } from '@/components/gradient'
 import { Heading, Lead, Subheading } from '@/components/text'
 import { motion } from 'framer-motion'
 import { useState } from 'react'
@@ -216,10 +216,10 @@ function FeatureItem({ description, disabled = false, delay = 0 }) {
         delay: delay,
       }}
       data-disabled={disabled ? true : undefined}
-      className="flex items-start gap-4 text-sm/6 text-gray-950/75 data-disabled:text-gray-950/25"
+      className="flex items-start gap-4 text-sm/6 text-primary-3 data-disabled:text-primary-3"
     >
       <span className="inline-flex h-6 items-center">
-        <PlusIcon className="size-[0.9375rem] shrink-0 fill-gray-950/25" />
+        <PlusIcon className="size-[0.9375rem] shrink-0 fill-primary-3" />
       </span>
       {disabled && <span className="sr-only">Not included:</span>}
       {description}
@@ -253,117 +253,119 @@ function PricingCard({ tier, index, isAnnual }) {
   }
 
   return (
-    <div
-      className="perspective-1000 relative h-[600px] w-full min-w-[280px]"
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
-    >
+    <GradientBorder>
       <div
-        className={`transform-style-3d relative h-full w-full transition-transform duration-500 ${
-          isFlipped ? 'rotate-y-180' : ''
-        }`}
+        className="perspective-1000 relative h-[600px] w-full min-w-[280px]"
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
       >
-        {/* Front of card */}
-        <div className="absolute h-full w-full backface-hidden">
-          <div className="h-full rounded-4xl p-2 shadow-md shadow-black/5">
-            <div className="flex h-full flex-col rounded-3xl bg-white p-4 ring-1 shadow-2xl ring-black/5 sm:p-6">
-              <div>
-                <h3 className="text-base font-semibold break-words text-gray-900">
-                  {tier.name}
-                </h3>
-                <p className="mt-2 line-clamp-2 text-sm text-gray-500">
-                  {tier.description}
-                </p>
-                <div className="mt-6 flex items-center gap-4">
-                  <div className="text-3xl font-medium text-gray-900 sm:text-4xl">
-                    ${price}
+        <div
+          className={`transform-style-3d relative h-full w-full transition-transform duration-500 ${
+            isFlipped ? 'rotate-y-180' : ''
+          }`}
+        >
+          {/* Front of card */}
+          <div className="absolute h-full w-full backface-hidden">
+            <div className="h-full rounded-4xl  shadow-md ">
+              <div className="flex h-full flex-col  p-4 ring-1 shadow-2xl  sm:p-6">
+                <div>
+                  <h3 className="text-base font-semibold break-words text-primary-2">
+                    {tier.name}
+                  </h3>
+                  <p className="mt-2 line-clamp-2 text-sm text-primary-3">
+                    {tier.description}
+                  </p>
+                  <div className="mt-6 flex items-center gap-4">
+                    <div className="text-3xl font-medium text-primary-3 sm:text-4xl">
+                      ${price}
+                    </div>
+                    <div className="text-xs text-primary-3 sm:text-sm">
+                      <p>USD</p>
+                      <p>per {isAnnual ? 'year' : 'month'}</p>
+                    </div>
                   </div>
-                  <div className="text-xs text-gray-500 sm:text-sm">
-                    <p>USD</p>
-                    <p>per {isAnnual ? 'year' : 'month'}</p>
+                  <div className="relative z-10 mt-6">
+                    <Button
+  href={tier.href}
+  variant="trial"
+  onMouseEnter={(e) => {
+    e.stopPropagation()
+    setIsFlipped(false)
+  }}      
+>
+  Start free trial
+</Button>
                   </div>
                 </div>
-                <div className="relative z-10 mt-6">
-                  <Button
-                    href={tier.href}
-                    className="relative w-full text-sm"
-                    onMouseEnter={(e) => {
-                      e.stopPropagation()
-                      setIsFlipped(false)
-                    }}
-                  >
-                    Start free trial
-                  </Button>
+                <div className="mt-6 sm:mt-8">
+                  <h4 className="text-sm font-semibold text-primary-3">
+                    Features include:
+                  </h4>
+                  <ul className="mt-4 space-y-2 overflow-y-auto sm:space-y-3">
+                    {tier.highlights.map((feature, index) => (
+                      <FeatureItem key={index} {...feature} />
+                    ))}
+                  </ul>
                 </div>
-              </div>
-              <div className="mt-6 sm:mt-8">
-                <h4 className="text-sm font-medium text-gray-900">
-                  Features include:
-                </h4>
-                <ul className="mt-4 space-y-2 overflow-y-auto sm:space-y-3">
-                  {tier.highlights.map((feature, index) => (
-                    <FeatureItem key={index} {...feature} />
-                  ))}
-                </ul>
               </div>
             </div>
           </div>
-        </div>
 
-        {/* Back of card */}
-        <div className="absolute h-full w-full rotate-y-180 backface-hidden">
-          <div className="h-full rounded-4xl p-2 shadow-md shadow-black/5">
-            <div className="flex h-full flex-col overflow-y-auto rounded-3xl bg-white p-4 ring-1 shadow-2xl ring-black/5 sm:p-6">
-              <h3 className="text-base font-semibold text-gray-900">
-                Additional Details
-              </h3>
+          {/* Back of card */}
+          <div className="absolute h-full w-full rotate-y-180 backface-hidden">
+            <div className="h-full rounded-4xl p-2 shadow-md shadow-black/5">
+              <div className="flex h-full flex-col overflow-y-auto rounded-3xl bg-background-2 p-4 ring-1 shadow-2xl ring-black/5 sm:p-6">
+                <h3 className="text-base font-semibold text-primary-2">
+                  Additional Details
+                </h3>
 
-              {/* Usage Costs */}
-              <div className="mt-3">
-                <h4 className="text-sm font-medium text-gray-900">
-                  Usage Costs:
-                </h4>
-                <ul className="mt-1 space-y-1 text-xs text-gray-500 sm:text-sm">
-                  {Object.entries(tier.usageCosts).map(([key, value]) => (
-                    <li key={key} className="flex justify-between gap-2">
-                      <span>{key.replace(/([A-Z])/g, ' $1').trim()}:</span>
-                      <span className="text-right">{value}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
+                {/* Usage Costs */}
+                <div className="mt-3">
+                  <h4 className="text-sm font-medium text-primary-3">
+                    Usage Costs:
+                  </h4>
+                  <ul className="mt-1 space-y-1 text-xs text-primary-3 sm:text-sm">
+                    {Object.entries(tier.usageCosts).map(([key, value]) => (
+                      <li key={key} className="flex justify-between gap-2">
+                        <span>{key.replace(/([A-Z])/g, ' $1').trim()}:</span>
+                        <span className="text-right">{value}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
 
-              {/* Add-ons */}
-              <div className="mt-5">
-                <h4 className="text-sm font-medium text-gray-900">
-                  Available Add-ons:
-                </h4>
-                <ul className="mt-1 space-y-1 text-xs text-gray-500 sm:text-sm">
-                  {Object.entries(tier.addOns).map(([key, value]) => (
-                    <li key={key} className="flex justify-between gap-2">
-                      <span>{key.replace(/([A-Z])/g, ' $1').trim()}:</span>
-                      <span className="text-right">{value}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
+                {/* Add-ons */}
+                <div className="mt-5">
+                  <h4 className="text-sm font-medium text-primary-3">
+                    Available Add-ons:
+                  </h4>
+                  <ul className="mt-1 space-y-1 text-xs text-primary-3 sm:text-sm">
+                    {Object.entries(tier.addOns).map(([key, value]) => (
+                      <li key={key} className="flex justify-between gap-2">
+                        <span>{key.replace(/([A-Z])/g, ' $1').trim()}:</span>
+                        <span className="text-right">{value}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
 
-              {/* Additional Features */}
-              <div className="mt-5">
-                <h4 className="text-sm font-medium text-gray-900">
-                  All Features:
-                </h4>
-                <ul className="mt-1 space-y-1 text-xs text-gray-500 sm:text-sm">
-                  {tier.features.map((feature, index) => (
-                    <li key={index}>{feature.name}</li>
-                  ))}
-                </ul>
+                {/* Additional Features */}
+                <div className="mt-5">
+                  <h4 className="text-sm font-medium text-primary-3">
+                    All Features:
+                  </h4>
+                  <ul className="mt-1 space-y-1 text-xs text-primary-3 sm:text-sm">
+                    {tier.features.map((feature, index) => (
+                      <li key={index}>{feature.name}</li>
+                    ))}
+                  </ul>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
+    </GradientBorder>
   )
 }
 
@@ -431,8 +433,15 @@ function Header({ handleBillingChange }) {
         viewport={{ once: true }}
         transition={{ duration: 0.5 }}
       >
-        <Heading as="h1">Pricing Plans</Heading>
-        <Lead className="mt-6 max-w-3xl">
+        <Heading
+          as="h1"
+          className={
+            'bg-gradient-to-r from-primary-1 to-primary-2 bg-clip-text text-transparent'
+          }
+        >
+          Pricing Plans
+        </Heading>
+        <Lead className="mt-6 max-w-3xl text-primary-3">
           Our pricing plans are crafted to support real estate professionals at
           every level, from solo agents to large organizations.
         </Lead>

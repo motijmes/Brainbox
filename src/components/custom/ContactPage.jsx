@@ -167,7 +167,7 @@ const ContactPage = () => {
                   <item.icon className="h-6 w-6 text-primary-1" />
                 </div>
                 <div>
-                  <h3 className="font-medium text-gray-900">{item.title}</h3>
+                  <h3 className="font-medium text-primary-2">{item.title}</h3>
                   {item.details.map((detail, idx) => (
                     <p key={idx} className="mt-1 text-sm text-gray-500">
                       {detail}

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Container } from '@/components/container';
 import { SparklesIcon } from '@heroicons/react/24/outline';
@@ -10,8 +10,19 @@ import {
 } from 'lucide-react';
 
 const ContactPage = () => {
+  useEffect(() => {
+    const script = document.createElement('script');
+    script.src = 'https://api.accessibleagents.com/js/form_embed.js';
+    script.async = true;
+    document.body.appendChild(script);
+
+    // Cleanup function to remove the script when component unmounts
+    return () => {
+      document.body.removeChild(script);
+    };
+  }, []);
   return (
-    <div className="relative overflow-hidden py-24">
+    <div className="relative overflow-hidden py-24 bg-black">
       {/* Background decoration */}
       <div className="absolute inset-0 -z-10">
         <motion.div
@@ -30,7 +41,7 @@ const ContactPage = () => {
         />
       </div>
 
-      <Container>
+      <Container className="">
         {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -43,14 +54,14 @@ const ContactPage = () => {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
             viewport={{ once: true }}
-            className="mb-8 inline-flex items-center gap-2 rounded-full bg-primary-1/10 px-4 py-2 text-sm font-medium text-primary-1"
+            className="mb-8 inline-flex items-center gap-2 rounded-full bg-[#FFEB3B]/10 px-4 py-2 text-sm font-medium text-[#FFEB3B]"
           >
             <SparklesIcon className="h-4 w-4" />
             Get in Touch
           </motion.div>
           <h2 className="font-display text-3xl/tight font-medium tracking-tight sm:text-4xl/tight">
-            <span className="text-text">Let&apos;s Start a </span>
-            <span className="bg-gradient-to-r from-primary-1 to-primary-2 bg-clip-text text-transparent">
+            <span className="text-white">Let&apos;s Start a </span>
+            <span className="bg-gradient-to-r from-[#FFEB3B] via-[#FF8E8E] to-[#FF66FF] bg-clip-text text-transparent">
               Conversation
             </span>
           </h2>
@@ -62,67 +73,34 @@ const ContactPage = () => {
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            className="rounded-2xl bg-white/80 p-8 ring-1 shadow-2xl shadow-black/5 ring-black/5 backdrop-blur-sm"
+            className="rounded-3xl bg-[#121212] p-6 ring-1 shadow-2xl shadow-black/5 ring-black/5 backdrop-blur-sm lg:p-8"
           >
-            <form className="space-y-6">
-              <div className="space-y-4">
-                <motion.div
-                  initial={{ opacity: 0, y: 10 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.1 }}
-                  viewport={{ once: true }}
-                >
-                  <label className="block text-sm font-medium text-gray-700">
-                    Name
-                  </label>
-                  <input
-                    type="text"
-                    className="mt-1 block w-full rounded-lg border border-gray-300 px-4 py-2 focus:border-primary-1 focus:ring-2 focus:ring-primary-1/20 focus:outline-none"
-                    placeholder="Your name"
-                  />
-                </motion.div>
-
-                <motion.div
-                  initial={{ opacity: 0, y: 10 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.2 }}
-                  viewport={{ once: true }}
-                >
-                  <label className="block text-sm font-medium text-gray-700">
-                    Email
-                  </label>
-                  <input
-                    type="email"
-                    className="mt-1 block w-full rounded-lg border border-gray-300 px-4 py-2 focus:border-primary-1 focus:ring-2 focus:ring-primary-1/20 focus:outline-none"
-                    placeholder="you@example.com"
-                  />
-                </motion.div>
-
-                <motion.div
-                  initial={{ opacity: 0, y: 10 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.3 }}
-                  viewport={{ once: true }}
-                >
-                  <label className="block text-sm font-medium text-gray-700">
-                    Message
-                  </label>
-                  <textarea
-                    rows={4}
-                    className="mt-1 block w-full rounded-lg border border-gray-300 px-4 py-2 focus:border-primary-1 focus:ring-2 focus:ring-primary-1/20 focus:outline-none"
-                    placeholder="Your message"
-                  />
-                </motion.div>
-              </div>
-
-              <motion.button
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-                className="w-full rounded-lg bg-gradient-to-r from-primary-1 to-primary-2 px-8 py-3 text-center text-sm font-medium text-white hover:opacity-90 focus:ring-2 focus:ring-primary-1/20 focus:outline-none"
-              >
-                Send Message
-              </motion.button>
-            </form>
+            <div className="h-full">
+              <iframe
+                src="https://api.accessibleagents.com/widget/form/CJncaycrRh5hGpavAAmu"
+                style={{ 
+                  width: '100%', 
+                  height: '100%', 
+                  border: 'none', 
+                  borderRadius: '4px',
+                  backgroundColor: 'transparent',
+                  display: 'block'
+                }}
+                id="inline-CJncaycrRh5hGpavAAmu" 
+                data-layout="{'id':'INLINE'}"
+                data-trigger-type="alwaysShow"
+                data-trigger-value=""
+                data-activation-type="alwaysActivated"
+                data-activation-value=""
+                data-deactivation-type="neverDeactivate"
+                data-deactivation-value=""
+                data-form-name="Accessible Agents New Website Form"
+                data-height="534"
+                data-layout-iframe-id="inline-CJncaycrRh5hGpavAAmu"
+                data-form-id="CJncaycrRh5hGpavAAmu"
+                title="Accessible Agents New Website Form"
+              />
+            </div>
           </motion.div>
 
           {/* Contact Information */}
@@ -130,7 +108,7 @@ const ContactPage = () => {
             initial={{ opacity: 0, x: 20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            className="space-y-8"
+            className="space-y-6"
           >
             {/* Contact Cards */}
             {[
@@ -161,15 +139,15 @@ const ContactPage = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.1 }}
                 viewport={{ once: true }}
-                className="flex gap-4 rounded-xl bg-white/80 p-6 ring-1 shadow-lg shadow-black/5 ring-black/5 backdrop-blur-sm"
+                className="flex gap-4 rounded-2xl bg-[#121212] p-5 ring-1 shadow-lg shadow-black/5 ring-black/5 backdrop-blur-sm hover:bg-[#1a1a1a] transition-colors duration-300"
               >
-                <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-primary-1/10">
-                  <item.icon className="h-6 w-6 text-primary-1" />
+                <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-[#FFEB3B]/10">
+                  <item.icon className="h-6 w-6 text-[#FF66FF]" />
                 </div>
                 <div>
-                  <h3 className="font-medium text-primary-2">{item.title}</h3>
+                  <h3 className="font-medium text-[#FF66FF]">{item.title}</h3>
                   {item.details.map((detail, idx) => (
-                    <p key={idx} className="mt-1 text-sm text-gray-500">
+                    <p key={idx} className="mt-1 text-sm text-gray-400 hover:text-gray-300 transition-colors duration-300">
                       {detail}
                     </p>
                   ))}
@@ -180,7 +158,7 @@ const ContactPage = () => {
         </div>
       </Container>
     </div>
-  )
+  );
 };
 
 export default ContactPage;

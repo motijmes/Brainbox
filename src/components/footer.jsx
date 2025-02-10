@@ -1,4 +1,3 @@
-
 "use client"
 import { PlusGrid, PlusGridItem, PlusGridRow } from '@/components/plus-grid'
 import { motion } from 'framer-motion'
@@ -74,7 +73,7 @@ function CallToAction() {
 function SitemapHeading({ children }) {
   return (
     <motion.h3
-      className="bg-gradient-to-r from-primary-1 to-primary-2 bg-clip-text text-sm/6 font-medium text-primary-2 text-transparent"
+      className="bg-gradient-to-r from-primary-2 to-primary-1 bg-clip-text text-sm/6 font-medium text-transparent"
       initial={{ opacity: 0, y: 10 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
@@ -250,6 +249,7 @@ export function Footer() {
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5 }}
                     viewport={{ once: true }}
+                    className="text-white [&_a]:text-white [&_svg]:text-white [&_img]:brightness-0 [&_img]:invert"
                   >
                     <Logo className="h-9" />
                   </motion.div>

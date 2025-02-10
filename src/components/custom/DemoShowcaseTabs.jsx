@@ -219,19 +219,11 @@ const DemoShowcase = () => {
                     {/* CTA Button */}
                     <div className="mt-16 flex items-center gap-4">
                       <Button
-                        className={'bg-primary-2 text-white hover:bg-hover-1 text-lg px-8 py-4 text-xl'}
-                        as={motion.button}
-                        whileHover={{ scale: 1.02 }}
-                        whileTap={{ scale: 0.98 }}
+                        href="/about-us"
+                        className="bg-primary-2 text-white hover:bg-hover-1 text-lg px-8 py-4 text-xl"
                       >
                         Get Started Free
                       </Button>
-                      <a
-                        href="#"
-                        className="text-lg font-medium text-primary-2 hover:text-hover-1"
-                      >
-                        Learn more →
-                      </a>
                     </div>
                   </motion.div>
 

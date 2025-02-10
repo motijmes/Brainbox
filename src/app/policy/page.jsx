@@ -17,7 +17,8 @@ import {
   UserGroupIcon,
 } from '@heroicons/react/24/outline'
 import { motion } from 'framer-motion'
-
+import Link from 'next/link'
+import { ChevronRightIcon } from '@heroicons/react/24/outline'
 function PrivacyContent() {
   const sections = [
     {
@@ -141,18 +142,18 @@ function PrivacyContent() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.2 }}
-            className="mb-4 inline-flex items-center gap-2 rounded-full bg-primary-1/10 px-4 py-2 text-sm font-medium text-primary-1"
+            className="mb-4 inline-flex items-center gap-2 rounded-full bg-background-2 px-4 py-2 text-sm font-medium text-primary-2 border-[2px] border-primary-2"
           >
             <LockClosedIcon className="h-4 w-4" />
             Privacy Policy
           </motion.div>
-          <h1 className="font-display text-4xl font-medium tracking-tight text-text">
-            Privacy Policy for{' '}
+          <h1 className="font-display text-4xl/tight font-medium tracking-tight">
+            <span className="text-primary-3">Privacy Policy for </span>
             <span className="bg-gradient-to-r from-primary-1 to-primary-2 bg-clip-text text-transparent">
               Accessible Agents
             </span>
           </h1>
-          <p className="mt-4 text-lg text-text/60">
+          <p className="mt-4 text-lg text-primary-3/80">
             Accessible Agents is committed to protecting your privacy. This
             Privacy Policy explains how we collect, use, share, and protect
             information about you.
@@ -172,21 +173,21 @@ function PrivacyContent() {
             >
               <div className="flex items-start gap-4">
                 <div className="mt-1 flex-shrink-0">
-                  <section.icon className="h-6 w-6 text-primary-1" />
+                  <section.icon className="h-6 w-6 text-primary-2" />
                 </div>
                 <div className="flex-1">
-                  <h2 className="mb-4 text-xl font-semibold text-text">
+                  <h2 className="mb-4 text-xl font-semibold text-primary-3">
                     {section.title}
                   </h2>
                   <div className="space-y-4">
                     {section.content.map((item, idx) => (
                       <div key={idx}>
                         {item.subtitle && (
-                          <h3 className="mb-2 font-medium text-text/90">
+                          <h3 className="mb-2 font-medium text-primary-3">
                             {item.subtitle}
                           </h3>
                         )}
-                        <p className="leading-relaxed text-text/70">
+                        <p className="leading-relaxed text-primary-3/80">
                           {item.text}
                         </p>
                       </div>
@@ -197,7 +198,7 @@ function PrivacyContent() {
 
               {/* Decorative line between sections */}
               {index !== sections.length - 1 && (
-                <div className="absolute right-0 -bottom-6 left-0 h-px bg-gradient-to-r from-transparent via-gray-200 to-transparent" />
+                <div className="absolute right-0 -bottom-6 left-0 h-px bg-gradient-to-r from-transparent via-primary-2/20 to-transparent" />
               )}
             </motion.div>
           ))}
@@ -209,36 +210,36 @@ function PrivacyContent() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
           viewport={{ once: true }}
-          className="mt-16 rounded-2xl bg-gray-50/50 p-8 ring-1 ring-gray-900/5 backdrop-blur-sm"
+          className="mt-16 rounded-2xl bg-background-2 p-8 ring-1 ring-primary-2/10 backdrop-blur-sm"
         >
           <div className="flex items-start gap-4">
             <div className="mt-1 flex-shrink-0">
-              <UserGroupIcon className="h-6 w-6 text-primary-1" />
+              <UserGroupIcon className="h-6 w-6 text-primary-2" />
             </div>
             <div>
-              <h2 className="mb-4 text-xl font-semibold text-text">
+              <h2 className="mb-4 text-xl font-semibold text-primary-3">
                 8. Contact Us
               </h2>
-              <p className="mb-6 leading-relaxed text-text/70">
+              <p className="mb-6 leading-relaxed text-primary-3/80">
                 If you have any questions or concerns about this Privacy Policy
                 or our data practices, please contact us at:
               </p>
               <div className="space-y-3">
                 <div className="flex items-center gap-3">
-                  <EnvelopeIcon className="h-5 w-5 text-primary-1" />
+                  <EnvelopeIcon className="h-5 w-5 text-primary-2" />
                   <a
                     href="mailto:info@accessibleagents.com"
-                    className="text-primary-1 hover:text-primary-2"
+                    className="text-primary-2 hover:text-hover-1"
                   >
                     info@accessibleagents.com
                   </a>
                 </div>
                 <div className="flex items-center gap-3">
-                  <PhoneIcon className="h-5 w-5 text-primary-1" />
-                  <span className="text-text/70">+1-832-900-2881</span>
+                  <PhoneIcon className="h-5 w-5 text-primary-2" />
+                  <span className="text-primary-3/80">+1-832-900-2881</span>
                 </div>
               </div>
-              <p className="mt-6 text-sm text-text/60">
+              <p className="mt-6 text-sm text-primary-3/60">
                 Thank you for trusting Accessible Agents with your information.
                 We are committed to protecting your privacy and ensuring your
                 experience with us is safe and secure.
@@ -254,9 +255,38 @@ function PrivacyContent() {
 export default function PrivacyPolicy() {
   return (
     <main className="overflow-hidden">
-      <GradientBackgroundOrignal />
-      <Container className="bg-linear-to-b from-gray-100 from-50% to-white">
-        <Navbar section="privacy" />
+        <Container className="relative">
+        <motion.div
+          initial={{ opacity: 0, y: -10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          className="text-white [&_a]:text-white [&_svg]:text-white [&_img]:brightness-0 [&_img]:invert"
+        >
+          <Navbar
+            banner={
+              <Link
+                href="/"
+                className="group flex items-center gap-1 rounded-full bg-background-1 px-3 py-0.5 text-sm/6 font-medium text-primary-2 border-primary-2 border-[1px] transition-colors duration-200 hover:bg-fuchsia-950/30"
+              >
+                <motion.span
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.6, delay: 0.4 }}
+                >
+                  Start Your Free Trial
+                </motion.span>
+                <motion.span
+                  initial={{ opacity: 0, x: -10 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.6, delay: 0.5 }}
+                >
+                  <ChevronRightIcon className="size-4 transition-transform duration-200 group-hover:translate-x-0.5" />
+                </motion.span>
+              </Link>
+            }
+            section="policy"
+          />
+        </motion.div>
       </Container>
       <PrivacyContent />
       <Footer />

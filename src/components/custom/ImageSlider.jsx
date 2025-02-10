@@ -64,7 +64,7 @@ const ImageSlider = () => {
         </div>
       </div>
 
-      <PrevButton
+      {/* <PrevButton
         onClick={onPrevButtonClick}
         disabled={prevBtnDisabled}
         className="absolute top-1/2 left-4 flex h-10 w-10 -translate-y-1/2 cursor-pointer items-center justify-center rounded-full bg-primary-2 text-primary-1 ring-1 ring-primary-1/20 transition-colors hover:bg-hover-1 hover:text-white"
@@ -74,7 +74,7 @@ const ImageSlider = () => {
         onClick={onNextButtonClick}
         disabled={nextBtnDisabled}
         className="absolute top-1/2 right-4 flex h-10 w-10 -translate-y-1/2 cursor-pointer items-center justify-center rounded-full bg-primary-2 text-primary-1 ring-1 ring-primary-1/20 transition-colors hover:bg-hover-1 hover:text-white"
-      />
+      /> */}
 
       <div className="absolute bottom-4 left-1/2 flex -translate-x-1/2 gap-2">
         {scrollSnaps.map((_, index) => (

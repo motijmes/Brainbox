@@ -5,6 +5,7 @@ import {
   GradientBackground,
   GradientBackgroundOrignal,
 } from '@/components/gradient'
+import { GradientBackgroundSection, GradientBorder } from '@/components/gradient'
 import { Navbar } from '@/components/navbar'
 import { Heading, Lead, Subheading } from '@/components/text'
 import { AnimatedNumber } from '@/components/animated-number'
@@ -16,6 +17,8 @@ import {
   BookOpenIcon,
 } from '@heroicons/react/24/solid'
 import ContactPage from '@/components/custom/ContactPage'
+import Link from 'next/link'
+import { ChevronRightIcon } from '@heroicons/react/24/outline'
 
 function Header() {
   const sections = [
@@ -71,6 +74,28 @@ function Header() {
 
   const renderImageInterface = (section) => (
     <div className="relative rounded-2xl bg-white/80 p-2 ring-1 shadow-2xl shadow-black/5 ring-black/5 backdrop-blur-sm">
+      <GradientBackgroundSection
+        size="sm"
+        opacity={0.3}
+        position={{ top: '0', left: '0' }}
+      />
+      {/* Background decoration */}
+      <div className="absolute inset-0 -z-10">
+        <motion.div
+          initial={{ opacity: 0, scale: 0.8 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+          className="absolute top-0 left-1/2 h-[800px] w-[800px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-primary-1/5 blur-3xl"
+        />
+        <motion.div
+          initial={{ opacity: 0, scale: 0.8 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.8, delay: 0.2 }}
+          viewport={{ once: true }}
+          className="absolute right-0 bottom-0 h-[600px] w-[600px] translate-x-1/2 translate-y-1/2 rounded-full bg-primary-2/5 blur-3xl"
+        />
+      </div>
       <div className="absolute -top-2 right-10 left-10 h-px bg-gradient-to-r from-transparent via-primary-1/20 to-transparent" />
 
       <div className="mb-3 flex items-center gap-2 rounded-xl bg-background-2 p-3">
@@ -128,10 +153,22 @@ function Header() {
   return (
     <div className="relative overflow-hidden">
       {sections.map((section, index) => (
-        <div key={index} className="relative py-20 sm:py-24">
+        <div key={index} className="relative py-8 sm:py-12 md:py-16">
           <div className="absolute inset-0 -z-10">
-            <div className="absolute top-0 left-1/2 h-[800px] w-[800px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-primary-1/5 blur-3xl" />
-            <div className="absolute top-1/2 right-0 h-[600px] w-[600px] -translate-y-1/2 translate-x-1/2 rounded-full bg-primary-2/5 blur-3xl" />
+            <motion.div
+              initial={{ opacity: 0, scale: 0.8 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.8 }}
+              viewport={{ once: true }}
+              className="absolute top-0 left-1/2 h-[800px] w-[800px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-primary-1/5 blur-3xl"
+            />
+            <motion.div
+              initial={{ opacity: 0, scale: 0.8 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              viewport={{ once: true }}
+              className="absolute right-0 bottom-0 h-[600px] w-[600px] translate-x-1/2 translate-y-1/2 rounded-full bg-primary-2/5 blur-3xl"
+            />
           </div>
 
           <div className="mx-auto max-w-7xl px-6 lg:px-8">
@@ -153,13 +190,13 @@ function Header() {
                 </div>
 
                 <h2 className="font-display text-3xl/tight font-medium tracking-tight sm:text-4xl/tight">
-                  <span className="text-text">{section.title.regular}</span>
+                  <span className="text-text text-white">{section.title.regular}</span>
                   <span className="bg-gradient-to-r from-primary-1 to-primary-2 bg-clip-text text-transparent">
                     {section.title.gradient}
                   </span>
                 </h2>
 
-                <p className="mt-4 text-base/relaxed text-text/80">
+                <p className="mt-4 text-lg/7 font-medium text-primary-3 sm:text-xl/8 lg:mt-8">
                   {section.description}
                 </p>
 
@@ -174,7 +211,7 @@ function Header() {
                       className="flex items-start gap-3"
                     >
                       <feature.icon className="h-6 w-6 flex-none text-primary-1" />
-                      <span className="text-sm/6 text-text/70">
+                      <span className="text-sm/6 text-text/70 text-white">
                         {feature.text}
                       </span>
                     </motion.div>
@@ -201,18 +238,58 @@ function Header() {
 
 export default function AboutUs() {
   return (
-    <main className="overflow-hidden">
-      <GradientBackgroundOrignal />
-      <Container className="bg-linear-to-b from-white from-50% to-gray-100">
-        <Navbar section="aboutUs" />
+    <main className="overflow-hidden bg-black">
+      <Container className="relative">
+        <motion.div
+          initial={{ opacity: 0, y: -10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          className="text-white [&_a]:text-white [&_svg]:text-white [&_img]:brightness-0 [&_img]:invert"
+        >
+          <Navbar
+            banner={
+              <Link
+                href="/"
+                className="group flex items-center gap-1 rounded-full bg-background-1 px-3 py-0.5 text-sm/6 font-medium text-primary-2 border-primary-2 border-[1px] transition-colors duration-200 hover:bg-fuchsia-950/30"
+              >
+                <motion.span
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.6, delay: 0.4 }}
+                >
+                  Start Your Free Trial
+                </motion.span>
+                <motion.span
+                  initial={{ opacity: 0, x: -10 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.6, delay: 0.5 }}
+                >
+                  <ChevronRightIcon className="size-4 transition-transform duration-200 group-hover:translate-x-0.5" />
+                </motion.span>
+              </Link>
+            }
+            section="about-us"
+          />
+        </motion.div>
       </Container>
-      <div className="bg-linear-to-b from-gray-100 from-50% to-white">
+      
+      {/* Header section */}
+      <div className="relative">
         <Header />
       </div>
-      <div className="g-gradient-to-b bg-linear-to-b from-white via-gray-100 to-white">
+
+      {/* Contact section */}
+      <div className="relative">
         <ContactPage />
       </div>
-      <Footer />
+
+      {/* Footer */}
+      <div className="relative">
+        <div className="absolute inset-x-0 top-0">
+          <div className="h-px bg-gradient-to-r from-transparent via-primary-1/20 to-transparent" />
+        </div>
+        <Footer />
+      </div>
     </main>
   )
 }

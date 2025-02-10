@@ -1,5 +1,5 @@
 'use client'
-
+import { Button } from '@/components/button'
 import { SparklesIcon } from '@heroicons/react/24/outline'
 import { motion } from 'framer-motion'
 import {
@@ -153,12 +153,15 @@ export function BeamFlowDemo() {
               viewport={{ once: true }}
               className="mt-10"
             >
-              <a
-                href="#"
-                className="hover:text-hover-2 inline-flex items-center gap-2 text-sm font-medium text-primary-2"
+              <Button
+                href="/about-us"
+                className="bg-primary-2 text-white hover:bg-hover-1 text-lg px-8 py-4 text-xl"
+                as={motion.a}
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
               >
-                Learn more <ArrowRight className="h-4 w-4" />
-              </a>
+                Get Started Free
+              </Button>
             </motion.div>
           </motion.div>
 

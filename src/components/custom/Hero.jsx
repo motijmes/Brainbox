@@ -94,7 +94,7 @@ function Hero() {
               Finally get organized! Send those holiday e-blasts on auto-pilot, send weekly e-mails in a few clicks, send mass text
               messages, create your own ads super fast and super easy, and stop spending so much on other ad agencies!
               Start creating your own leads in a few clicks and let our Accessible Agents qualify your leads for you and book your
-              appointments on auto-pilot. It’s simply amazing to be on a walk and have a new appointment scheduled on your calendar
+              appointments on auto-pilot. It's simply amazing to be on a walk and have a new appointment scheduled on your calendar
               for you. Try it risk free.
             </motion.p>
 
@@ -103,14 +103,14 @@ function Hero() {
               className="mt-8 flex flex-col gap-x-6 gap-y-4 sm:flex-row lg:mt-12"
             >
               <Button
-                href="#"
+                href="/about-us"
                 as={motion.a}
                 whileHover={{
                   scale: 1.05,
                   transition: { duration: 0.2 },
                 }}
                 whileTap={{ scale: 0.95 }}
-                className={"bg-primary-2 hover:bg-hover-1 text-white"}
+                className={"bg-primary-2 hover:bg-hover-1 text-white px-8 py-4 text-xl"}
               >
                 Try It Risk Free!
               </Button>

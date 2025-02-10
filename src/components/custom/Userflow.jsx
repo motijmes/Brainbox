@@ -10,6 +10,7 @@ import {
 import { GradientBackgroundSection } from '../gradient'
 import SalesProcessFlow from './SalesProcessFlow'
 import ImageSlider from './ImageSlider'
+import { Button } from '@/components/button'
 
 export default function ModernUserflow() {
   return (
@@ -103,12 +104,15 @@ export default function ModernUserflow() {
               viewport={{ once: true }}
               className="mt-10"
             >
-              <a
-                href="#"
-                className="inline-flex items-center gap-2 text-sm font-medium text-primary-2 hover:text-hover-1"
+              <Button
+                href="/about-us"
+                className="bg-primary-2 text-white hover:bg-hover-1 text-lg px-8 py-4 text-xl"
+                as={motion.a}
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
               >
-                Learn more <span aria-hidden="true">→</span>
-              </a>
+                Get Started Free
+              </Button>
             </motion.div>
           </motion.div>
 

@@ -94,7 +94,7 @@ function Hero() {
               Finally get organized! Send those holiday e-blasts on auto-pilot, send weekly e-mails in a few clicks, send mass text
               messages, create your own ads super fast and super easy, and stop spending so much on other ad agencies!
               Start creating your own leads in a few clicks and let our Accessible Agents qualify your leads for you and book your
-              appointments on auto-pilot. It's simply amazing to be on a walk and have a new appointment scheduled on your calendar
+              appointments on auto-pilot. It&apos;s simply amazing to be on a walk and have a new appointment scheduled on your calendar
               for you. Try it risk free.
             </motion.p>
 

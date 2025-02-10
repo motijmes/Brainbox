@@ -2,10 +2,10 @@
 import { motion } from 'framer-motion'
 import {
   Calendar,
-  Linkedin,
   Mail,
   SearchCheck,
   SparklesIcon,
+  Sparkles
 } from 'lucide-react'
 import { GradientBackgroundSection } from '../gradient'
 import SalesProcessFlow from './SalesProcessFlow'
@@ -48,7 +48,7 @@ export default function ModernUserflow() {
             className="flex-1"
           >
             {/* Badge */}
-            <div className="mb-8 inline-flex items-center gap-2 rounded-full border border-primary-2 bg-primary-1/10 px-4 py-2 text-sm font-medium text-primary-2">
+            <div className="mb-8 inline-flex items-center gap-2 rounded-full border border-primary-2 bg-primary-1/10 px-4 py-2 font-medium text-primary-2">
               <SparklesIcon className="h-4 w-4" />
               Sales Automation
             </div>
@@ -56,27 +56,30 @@ export default function ModernUserflow() {
             {/* Title */}
             <h2 className="font-display text-3xl/tight font-medium tracking-tight sm:text-4xl/tight">
               <span className="text-primary-3">
-                Work every lead and scale your{' '}
+                Need to get{' '}
               </span>
               <span className="bg-gradient-to-r from-primary-1 to-primary-2 bg-clip-text text-transparent">
-                sales activity
+                organized?
               </span>
             </h2>
 
             {/* Description */}
             <p className="mt-4 text-base/relaxed text-primary-3">
-              Automate your sales process and turn leads into customers on
-              autopilot. Our intelligent system handles the routine tasks while
-              you focus on closing deals.
+              Let our proven Accessible Agents software help you get organized. It is honestly super fast
+              and super easy. You will not have to spend a whole week figuring out a new system. We
+              promise. As Realtors, we understand that trying new things is daunting. And we also
+              understand that in order to make more sales, we have to be organized. Our Accessible
+              Agents system handles routine tasks, like organization, while you focus on closing more
+              transactions.
             </p>
 
             {/* Feature list */}
             <div className="mt-8 space-y-4">
               {[
-                { icon: Mail, text: 'Nurture prospects automatically' },
-                { icon: SearchCheck, text: 'Integrate with your tech stack' },
-                { icon: Calendar, text: 'Book meetings 24/7' },
-                { icon: Linkedin, text: 'Personalise your outreach' },
+                { icon: Mail, text: 'Organizes all your leads' },
+                { icon: SearchCheck, text: 'Nurtures your prospects' },
+                { icon: Calendar, text: 'Your calendar fills with hot appointments' },
+                { icon: Sparkles, text: 'Personalized for you and your brand' },
               ].map((feature, idx) => (
                 <motion.div
                   key={idx}

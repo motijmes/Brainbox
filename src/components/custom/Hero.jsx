@@ -78,9 +78,9 @@ function Hero() {
               variants={textVariants}
               className="font-display text-4xl/tight text-primary-3 font-medium tracking-tight  sm:text-5xl lg:text-7xl/[0.8]"
             >
-              All-in-One Platform{' '}
+              AI Powered SALES MACHINE{' '}
               <span className="bg-gradient-to-r from-primary-1 to-primary-2 bg-clip-text text-transparent">
-                for Realtors, by Realtors
+                - More Leads, More Closings, Less Hassle
               </span>
             </motion.h1>
 
@@ -88,10 +88,14 @@ function Hero() {
               variants={textVariants}
               className="mt-6 max-w-3xl text-lg/7 font-medium text-primary-3 sm:text-xl/8 lg:mt-8"
             >
-              This platform, designed by real estate pros, understands your
-              needs. With tools like lead management, automated follow-ups, and
-              scheduling, it streamlines workflows and strengthens client
-              relationships—all in one hub.
+              Accessible Agents is created by Award Winning Real Estate sales agentsfor agents and by agents.
+              We know what you need to manage your business and make more sales because we were right there with you.
+              We careated the best All-in-One AI Platform customized to fit your needs.
+              Finally get organized! Send those holiday e-blasts on auto-pilot, send weekly e-mails in a few clicks, send mass text
+              messages, create your own ads super fast and super easy, and stop spending so much on other ad agencies!
+              Start creating your own leads in a few clicks and let our Accessible Agents qualify your leads for you and book your
+              appointments on auto-pilot. It’s simply amazing to be on a walk and have a new appointment scheduled on your calendar
+              for you. Try it risk free.
             </motion.p>
 
             <motion.div

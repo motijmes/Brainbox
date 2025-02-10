@@ -17,11 +17,11 @@ const FeatureSection = () => {
     {
       badge: { icon: SparklesIcon, text: 'Powered by AI' },
       title: {
-        regular: 'Stay Connected ',
-        gradient: 'On Auto-Pilot',
+        regular: 'Spending all your hard earned commissions on ',
+        gradient: 'advertising agencies?',
       },
       description:
-        'Leverage intelligent automation to keep your client relationships strong without the manual effort. Our AI-driven system handles the routine tasks while you focus on what matters most – closing deals and building lasting connections.',
+        'Leverage our proven ads that are done for you to keep your costs down. Simply pick the ad you want and start advertising! Not only that, keep your client relationships strong without the manual effort. Our AI driven system handles the routine follow up tasks while you focus on what matters most - closing deals and building lasting relationships.',
       features: [
         { icon: SparklesIcon, text: 'AI-powered email & SMS campaigns' },
         { icon: CircleStackIcon, text: 'Smart reminders & follow-ups' },
@@ -155,7 +155,7 @@ const renderImageInterface = (section, index) => (
                 className="flex-1"
               >
                 {/* Badge */}
-                <div className="mb-8 inline-flex items-center gap-2 rounded-full border-[1px] border-primary-2 bg-background-2 px-4 py-2 text-sm font-medium text-primary-2">
+                <div className="mb-8 inline-flex items-center gap-2 rounded-full border-[1px] border-primary-2 bg-background-2 px-4 py-2 font-medium text-primary-2">
                   <section.badge.icon className="h-4 w-4" />
                   {section.badge.text}
                 </div>
@@ -198,7 +198,7 @@ const renderImageInterface = (section, index) => (
                 {index === 0 && (
                   <div className="mt-10 flex items-center gap-4">
                     <Button
-                      className={'bg-primary-2 text-white hover:bg-hover-1'}
+                      className={'bg-primary-2 text-white hover:bg-hover-1 text-lg'}
                       as={motion.button}
                       whileHover={{ scale: 1.02 }}
                       whileTap={{ scale: 0.98 }}
@@ -207,7 +207,7 @@ const renderImageInterface = (section, index) => (
                     </Button>
                     <a
                       href="#"
-                      className="text-sm font-medium text-primary-2 hover:text-hover-1"
+                      className="font-medium text-primary-2 hover:text-hover-1 text-lg"
                     >
                       Learn more →
                     </a>

@@ -22,7 +22,11 @@ export default function Home() {
       <Hero />
       {/* Maintain mt-14 for desktop, reduce for mobile */}
       <main className="mt-8 sm:mt-10 md:mt-14">
-        <LogoCloud />
+        <h2 className="font-display text-3xl/tight font-medium tracking-tight sm:text-4xl/tight text-center">
+          <span className="bg-gradient-to-r from-primary-1 to-primary-2 bg-clip-text text-transparent">
+            How it works
+          </span>
+        </h2>
 
         {/* Keep py-16 for desktop, reduce for mobile */}
         <div className=" py-8 sm:py-12 md:py-16">

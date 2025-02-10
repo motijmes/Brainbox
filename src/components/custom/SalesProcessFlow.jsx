@@ -171,33 +171,33 @@ const SalesProcessFlow = ({ className = '', isAnimating = true }) => {
 
         <div className="flex size-full flex-col items-stretch justify-between">
           <div className="flex flex-col gap-6">
-            <Circle text="Create Winning Ads-Using AI" status={statuses[0]}>
+            <Circle text="Run Proven Winning Ads" status={statuses[0]}>
               <Facebook size={20} className="text-primary-2" />
             </Circle>
-            <Circle text="Capture Leads" className="ml-4" status={statuses[1]}>
+            <Circle text="AI Finds Leads" className="ml-4" status={statuses[1]}>
               <Search size={20} className="text-primary-2" />
             </Circle>
-            <Circle text="Bot Engages" className="ml-6" status={statuses[2]}>
+            <Circle text="AI talks to EVERY LEAD" className="ml-6" status={statuses[2]}>
               <Bot size={20} className="text-primary-2" />
             </Circle>
             <Circle
-              text="Gather Information"
+              text="New Lead placed in organized CRM"
               className="ml-6"
               status={statuses[3]}
             >
               <Search size={20} className="text-primary-2" />
             </Circle>
-            <Circle text="Qualify" status={statuses[4]} className="ml-5">
+            <Circle text="AI Qualifies Leads" status={statuses[4]} className="ml-5">
               <BadgeCheck size={20} className="text-primary-2" />
             </Circle>
             <Circle
-              text="Book Appointment"
+              text="AI Books Your New Appointment"
               className="ml-4"
               status={statuses[5]}
             >
               <Calendar size={20} className="text-primary-2" />
             </Circle>
-            <Circle text="Close Sales" status={statuses[6]}>
+            <Circle text="CLOSE MORE SALES FASTER!!" status={statuses[6]}>
               <HandshakeIcon size={20} className="text-primary-2" />
             </Circle>
           </div>

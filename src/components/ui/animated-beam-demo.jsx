@@ -15,7 +15,12 @@ import {
   MessageCircle,
   MessageSquare,
   MessagesSquare,
+  HeartHandshake
 } from 'lucide-react'
+import { FaGoogle } from "react-icons/fa";
+import { TbBrandGoogle } from "react-icons/tb";
+
+
 import { forwardRef, useRef } from 'react'
 import { GradientBackgroundSection, GradientBorder } from '../gradient'
 import { Logo } from '../logo'
@@ -37,6 +42,7 @@ export function BeamFlowDemo() {
   const containerRef = useRef(null)
   // Left side refs
   const sourceRefs = {
+    google: useRef(null),
     facebook: useRef(null),
     instagram: useRef(null),
     sms: useRef(null),
@@ -93,24 +99,22 @@ export function BeamFlowDemo() {
             className="flex-1"
           >
             {/* Badge */}
-            <div className="mb-8 inline-flex items-center gap-2 rounded-full border border-primary-2 bg-background-2 px-4 py-2 text-sm font-medium text-primary-2">
+            <div className="mb-8 inline-flex items-center gap-2 rounded-full border border-primary-2 bg-background-2 px-4 py-2 font-medium text-primary-2">
               <SparklesIcon className="h-4 w-4" />
               AI-Powered Flow
             </div>
 
             {/* Title */}
             <h2 className="font-display text-3xl/tight font-medium tracking-tight sm:text-4xl/tight">
-              <span className="text-white">Seamless </span>
               <span className="bg-gradient-to-r from-primary-1 to-primary-2 bg-clip-text text-transparent">
-                Lead Flow Automation
+                Losing Leads
               </span>
             </h2>
 
             {/* Description */}
             <p className="mt-4 text-base/relaxed text-primary-3">
-              Our intelligent system connects all your lead sources with
-              automated follow-ups, scheduling, and conversion optimization to
-              maximize your sales potential.
+              As Realtors, We know how important it is to follow up with every lead.
+              Accessible Agents communicates with every single lead in real time so NO LEAD GETS LEFT BEHIND
             </p>
 
             {/* Feature list */}
@@ -118,11 +122,12 @@ export function BeamFlowDemo() {
               {[
                 {
                   icon: MessageSquare,
-                  text: 'Engage with leads automatically 24/7',
+                  text: 'AI engages with leads automatically 24/7',
                 },
-                { icon: Calendar, text: 'Smart scheduling and follow-ups' },
-                { icon: Bot, text: 'AI-powered qualification and routing' },
-                { icon: FileCheck, text: 'Streamlined conversion tracking' },
+                { icon: Calendar, text: 'AI Schedules your appointments' },
+                { icon: Bot, text: 'Your Accessible Agents/AI never stops working' },
+                { icon: FileCheck, text: 'All the conversions are tracked' },
+                { icon: HeartHandshake, text: 'No lead will be left behind' },
               ].map((feature, idx) => (
                 <motion.div
                   key={idx}
@@ -170,14 +175,12 @@ export function BeamFlowDemo() {
                 className="relative flex h-[500px] w-full items-center justify-center overflow-hidden p-10 shadow-2xl shadow-black/5 ring-black/5 backdrop-blur-sm"
                 ref={containerRef}
               >
-                {/* Omnichannel Bot Tag */}
-                <div className="absolute top-14 inline-flex items-center gap-2 rounded-full border-primary-2 border-[1px] bg-background-2 px-4 py-2 text-sm font-medium text-nowrap text-primary-2">
-                  <BrainCircuit className="h-4 w-4" />
-                  Omnichannel Bot
-                </div>
                 <div className="flex w-full items-center justify-between">
                   {/* Left Column - 3 Sources */}
                   <div className="flex flex-col gap-12">
+                    <Circle ref={sourceRefs.google}>
+                      <TbBrandGoogle className="h-6 w-6 text-primary-2" />
+                    </Circle>
                     <Circle ref={sourceRefs.facebook}>
                       <Facebook className="h-6 w-6 text-primary-2" />
                     </Circle>

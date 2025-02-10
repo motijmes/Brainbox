@@ -45,7 +45,7 @@ const DemoShowcase = () => {
 
   const demos = [
     {
-      badge: { icon: BarChart3, text: 'Sales Automation' },
+      tabTitle: "24/7 Virtual Assistant",
       title: {
         regular: '24/7 Virtual Assistant ',
         gradient: 'Customers on Autopilot',
@@ -65,23 +65,23 @@ const DemoShowcase = () => {
       ],
     },
     {
-      badge: { icon: MessagesSquare, text: 'Customer Support' },
+      tabTitle: "Smart Chatbot in Action",
       title: {
-        regular: 'Smart Chatbot in Action ',
-        gradient: 'Customer Support',
+        regular: 'Have our Accessible Agents answer ',
+        gradient: 'inbound calls',
       },
       description:
-        'Transform your customer support with AI-powered automation. Provide instant responses, route tickets intelligently, and maintain high satisfaction levels around the clock.',
+        `Never miss another call. Impress your clients by having state of the art systems. Provide instant responses, answer questions, maintain high satisfaction around the clock so clients keep coming back.`,
       icon: MessagesSquare,
       video: {
         type: 'direct',
         videoSrc: '/demos/text_chatbot_demo.mkv',
       },
       features: [
-        { icon: CheckCircle2, text: 'Intelligent ticket routing' },
-        { icon: CheckCircle2, text: '24/7 AI customer support' },
-        { icon: CheckCircle2, text: 'Automated response suggestions' },
-        { icon: CheckCircle2, text: 'Customer satisfaction tracking' },
+        { icon: CheckCircle2, text: 'AI Voice' },
+        { icon: CheckCircle2, text: '24/7 Customer Support' },
+        { icon: CheckCircle2, text: 'AI Chat' },
+        { icon: CheckCircle2, text: 'Smart organizing systems' },
       ],
     },
   ]
@@ -127,7 +127,7 @@ const DemoShowcase = () => {
           <h2 className="font-display text-3xl/tight font-medium tracking-tight sm:text-4xl/tight">
             <span className="text-primary-3">See How It </span>
             <span className="bg-gradient-to-r from-primary-1 to-primary-2 bg-clip-text text-transparent">
-              Works in Action
+              Works
             </span>
           </h2>
         </motion.div>
@@ -157,7 +157,7 @@ const DemoShowcase = () => {
                           selected ? 'text-white' : 'text-primary-2',
                         ),
                       })}
-                      <span>{demo.title.regular.trim()}</span>
+                      <span>{demo.tabTitle}</span>
                     </div>
                   )}
                 </Tab>
@@ -180,12 +180,6 @@ const DemoShowcase = () => {
                     transition={{ duration: 0.5 }}
                     className="flex flex-col justify-center"
                   >
-                    {/* Badge */}
-                    <div className="mb-8 inline-flex items-center gap-2 rounded-full border-[1px] border-primary-2 bg-background-2 px-4 py-2 text-sm font-medium text-primary-2">
-                      <demo.badge.icon className="h-4 w-4" />
-                      {demo.badge.text}
-                    </div>
-
                     {/* Title */}
                     <h2 className="font-display text-3xl/tight font-medium tracking-tight sm:text-4xl/tight">
                       <span className="text-primary-3">
@@ -225,7 +219,7 @@ const DemoShowcase = () => {
                     {/* CTA Button */}
                     <div className="mt-10 flex items-center gap-4">
                       <Button
-                        className={'bg-primary-2 text-white hover:bg-hover-1'}
+                        className={'bg-primary-2 text-white hover:bg-hover-1 text-lg'}
                         as={motion.button}
                         whileHover={{ scale: 1.02 }}
                         whileTap={{ scale: 0.98 }}
@@ -234,7 +228,7 @@ const DemoShowcase = () => {
                       </Button>
                       <a
                         href="#"
-                        className="text-sm font-medium text-primary-2 hover:text-hover-1"
+                        className="text-lg font-medium text-primary-2 hover:text-hover-1"
                       >
                         Learn more →
                       </a>

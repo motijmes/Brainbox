@@ -55,7 +55,7 @@ const DemoShowcase = () => {
       icon: BarChart3,
       video: {
         type: 'direct',
-        videoSrc: '/demos/0202.mp4',
+        videoSrc: '/demos/WL voice ai demo video-VEED (2).mp4',
       },
       features: [
         { icon: CheckCircle2, text: 'AI-powered lead qualification' },
@@ -217,9 +217,9 @@ const DemoShowcase = () => {
                     </div>
 
                     {/* CTA Button */}
-                    <div className="mt-10 flex items-center gap-4">
+                    <div className="mt-16 flex items-center gap-4">
                       <Button
-                        className={'bg-primary-2 text-white hover:bg-hover-1 text-lg'}
+                        className={'bg-primary-2 text-white hover:bg-hover-1 text-lg px-8 py-4 text-xl'}
                         as={motion.button}
                         whileHover={{ scale: 1.02 }}
                         whileTap={{ scale: 0.98 }}

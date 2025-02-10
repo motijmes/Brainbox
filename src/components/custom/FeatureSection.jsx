@@ -155,7 +155,7 @@ const renderImageInterface = (section, index) => (
                 className="flex-1"
               >
                 {/* Badge */}
-                <div className="mb-8 inline-flex items-center gap-2 rounded-full border-[1px] border-primary-2 bg-background-2 px-4 py-2 font-medium text-primary-2">
+                <div className="mb-8 inline-flex items-center gap-2 rounded-full border-[1px] border-primary-2 bg-background-2 px-8 py-4 font-medium text-primary-2">
                   <section.badge.icon className="h-4 w-4" />
                   {section.badge.text}
                 </div>
@@ -196,9 +196,9 @@ const renderImageInterface = (section, index) => (
 
                 {/* CTA buttons - only for first section */}
                 {index === 0 && (
-                  <div className="mt-10 flex items-center gap-4">
+                  <div className="mt-16 flex items-center gap-4">
                     <Button
-                      className={'bg-primary-2 text-white hover:bg-hover-1 text-lg'}
+                      className={'bg-primary-2 text-white hover:bg-hover-1 text-lg px-8 py-4 text-xl'}
                       as={motion.button}
                       whileHover={{ scale: 1.02 }}
                       whileTap={{ scale: 0.98 }}

@@ -104,7 +104,7 @@ export function Navbar({ banner, section }) {
               <Link href="/" title="Home">
                 <Logo
                   className="h-9 text-text-white"
-                  variant={`${isHome ? 'light' : 'orignal'}`}
+                  
                 />
               </Link>
             </PlusGridItem>

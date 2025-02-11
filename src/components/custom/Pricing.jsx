@@ -226,6 +226,7 @@ function FeatureItem({ description, disabled = false, delay = 0 }) {
     </motion.li>
   )
 }
+
 function PricingCard({ tier, index, isAnnual }) {
   const [isFlipped, setIsFlipped] = useState(false)
 
@@ -266,8 +267,8 @@ function PricingCard({ tier, index, isAnnual }) {
         >
           {/* Front of card */}
           <div className="absolute h-full w-full backface-hidden">
-            <div className="h-full rounded-4xl  shadow-md ">
-              <div className="flex h-full flex-col  p-4 ring-1 shadow-2xl  sm:p-6">
+            <div className="h-full rounded-xl shadow-md">
+              <div className="flex h-full flex-col rounded-xl p-4  shadow-2xl sm:p-6">
                 <div>
                   <h3 className="text-base font-semibold break-words text-primary-2">
                     {tier.name}
@@ -286,15 +287,15 @@ function PricingCard({ tier, index, isAnnual }) {
                   </div>
                   <div className="relative z-10 mt-6">
                     <Button
-  href={tier.href}
-  variant="trial"
-  onMouseEnter={(e) => {
-    e.stopPropagation()
-    setIsFlipped(false)
-  }}      
->
-  Start free trial
-</Button>
+                      href={tier.href}
+                      variant="trial"
+                      onMouseEnter={(e) => {
+                        e.stopPropagation()
+                        setIsFlipped(false)
+                      }}
+                    >
+                      Start free trial
+                    </Button>
                   </div>
                 </div>
                 <div className="mt-6 sm:mt-8">
@@ -313,8 +314,8 @@ function PricingCard({ tier, index, isAnnual }) {
 
           {/* Back of card */}
           <div className="absolute h-full w-full rotate-y-180 backface-hidden">
-            <div className="h-full rounded-4xl p-2 shadow-md shadow-black/5">
-              <div className="flex h-full flex-col overflow-y-auto rounded-3xl bg-background-2 p-4 ring-1 shadow-2xl ring-black/5 sm:p-6">
+            <div className="h-full rounded-xl p-2 shadow-md shadow-black/5">
+              <div className="flex h-full flex-col overflow-y-auto rounded-xl bg-background-2 p-4 ring-1 shadow-2xl ring-black/5 sm:p-6">
                 <h3 className="text-base font-semibold text-primary-2">
                   Additional Details
                 </h3>
@@ -381,14 +382,13 @@ function PricingCards({ isAnnual }) {
         viewport={{ once: true }}
         transition={{ duration: 0.5 }}
       >
-        <GradientLight className="absolute inset-0 rounded-4xl ring-1 ring-black/5 ring-inset" />
+        <GradientLight className="absolute inset-0 rounded-[24px] ring-1 ring-black/5 ring-inset" />
       </motion.div>
 
       <Container className="relative">
         <div className="flex flex-col items-center">
           {/* First row */}
           <div className="w-full">
-            {/* Grid wrapper */}
             <div className="mx-auto grid max-w-[1200px] grid-cols-1 gap-8 lg:grid-cols-3">
               {firstRowTiers.map((tier, index) => (
                 <div key={index} className="mx-auto w-full max-w-[360px]">
@@ -405,7 +405,6 @@ function PricingCards({ isAnnual }) {
 
           {/* Second row */}
           <div className="mt-8 w-full">
-            {/* Grid wrapper with offset for 2 cards */}
             <div className="mx-auto grid max-w-[800px] grid-cols-1 gap-8 md:grid-cols-2">
               {secondRowTiers.map((tier, index) => (
                 <div key={index} className="mx-auto w-full max-w-[360px]">
@@ -424,6 +423,7 @@ function PricingCards({ isAnnual }) {
     </div>
   )
 }
+
 function Header({ handleBillingChange }) {
   return (
     <Container className="mt-16">
@@ -435,9 +435,7 @@ function Header({ handleBillingChange }) {
       >
         <Heading
           as="h1"
-          className={
-            'bg-gradient-to-r from-primary-1 to-primary-2 bg-clip-text text-transparent'
-          }
+          className="bg-gradient-to-r from-primary-1 to-primary-2 bg-clip-text text-transparent"
         >
           Pricing Plans
         </Heading>
@@ -452,7 +450,7 @@ function Header({ handleBillingChange }) {
 }
 
 export default function Pricing() {
-  const [isAnnual, setIsAnnual] = useState(true) // Set annual as default
+  const [isAnnual, setIsAnnual] = useState(true)
 
   const handleBillingChange = (isAnnual) => {
     setIsAnnual(isAnnual)

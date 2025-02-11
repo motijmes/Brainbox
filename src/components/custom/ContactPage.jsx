@@ -104,17 +104,17 @@ const ContactPage = () => {
               {
                 icon: Building2,
                 title: 'Visit our office',
-                details: ['123 Business Avenue', 'Silicon Valley, CA 94025'],
+                details: ['1 Riverway, Suite 1700,Houston, TX 77056'],
               },
               {
                 icon: MailIcon,
                 title: 'Email us',
-                details: ['support@example.com', 'sales@example.com'],
+                details: ['info@accessibleagents.com'],
               },
               {
                 icon: Phone,
                 title: 'Call us',
-                details: ['+1 (555) 123-4567', 'Mon-Fri from 8am to 5pm'],
+                details: ['+1 (832) 900-2881'],
               },
               {
                 icon: MessageSquare,

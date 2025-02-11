@@ -25,7 +25,7 @@ const ImageSlider = () => {
 
   const slides = [
     {
-      url: '/assets/slide1.png',
+      url: '/assets/slide1.gif',
       title: 'Dashboard View',
     },
     {

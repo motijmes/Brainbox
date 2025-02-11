@@ -218,8 +218,8 @@ const DemoShowcase = () => {
 
                     {/* CTA Button */}
                     <div className="mt-16 flex items-center gap-4">
-                      <Button
-                        href="/about-us"
+                    <Button
+                        href="/about-us#inline-CJncaycrRh5hGpavAAmu"
                         className="bg-primary-2 text-white hover:bg-hover-1 text-lg px-8 py-4 text-xl"
                       >
                         Get Started Free

@@ -36,7 +36,7 @@ function Hero() {
           <Navbar
             banner={
               <Link
-                href="/"
+                href="/about-us#inline-CJncaycrRh5hGpavAAmu"
                 className="group flex items-center gap-1 rounded-full bg-background-1 px-3 py-0.5 text-sm/6 font-medium text-primary-2 border-primary-2 border-[1px] transition-colors duration-200 hover:bg-fuchsia-950/30"
               >
                 <motion.span
@@ -88,7 +88,7 @@ function Hero() {
               variants={textVariants}
               className="mt-6 max-w-3xl text-lg/7 font-medium text-primary-3 sm:text-xl/8 lg:mt-8"
             >
-              Accessible Agents is created by Award Winning Real Estate sales agentsfor agents and by agents.
+              Accessible Agents is created by Award Winning Real Estate sales agents for agents and by agents.
               We know what you need to manage your business and make more sales because we were right there with you.
               We careated the best All-in-One AI Platform customized to fit your needs.
               Finally get organized! Send those holiday e-blasts on auto-pilot, send weekly e-mails in a few clicks, send mass text

@@ -10,7 +10,7 @@ import { motion } from 'framer-motion'
 import { Link } from './link'
 import { Logo } from './logo'
 import { PlusGrid, PlusGridItem, PlusGridRow } from './plus-grid'
-
+import { usePathname } from 'next/navigation'
 const links = [
   { href: '/', label: 'Home' },
   { href: '/about-us', label: 'About Us' },
@@ -20,15 +20,22 @@ const links = [
 ]
 
 function DesktopNav({isHome}) {
+  const pathname = usePathname()
+
   return (
     <nav className="relative hidden lg:flex">
       {links.map(({ href, label }) => (
         <PlusGridItem key={href} className="relative flex">
           <Link
             href={href}
-            className={`flex items-center px-4 py-3 text-base font-medium ${isHome?"text-white transition-colors data-hover:bg-text-white/10" : "text-gray-950 bg-blend-multiply data-hover:bg-text-white/10"}`}
+            className={`flex items-center px-4 py-3 text-base font-medium relative ${
+              isHome ? "text-white transition-colors data-hover:bg-text-white/10" : "text-gray-950 bg-blend-multiply data-hover:bg-text-white/10"
+            }`}
           >
             {label}
+            <div className={`absolute bottom-0 left-4 right-4 h-[2px] bg-current transform origin-left transition-transform duration-300 ${
+              pathname === href ? 'scale-x-100' : 'scale-x-0'
+            }`} />
           </Link>
         </PlusGridItem>
       ))}
@@ -61,12 +68,18 @@ function MobileNav({ isHome }) {
               rotateX: { duration: 0.3, delay: linkIndex * 0.1 },
             }}
             key={href}
+            className="relative"
           >
             <Link
               href={href}
-              className={`text-base font-medium ${isHome ? 'text-text-white hover:text-text-white/90' : 'text-primary-1 hover:text-text-primary-1/90'}`}
+              className={`text-base font-medium relative inline-block ${
+                isHome ? 'text-text-white hover:text-text-white/90' : 'text-primary-1 hover:text-text-primary-1/90'
+              }`}
             >
               {label}
+              <div className={`absolute bottom-0 left-0 right-0 h-[2px] bg-current transform origin-left transition-transform duration-300 ${
+                window.location.pathname === href ? 'scale-x-100' : 'scale-x-0'
+              }`} />
             </Link>
           </motion.div>
         ))}

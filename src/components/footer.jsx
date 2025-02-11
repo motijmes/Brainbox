@@ -127,8 +127,8 @@ function Sitemap() {
           <SitemapLink href="/pricing" index={1}>
             Pricing
           </SitemapLink>
-          <SitemapLink href="/services" index={2}>
-            Services
+          <SitemapLink href="/demo" index={2}>
+            Demo
           </SitemapLink>
           <SitemapLink href="/private-policy" index={3}>
             Private Policy

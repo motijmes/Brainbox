@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
 import { Container } from '@/components/container';
 import { SparklesIcon } from '@heroicons/react/24/outline';
@@ -10,19 +10,8 @@ import {
 } from 'lucide-react';
 
 const ContactPage = () => {
-  useEffect(() => {
-    const script = document.createElement('script');
-    script.src = 'https://api.accessibleagents.com/js/form_embed.js';
-    script.async = true;
-    document.body.appendChild(script);
-
-    // Cleanup function to remove the script when component unmounts
-    return () => {
-      document.body.removeChild(script);
-    };
-  }, []);
   return (
-    <div className="relative overflow-hidden py-24 bg-black">
+    <div id="contact-form" className="relative overflow-hidden py-24 bg-black">
       {/* Background decoration */}
       <div className="absolute inset-0 -z-10">
         <motion.div
@@ -41,7 +30,7 @@ const ContactPage = () => {
         />
       </div>
 
-      <Container className="">
+      <Container className="bg-black">
         {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -75,16 +64,16 @@ const ContactPage = () => {
             viewport={{ once: true }}
             className="rounded-3xl bg-[#121212] p-6 ring-1 shadow-2xl shadow-black/5 ring-black/5 backdrop-blur-sm lg:p-8"
           >
-            <div className="h-full">
+            <div className="h-[900px] mb-20 lg:h-[700px]">
               <iframe
                 src="https://api.accessibleagents.com/widget/form/CJncaycrRh5hGpavAAmu"
                 style={{ 
                   width: '100%', 
                   height: '100%', 
                   border: 'none', 
-                  borderRadius: '4px',
+                  borderRadius: '12px',
                   backgroundColor: 'transparent',
-                  display: 'block'
+                  marginBottom: '-20px'
                 }}
                 id="inline-CJncaycrRh5hGpavAAmu" 
                 data-layout="{'id':'INLINE'}"
@@ -95,7 +84,7 @@ const ContactPage = () => {
                 data-deactivation-type="neverDeactivate"
                 data-deactivation-value=""
                 data-form-name="Accessible Agents New Website Form"
-                data-height="534"
+                data-height="580"
                 data-layout-iframe-id="inline-CJncaycrRh5hGpavAAmu"
                 data-form-id="CJncaycrRh5hGpavAAmu"
                 title="Accessible Agents New Website Form"
@@ -158,7 +147,7 @@ const ContactPage = () => {
         </div>
       </Container>
     </div>
-  );
+  )
 };
 
 export default ContactPage;

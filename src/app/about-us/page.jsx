@@ -249,7 +249,7 @@ export default function AboutUs() {
           <Navbar
             banner={
               <Link
-                href="/"
+                href="/about-us#inline-CJncaycrRh5hGpavAAmu"
                 className="group flex items-center gap-1 rounded-full bg-background-1 px-3 py-0.5 text-sm/6 font-medium text-primary-2 border-primary-2 border-[1px] transition-colors duration-200 hover:bg-fuchsia-950/30"
               >
                 <motion.span

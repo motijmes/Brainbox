@@ -1,5 +1,5 @@
 'use client'
-import { Button } from '@/components/button'
+
 import { SparklesIcon } from '@heroicons/react/24/outline'
 import { motion } from 'framer-motion'
 import {
@@ -25,6 +25,7 @@ import { forwardRef, useRef } from 'react'
 import { GradientBackgroundSection, GradientBorder } from '../gradient'
 import { Logo } from '../logo'
 import { AnimatedBeam } from './animated-beam'
+import { Button } from '@/components/button'
 const Circle = forwardRef(({ className, children }, ref) => {
   return (
     <div
@@ -107,7 +108,7 @@ export function BeamFlowDemo() {
             {/* Title */}
             <h2 className="font-display text-3xl/tight font-medium tracking-tight sm:text-4xl/tight">
               <span className="bg-gradient-to-r from-primary-1 to-primary-2 bg-clip-text text-transparent">
-                Losing Leads
+                Losing Leads?
               </span>
             </h2>
 
@@ -145,24 +146,16 @@ export function BeamFlowDemo() {
               ))}
             </div>
 
-            {/* CTA button */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.4 }}
-              viewport={{ once: true }}
-              className="mt-10"
-            >
-              <Button
-                href="/about-us"
+            
+            {/* CTA Button */}
+            <div className="mt-16 flex items-center gap-4">
+            <Button
+                href="/about-us#inline-CJncaycrRh5hGpavAAmu"
                 className="bg-primary-2 text-white hover:bg-hover-1 text-lg px-8 py-4 text-xl"
-                as={motion.a}
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
               >
                 Get Started Free
               </Button>
-            </motion.div>
+            </div>
           </motion.div>
 
           {/* Animation section */}

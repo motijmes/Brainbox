@@ -54,6 +54,7 @@ export function GradientBackgroundSection({
   size = 'lg', // sm, md, lg, xl
   opacity = 0.8,
   position = { top: '-11rem', right: '-15rem' },
+  className = "",
 }) {
   const sizeClasses = {
     sm: 'h-48 w-48',
@@ -63,7 +64,7 @@ export function GradientBackgroundSection({
   }
 
   return (
-    <div className="absolute inset-0">
+    <div className={`"absolute inset-0" ${className}`}>
       <div
         className={clsx(
           'absolute transform-gpu',

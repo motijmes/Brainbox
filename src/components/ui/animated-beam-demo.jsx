@@ -65,11 +65,12 @@ export function BeamFlowDemo() {
   }
 
   return (
-    <div className="relative">
+    <div className="relative isolate">
       <GradientBackgroundSection
         size="sm"
         opacity={0.3}
         position={{ top: '0', left: '0' }}
+        className='-z-10'
       />
       {/* Background decoration */}
       <div className="absolute inset-0 -z-10">
@@ -89,7 +90,7 @@ export function BeamFlowDemo() {
         />
       </div>
 
-      <div className="mx-auto max-w-7xl px-6 lg:px-8">
+      <div className="mx-auto max-w-7xl px-6 lg:px-8 z-10">
         <div className="mx-auto flex flex-col gap-12 lg:flex-row lg:items-center lg:gap-16">
           {/* Content section */}
           <motion.div

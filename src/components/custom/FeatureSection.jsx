@@ -18,7 +18,7 @@ const FeatureSection = () => {
     {
       badge: { icon: SparklesIcon, text: 'Powered by AI' },
       title: {
-        regular: 'Spending all your hard earned commissions on ',
+        regular: 'Spending too much time and money on ad agencies? ',
         gradient: 'advertising agencies?',
       },
       description:

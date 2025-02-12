@@ -294,7 +294,7 @@ function PricingCard({ tier, index, isAnnual }) {
                         setIsFlipped(false)
                       }}
                     >
-                      Start free trial
+                      Start Get Started Today
                     </Button>
                   </div>
                 </div>

@@ -50,7 +50,7 @@ function BentoCard({
 
         {/* Content Section */}
         <motion.div
-          className="relative p-8"
+          className="relative h-full p-8"
           initial={{ opacity: 0.8 }}
           whileHover={{ opacity: 1 }}
         >
@@ -96,11 +96,11 @@ function PlatformFeatures() {
         'AI Contacts and nurtures every lead',
       icon: Bot,
       features: [
-        '24/7  System',
+        '24/7 System',
         'Works with SMS and Social Media',
         'Never miss another call or text',
       ],
-      className: 'lg:col-span-3',
+      className: 'lg:col-span-2',
     },
     {
       title: 'Automated Online Reviews',
@@ -110,7 +110,7 @@ function PlatformFeatures() {
       features: [
         'Work on all platforms',
         'AI automatically asks for reviews',
-        'Easilty Analyze and reply to client reviews',
+        'Easily Analyze and reply to client reviews',
       ],
       className: 'lg:col-span-2',
     },
@@ -143,27 +143,23 @@ function PlatformFeatures() {
       description:
         'E-mail marketing solutions all in one easy to use platform',
       icon: EnvelopeIcon,
-      features: ['Mass E-Mail Marketing', 'Custom Campaigns with your brand', 'E-Mail Click Tracking'],
+      features: [
+        'Mass E-Mail Marketing',
+        'Custom Campaigns with your brand',
+        'E-Mail Click Tracking'
+      ],
       className: 'lg:col-span-2',
     },
-    // {
-    //   title: 'Document Management',
-    //   description:
-    //     'Centralized document handling with smart organization features.',
-    //   icon: DocumentIcon,
-    //   features: [
-    //     'Cloud storage integration',
-    //     'Version control',
-    //     'Automated filing',
-    //   ],
-    //   className: 'lg:col-span-2',
-    // },
     {
       title: 'Marketing and Sales Analytics',
       description:
         'Tracking and reporting of all marketing and sales efforts.',
       icon: ArrowTrendingUpIcon,
-      features: ['Real-time analytics', 'Track GCI', 'Measure KPIs'],
+      features: [
+        'Real-time analytics',
+        'Track GCI',
+        'Measure KPIs'
+      ],
       className: 'lg:col-span-2',
     },
   ]
@@ -184,7 +180,7 @@ function PlatformFeatures() {
           transition={{ duration: 0.5 }}
           className="mb-16 text-center"
         >
-          <h2 className="text-base leading-7 font-semibold text-primary-2">
+          <h2 className="text-base font-semibold leading-7 text-primary-2">
             Platform Features
           </h2>
           <p className="mt-2 bg-gradient-to-r from-primary-1 to-primary-2 bg-clip-text text-4xl font-bold tracking-tight text-transparent sm:text-5xl">
@@ -192,7 +188,7 @@ function PlatformFeatures() {
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-6">
+        <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-6 lg:auto-rows-fr">
           {features.map((feature, index) => (
             <BentoCard
               key={index}

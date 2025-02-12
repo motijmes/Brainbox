@@ -43,7 +43,7 @@ function Hero() {
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.6, delay: 0.4 }}
               >
-                Start Your Get Started Today
+                Get Started Today
               </motion.span>
               <motion.span
                 initial={{ opacity: 0, x: -10 }}

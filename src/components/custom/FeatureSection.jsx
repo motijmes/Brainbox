@@ -18,8 +18,8 @@ const FeatureSection = () => {
     {
       badge: { icon: SparklesIcon, text: 'Powered by AI' },
       title: {
-        regular: 'Spending too much time and money on ad agencies? ',
-        gradient: 'advertising agencies?',
+        regular: 'Spending too much time and money on ',
+        gradient: 'ad agencies?',
       },
       description:
         'Use our proven, done-for-you ads to keep costs low—just pick one and start advertising! Our AI-driven system automates follow-ups and books the appointment, so you can focus on closing deals and building strong client relationships.',

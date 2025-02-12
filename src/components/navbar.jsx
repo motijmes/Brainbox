@@ -77,8 +77,7 @@ function MobileNav({ isHome }) {
               }`}
             >
               {label}
-              <div className={`absolute bottom-0 left-0 right-0 h-[2px] bg-current transform origin-left transition-transform duration-300 ${
-                window.location.pathname === href ? 'scale-x-100' : 'scale-x-0'
+              <div className={`absolute bottom-0 left-0 right-0 h-[2px] bg-current transform origin-left transition-transform duration-300 ${ window.location.pathname === href ? 'scale-x-100' : 'scale-x-0'
               }`} />
             </Link>
           </motion.div>

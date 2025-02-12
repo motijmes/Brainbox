@@ -78,9 +78,9 @@ function Hero() {
               variants={textVariants}
               className="font-display text-4xl/tight text-primary-3 font-medium tracking-tight  sm:text-5xl lg:text-7xl/[0.8]"
             >
-              AI Powered SALES MACHINE{' '}
+              All-in-One Platform{' '}
               <span className="bg-gradient-to-r from-primary-1 to-primary-2 bg-clip-text text-transparent">
-                - More Leads, More Closings, Less Hassle
+                for Realtors, by Realtors
               </span>
             </motion.h1>
 
@@ -88,32 +88,22 @@ function Hero() {
               variants={textVariants}
               className="mt-6 max-w-3xl text-lg/7 font-medium text-primary-3 sm:text-xl/8 lg:mt-8"
             >
-              Accessible Agents is created by Award Winning Real Estate sales agents for agents and by agents.
-              We know what you need to manage your business and make more sales because we were right there with you.
-              We careated the best All-in-One AI Platform customized to fit your needs.
-              Finally get organized! Send those holiday e-blasts on auto-pilot, send weekly e-mails in a few clicks, send mass text
-              messages, create your own ads super fast and super easy, and stop spending so much on other ad agencies!
-              Start creating your own leads in a few clicks and let our Accessible Agents qualify your leads for you and book your
-              appointments on auto-pilot. It&apos;s simply amazing to be on a walk and have a new appointment scheduled on your calendar
-              for you. Try it risk free.
+              AI-powered platform built by award-winning Realtors who understand your daily challenges firsthand. Transform your business with automated email campaigns, instant ad creation, and smart lead generation. Let our AI qualify leads and schedule appointments while you focus on what matters most: closing deals. 
             </motion.p>
 
+            
             <motion.div
               variants={textVariants}
               className="mt-8 flex flex-col gap-x-6 gap-y-4 sm:flex-row lg:mt-12"
             >
-              <Button
-                href="/about-us"
-                as={motion.a}
-                whileHover={{
-                  scale: 1.05,
-                  transition: { duration: 0.2 },
-                }}
-                whileTap={{ scale: 0.95 }}
-                className={"bg-primary-2 hover:bg-hover-1 text-white px-8 py-4 text-xl"}
+
+            <Button
+                href="/about-us#inline-CJncaycrRh5hGpavAAmu"
+                className="bg-primary-2 text-white hover:bg-hover-1 text-lg px-8 py-4 text-xl"
               >
                 Try It Risk Free!
               </Button>
+
             </motion.div>
           </motion.div>
 

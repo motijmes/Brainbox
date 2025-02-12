@@ -115,7 +115,7 @@ export function BeamFlowDemo() {
             {/* Description */}
             <p className="mt-4 text-base/relaxed text-primary-3">
               As Realtors, We know how important it is to follow up with every lead.
-              Accessible Agents communicates with every single lead in real time so NO LEAD GETS LEFT BEHIND
+              Accessible Agents communicates with every single lead in real time so<br/> No leads gets left behind.
             </p>
 
             {/* Feature list */}
@@ -126,9 +126,9 @@ export function BeamFlowDemo() {
                   text: 'AI engages with leads automatically 24/7',
                 },
                 { icon: Calendar, text: 'AI Schedules your appointments' },
-                { icon: Bot, text: 'Your Accessible Agents/AI never stops working' },
-                { icon: FileCheck, text: 'All the conversions are tracked' },
-                { icon: HeartHandshake, text: 'No lead will be left behind' },
+                { icon: Bot, text: 'Accessible Agents never stops working' },
+                { icon: FileCheck, text: 'Keep track of every conversation' },
+                { icon: HeartHandshake, text: 'No lead left behind' },
               ].map((feature, idx) => (
                 <motion.div
                   key={idx}

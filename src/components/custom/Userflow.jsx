@@ -78,7 +78,7 @@ export default function ModernUserflow() {
               {[
                 { icon: FolderCheck, text: 'Organizes all your leads' },
                 { icon: SearchCheck, text: 'Nurtures your prospects' },
-                { icon: Calendar, text: 'Bok meetings while you sleep' },
+                { icon: Calendar, text: 'Book meetings while you sleep' },
                 { icon: Mail, text: 'Send  automated E-Mails' },
               ].map((feature, idx) => (
                 <motion.div

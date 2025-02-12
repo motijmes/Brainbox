@@ -23,6 +23,7 @@ function Hero() {
     },
   }
 
+
   return (
     <div className="relative">
     {/* Removed the Gradient component */}

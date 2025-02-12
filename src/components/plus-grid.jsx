@@ -13,7 +13,7 @@ export function PlusGridRow({ className = '', children, isHome }) {
         'group/row relative isolate pt-[calc(--spacing(2)+1px)] last:pb-[calc(--spacing(2)+1px)]',
       )}
     >
-      <div
+      {/* <div
         aria-hidden="true"
         className="absolute inset-y-0 left-1/2 -z-10 w-screen -translate-x-1/2"
       >
@@ -29,7 +29,7 @@ export function PlusGridRow({ className = '', children, isHome }) {
         <div
           className={`absolute inset-x-0 bottom-2 hidden ${isHome ? 'h-px bg-gradient-to-r from-transparent via-white/10 to-transparent group-last/row:block' : 'border-b border-black/5 group-last/row:block'}`}
         ></div>
-      </div>
+      </div> */}
       {children}
     </div>
   )

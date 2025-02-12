@@ -5,13 +5,14 @@ import {
   Mail,
   SearchCheck,
   SparklesIcon,
+  FolderCheck,
   Sparkles
 } from 'lucide-react'
 import { GradientBackgroundSection } from '../gradient'
 import SalesProcessFlow from './SalesProcessFlow'
 import ImageSlider from './ImageSlider'
 import { Button } from '@/components/button'
-
+import { Link } from '@/components/link' 
 export default function ModernUserflow() {
   return (
     <div className="relative">
@@ -49,10 +50,10 @@ export default function ModernUserflow() {
             className="flex-1"
           >
             {/* Badge */}
-            <div className="mb-8 inline-flex items-center gap-2 rounded-full border border-primary-2 bg-primary-1/10 px-4 py-2 font-medium text-primary-2">
+            {/* <div className="mb-8 inline-flex items-center gap-2 rounded-full border border-primary-2 bg-primary-1/10 px-4 py-2 font-medium text-primary-2">
               <SparklesIcon className="h-4 w-4" />
               Sales Automation
-            </div>
+            </div> */}
 
             {/* Title */}
             <h2 className="font-display text-3xl/tight font-medium tracking-tight sm:text-4xl/tight">
@@ -66,21 +67,19 @@ export default function ModernUserflow() {
 
             {/* Description */}
             <p className="mt-4 text-base/relaxed text-primary-3">
-              Let our proven Accessible Agents software help you get organized. It is honestly super fast
-              and super easy. You will not have to spend a whole week figuring out a new system. We
-              promise. As Realtors, we understand that trying new things is daunting. And we also
-              understand that in order to make more sales, we have to be organized. Our Accessible
-              Agents system handles routine tasks, like organization, while you focus on closing more
-              transactions.
+            Stop drowning in tasks—our intuitive real estate platform streamlines your business
+            instantly. Built by Realtors who get it: no steep learning curves, no complex systems, just
+            simple solutions that work. Focus on closing deals while Accessible Agents handles the
+            rest of your business on autopilot.
             </p>
 
             {/* Feature list */}
             <div className="mt-8 space-y-4">
               {[
-                { icon: Mail, text: 'Organizes all your leads' },
+                { icon: FolderCheck, text: 'Organizes all your leads' },
                 { icon: SearchCheck, text: 'Nurtures your prospects' },
-                { icon: Calendar, text: 'Your calendar fills with hot appointments' },
-                { icon: Sparkles, text: 'Personalized for you and your brand' },
+                { icon: Calendar, text: 'Bok meetings while you sleep' },
+                { icon: Mail, text: 'Send  automated E-Mails' },
               ].map((feature, idx) => (
                 <motion.div
                   key={idx}
@@ -97,23 +96,15 @@ export default function ModernUserflow() {
             </div>
 
             {/* CTA button */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.4 }}
-              viewport={{ once: true }}
-              className="mt-10"
-            >
-              <Button
-                href="/about-us"
-                className="bg-primary-2 text-white hover:bg-hover-1 text-lg px-8 py-4 text-xl"
-                as={motion.a}
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-              >
-                Get Started Free
-              </Button>
-            </motion.div>
+            <div className="mt-16 flex items-center gap-4">
+              <Link href="/about-us#inline-CJncaycrRh5hGpavAAmu">
+                <Button
+                  className="bg-primary-2 text-white hover:bg-hover-1 text-lg px-8 py-4 text-xl"
+                >
+                  Get Started Free
+                </Button>
+              </Link>
+            </div>
           </motion.div>
 
           {/* Userflow animation section */}

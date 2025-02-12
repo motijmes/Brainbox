@@ -7,6 +7,7 @@ import {
   RocketLaunchIcon,
   SparklesIcon,
   UserGroupIcon,
+  CalendarIcon
 } from '@heroicons/react/24/solid'
 import { motion } from 'framer-motion'
 import { Button } from '../button'
@@ -21,11 +22,13 @@ const FeatureSection = () => {
         gradient: 'advertising agencies?',
       },
       description:
-        'Leverage our proven ads that are done for you to keep your costs down. Simply pick the ad you want and start advertising! Not only that, keep your client relationships strong without the manual effort. Our AI driven system handles the routine follow up tasks while you focus on what matters most - closing deals and building lasting relationships.',
+        'Use our proven, done-for-you ads to keep costs low—just pick one and start advertising! Our AI-driven system automates follow-ups and books the appointment, so you can focus on closing deals and building strong client relationships.',
       features: [
         { icon: SparklesIcon, text: 'AI-powered email & SMS campaigns' },
         { icon: CircleStackIcon, text: 'Smart reminders & follow-ups' },
         { icon: RocketLaunchIcon, text: 'Automated client engagement' },
+        { icon: CalendarIcon, text: 'Booked appointments on your calendar' }
+
       ],
       mockup: 'auto-pilot',
       image: '/assets/feature1.png'
@@ -33,7 +36,7 @@ const FeatureSection = () => {
     {
       badge: { icon: ChartBarIcon, text: 'Without Burnout' },
       title: {
-        regular: 'Build ',
+        regular: 'Get Organized ',
         gradient: 'Without Burnout',
       },
       description:
@@ -45,6 +48,8 @@ const FeatureSection = () => {
         },
         { icon: CheckCircleIcon, text: 'Automated cross-platform campaigns' },
         { icon: CheckCircleIcon, text: 'Streamlined workflow management' },
+        { icon: CheckCircleIcon, text: 'Clients and leads are automatically organized' },
+        
       ],
       mockup: 'burnout',
       image: '/assets/feature2.png'
@@ -56,11 +61,13 @@ const FeatureSection = () => {
         gradient: 'Easily & Efficiently',
       },
       description:
-        'Simplify lead management with a comprehensive tracking dashboard that gives you real-time visibility into your pipeline. Automated tools work alongside customizable dashboards to keep you on top of every opportunity.',
+        'Easily track your leads with a real-time dashboard and smart automation. AI organizes and nurtures leads, so you never miss an opportunity.',
       features: [
         { icon: CheckCircleIcon, text: 'Real-time lead pipeline tracking' },
         { icon: CheckCircleIcon, text: 'Automated follow-up system' },
-        { icon: CheckCircleIcon, text: 'Customizable engagement workflows' },
+        { icon: CheckCircleIcon, text: 'Customizable E-Mail System' },
+        { icon: CheckCircleIcon, text: 'Keep track your KPI and GCI' }
+        
       ],
       mockup: 'leads',
       image: '/assets/feature3.png'
@@ -108,7 +115,7 @@ const renderImageInterface = (section, index) => (
       <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
 
       {/* Optional floating UI elements */}
-      <div className="absolute right-4 bottom-4 left-4 flex items-center justify-between">
+      {/* <div className="absolute right-4 bottom-4 left-4 flex items-center justify-between">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -121,7 +128,7 @@ const renderImageInterface = (section, index) => (
             {section.badge.text}
           </span>
         </motion.div>
-      </div>
+      </div> */}
     </motion.div>
 
     {/* Decorative elements */}
@@ -155,10 +162,10 @@ const renderImageInterface = (section, index) => (
                 className="flex-1"
               >
                 {/* Badge */}
-                <div className="mb-8 inline-flex items-center gap-2 rounded-full border-[1px] border-primary-2 bg-background-2 px-8 py-4 font-medium text-primary-2">
+                {/* <div className="mb-8 inline-flex items-center gap-2 rounded-full border-[1px] border-primary-2 bg-background-2 px-8 py-4 font-medium text-primary-2">
                   <section.badge.icon className="h-4 w-4" />
                   {section.badge.text}
-                </div>
+                </div> */}
 
                 {/* Title */}
                 <h2 className="font-display text-3xl/tight font-medium tracking-tight sm:text-4xl/tight">

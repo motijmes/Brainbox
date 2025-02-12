@@ -9,8 +9,10 @@ import {
   SparklesIcon,
   UserGroupIcon,
   VideoCameraIcon,
+  RobotIcon
 } from '@heroicons/react/24/outline'
 import { clsx } from 'clsx'
+import { Bot } from 'lucide-react'
 import { motion } from 'framer-motion'
 import { Container } from '../container'
 import { GradientBorder } from '../gradient'
@@ -89,91 +91,79 @@ function BentoCard({
 function PlatformFeatures() {
   const features = [
     {
-      title: 'Lead Management',
+      title: 'AI Voice Agent & Receptionist',
       description:
-        'A centralized system for capturing and tracking leads with automated workflow management.',
-      icon: UserGroupIcon,
+        'AI Contacts and nurtures every lead',
+      icon: Bot,
       features: [
-        'Real-time lead pipeline tracking',
-        'Automated follow-up system',
-        'Customizable engagement workflows',
+        '24/7  System',
+        'Works with SMS and Social Media',
+        'Never miss another call or text',
       ],
-      className: 'lg:col-span-2',
+      className: 'lg:col-span-3',
     },
     {
       title: 'Automated Online Reviews',
       description:
-        'Streamline the collection and management of client reviews across platforms.',
+        'Easily gather and manage client reviews in one place',
       icon: ChatBubbleBottomCenterTextIcon,
       features: [
-        'Multi-platform review management',
-        'Automated review collection',
-        'Sentiment analysis and reporting',
+        'Work on all platforms',
+        'AI automatically asks for reviews',
+        'Easilty Analyze and reply to client reviews',
       ],
       className: 'lg:col-span-2',
     },
     {
       title: 'Meeting Confirmations',
       description:
-        'Smart scheduling system with automated reminders and follow-ups.',
+        'AI schedules meetings with automated reminders and follow-ups',
       icon: VideoCameraIcon,
       features: [
-        'Automated scheduling system',
-        'Smart reminder sequences',
+        'Automated scheduling',
+        'Smart Meeting reminder',
         'Calendar integration',
       ],
       className: 'lg:col-span-2',
     },
     {
-      title: 'AI Receptionist & Voice Agent',
+      title: 'Lead Management',
       description:
-        'Intelligent automation for client communication and engagement.',
-      icon: SparklesIcon,
+        'A single place to track leads and automate follow-ups',
+      icon: UserGroupIcon,
       features: [
-        'Natural language processing',
-        '24/7 automated responses',
-        'Multi-channel support',
+        'Real-time lead pipeline tracking',
+        'Automated lead follow-up system',
+        'Customizable simple database',
       ],
-      className: 'lg:col-span-3',
+      className: 'lg:col-span-2',
     },
     {
-      title: 'Automation Studio',
+      title: 'E-mail Marketing',
       description:
-        'Powerful tools for creating and managing automated workflows.',
-      icon: ChartBarIcon,
-      features: [
-        'Visual workflow builder',
-        'Campaign automation',
-        'Performance analytics',
-      ],
-      className: 'lg:col-span-3',
-    },
-    {
-      title: 'Email Marketing',
-      description:
-        'Comprehensive email marketing solution with smart automation.',
+        'E-mail marketing solutions all in one easy to use platform',
       icon: EnvelopeIcon,
-      features: ['Campaign automation', 'A/B testing', 'Performance tracking'],
+      features: ['Mass E-Mail Marketing', 'Custom Campaigns with your brand', 'E-Mail Click Tracking'],
       className: 'lg:col-span-2',
     },
+    // {
+    //   title: 'Document Management',
+    //   description:
+    //     'Centralized document handling with smart organization features.',
+    //   icon: DocumentIcon,
+    //   features: [
+    //     'Cloud storage integration',
+    //     'Version control',
+    //     'Automated filing',
+    //   ],
+    //   className: 'lg:col-span-2',
+    // },
     {
-      title: 'Document Management',
+      title: 'Marketing and Sales Analytics',
       description:
-        'Centralized document handling with smart organization features.',
-      icon: DocumentIcon,
-      features: [
-        'Cloud storage integration',
-        'Version control',
-        'Automated filing',
-      ],
-      className: 'lg:col-span-2',
-    },
-    {
-      title: 'Marketing Analytics',
-      description:
-        'Comprehensive tracking and reporting of all marketing efforts.',
+        'Tracking and reporting of all marketing and sales efforts.',
       icon: ArrowTrendingUpIcon,
-      features: ['Real-time analytics', 'Custom reporting', 'ROI tracking'],
+      features: ['Real-time analytics', 'Track GCI', 'Measure KPIs'],
       className: 'lg:col-span-2',
     },
   ]
@@ -198,7 +188,7 @@ function PlatformFeatures() {
             Platform Features
           </h2>
           <p className="mt-2 bg-gradient-to-r from-primary-1 to-primary-2 bg-clip-text text-4xl font-bold tracking-tight text-transparent sm:text-5xl">
-            Our All-In-One Platform
+            The All-In-One AI Platform
           </p>
         </motion.div>
 

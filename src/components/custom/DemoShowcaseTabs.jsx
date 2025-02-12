@@ -9,7 +9,7 @@ import { AnimatePresence, motion } from 'framer-motion'
 import { CheckCircle2 } from 'lucide-react'
 import { createElement, useState } from 'react'
 
-import { BarChart3, MessagesSquare } from 'lucide-react'
+import { BarChart3, MessagesSquare, Bot } from 'lucide-react'
 import { GradientBorder } from '../gradient'
 
 // Video Player Component
@@ -45,43 +45,43 @@ const DemoShowcase = () => {
 
   const demos = [
     {
-      tabTitle: "24/7 Virtual Assistant",
+      tabTitle: "Voice AI",
       title: {
-        regular: '24/7 Virtual Assistant ',
-        gradient: 'Customers on Autopilot',
+        regular: 'Accessible Agents ',
+        gradient: 'Voice AI',
       },
       description:
-        'Automate your sales process with intelligent workflows. Our AI-driven system handles the routine tasks while you focus on what matters most – closing deals and building lasting connections.',
-      icon: BarChart3,
+        ' Your clients receive instant, 24/7 responsiveness—never miss another opportunity. Stand out from the competition with premium service that works while you sleep. Welcome to modern real estate: where exceptional service never takes a break.',
+      icon: Bot,
       video: {
         type: 'direct',
         videoSrc: '/demos/WL voice ai demo video-VEED (2).mp4',
       },
       features: [
-        { icon: CheckCircle2, text: 'AI-powered lead qualification' },
-        { icon: CheckCircle2, text: 'Automated follow-up sequences' },
-        { icon: CheckCircle2, text: 'Smart meeting scheduling' },
-        { icon: CheckCircle2, text: 'Performance analytics dashboard' },
+        { icon: CheckCircle2, text: 'AI Voice' },
+        { icon: CheckCircle2, text: 'AI Chat' },
+        { icon: CheckCircle2, text: '24/7 Customer Support' },
+        { icon: CheckCircle2, text: 'Smart organizing systems' },
       ],
     },
     {
       tabTitle: "Smart Chatbot in Action",
       title: {
-        regular: 'Have our Accessible Agents answer ',
-        gradient: 'inbound calls',
+        regular: 'Smart Chatbot',
+        gradient: ' in Action',
       },
       description:
-        `Never miss another call. Impress your clients by having state of the art systems. Provide instant responses, answer questions, maintain high satisfaction around the clock so clients keep coming back.`,
+        `Transform your customer lead integration with AI-powered automation. Provide instant responses, book appointments, and maintain high satisfaction levels around the clock.`,
       icon: MessagesSquare,
       video: {
         type: 'direct',
-        videoSrc: '/demos/text_chatbot_demo.mkv',
+        videoSrc: '/demos/smart chatbot in action.mp4',
       },
       features: [
-        { icon: CheckCircle2, text: 'AI Voice' },
+        { icon: CheckCircle2, text: '“Erika” Chatbot interacts like a human' },
+        { icon: CheckCircle2, text: '"Erika” books appointments' },
         { icon: CheckCircle2, text: '24/7 Customer Support' },
-        { icon: CheckCircle2, text: 'AI Chat' },
-        { icon: CheckCircle2, text: 'Smart organizing systems' },
+        { icon: CheckCircle2, text: 'No Lead Left Behind' },
       ],
     },
   ]
@@ -112,9 +112,9 @@ const DemoShowcase = () => {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="mb-16 text-center"
+          className="mb-16 text-center mt-5"
         >
-          <motion.div
+          {/* <motion.div
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
@@ -123,7 +123,7 @@ const DemoShowcase = () => {
           >
             <SparklesIcon className="h-4 w-4" />
             Product Demo
-          </motion.div>
+          </motion.div> */}
           <h2 className="font-display text-3xl/tight font-medium tracking-tight sm:text-4xl/tight">
             <span className="text-primary-3">See How It </span>
             <span className="bg-gradient-to-r from-primary-1 to-primary-2 bg-clip-text text-transparent">

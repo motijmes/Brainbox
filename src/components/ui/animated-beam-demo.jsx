@@ -100,10 +100,10 @@ export function BeamFlowDemo() {
             className="flex-1"
           >
             {/* Badge */}
-            <div className="mb-8 inline-flex items-center gap-2 rounded-full border border-primary-2 bg-background-2 px-4 py-2 font-medium text-primary-2">
+            {/* <div className="mb-8 inline-flex items-center gap-2 rounded-full border border-primary-2 bg-background-2 px-4 py-2 font-medium text-primary-2">
               <SparklesIcon className="h-4 w-4" />
               AI-Powered Flow
-            </div>
+            </div> */}
 
             {/* Title */}
             <h2 className="font-display text-3xl/tight font-medium tracking-tight sm:text-4xl/tight">

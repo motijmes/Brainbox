@@ -198,7 +198,7 @@ const SalesProcessFlow = ({ className = '', isAnimating = true }) => {
             >
               <Calendar size={20} className="text-primary-2" />
             </Circle>
-            <Circle text="AI Qualifies Leads" status={statuses[6]} className="ml-2">
+            <Circle text="Automated Google Review" status={statuses[6]} className="ml-2">
               <TbBrandGoogle size={20} className="text-primary-2" />
             </Circle>
             {/* <Circle text="Automated Google Reviews" status={statuses[6]}>

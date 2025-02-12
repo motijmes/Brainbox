@@ -139,12 +139,12 @@ const DemoShowcase = () => {
               {demos.map((demo) => (
                 <Tab
                   key={demo.title.regular}
-                  className="focus:outline-none focus-visible:outline-none text-primary-2 hover:text-hover-1 flex gap-2 border-[2px] rounded-lg border-primary-2"
+                  className="focus:outline-none focus-visible:outline-none min-w-[200px] text-primary-2 hover:text-hover-1 flex gap-2 border-[2px] rounded-lg border-primary-2"
                 >
                   {({ selected }) => (
                     <div
                       className={clsx(
-                        'relative flex items-center gap-2  px-6 py-3 text-sm font-medium',
+                        'relative flex items-center justify-center w-full gap-2 px-6 py-3 text-sm font-medium',
                         'transition-all duration-200',
                         selected
                           ? ' bg-primary-2 text-white shadow-sm'

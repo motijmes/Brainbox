@@ -130,8 +130,8 @@ function Sitemap() {
           <SitemapLink href="/demo" index={2}>
             Demo
           </SitemapLink>
-          <SitemapLink href="/private-policy" index={3}>
-            Private Policy
+          <SitemapLink href="/policy" index={3}>
+            Privacy Policy
           </SitemapLink>
         </SitemapLinks>
       </div>

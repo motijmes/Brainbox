@@ -37,52 +37,49 @@ function BentoCard({
       className={clsx(
         className,
         'group relative flex flex-col overflow-hidden rounded-lg',
-        'bg-background ring-1 shadow-lg backdrop-blur-sm',
         'transition-all duration-300 ease-in-out',
-        'data-dark:bg-gray-800/90 data-dark:ring-white/15',
       )}
     >
-      <GradientBorder>
-        {/* Decorative gradient blob */}
-        <div className="absolute inset-0 -z-10">
-          <div className="from-primary-500/20 to-secondary-500/20 absolute inset-0 bg-gradient-to-br via-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+      <GradientBorder className="absolute inset-0">
+        <div className="h-full w-full rounded-lg bg-background ring-1 ring-white/10 transition-all duration-300 group-hover:ring-white/20">
+          {/* Decorative gradient blob */}
+          <div className="absolute inset-0 -z-10">
+            <div className="from-primary-500/20 to-secondary-500/20 absolute inset-0 bg-gradient-to-br via-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+          </div>
+
+          {/* Content Section */}
+          <motion.div
+            className="relative h-full p-8"
+            initial={{ opacity: 0.8 }}
+            whileHover={{ opacity: 1 }}
+          >
+            {/* Icon */}
+            <div className="mb-4">
+              <Icon className="h-8 w-8 text-primary-2" />
+            </div>
+
+            {/* Title & Description */}
+            <h3 className="mb-2 text-lg font-semibold text-primary-3">{title}</h3>
+            <p className="mb-6 text-sm text-primary-3">{description}</p>
+
+            {/* Feature List */}
+            <div className="space-y-3">
+              {features.map((feature, idx) => (
+                <motion.div
+                  key={idx}
+                  initial={{ opacity: 0, x: -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  transition={{ delay: idx * 0.1 }}
+                  viewport={{ once: true }}
+                  className="flex items-start gap-2"
+                >
+                  <SparklesIcon className="mt-0.5 h-5 w-5 shrink-0 text-primary-2" />
+                  <span className="text-sm text-primary-3">{feature}</span>
+                </motion.div>
+              ))}
+            </div>
+          </motion.div>
         </div>
-
-        {/* Content Section */}
-        <motion.div
-          className="relative h-full p-8"
-          initial={{ opacity: 0.8 }}
-          whileHover={{ opacity: 1 }}
-        >
-          {/* Icon */}
-          <div className="mb-4">
-            <Icon className="h-8 w-8 text-primary-2" />
-          </div>
-
-          {/* Title & Description */}
-          <h3 className="mb-2 text-lg font-semibold text-primary-3">{title}</h3>
-          <p className="mb-6 text-sm text-primary-3">{description}</p>
-
-          {/* Feature List */}
-          <div className="space-y-3">
-            {features.map((feature, idx) => (
-              <motion.div
-                key={idx}
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ delay: idx * 0.1 }}
-                viewport={{ once: true }}
-                className="flex items-start gap-2"
-              >
-                <SparklesIcon className="mt-0.5 h-5 w-5 shrink-0 text-primary-2" />
-                <span className="text-sm text-primary-3">{feature}</span>
-              </motion.div>
-            ))}
-          </div>
-        </motion.div>
-
-        {/* Hover effect overlay */}
-        <div className="absolute inset-0 rounded-lg ring-1 ring-white/10 transition-all duration-300 ring-inset group-hover:ring-white/20" />
       </GradientBorder>
     </motion.div>
   )

@@ -1,11 +1,11 @@
 import '@/styles/tailwind.css'
 import Script from 'next/script'
+import ChatWidget from '@/components/ui/ChatWidget'
 
 export const metadata = {
   title: {
     template: '%s - Accessible Agents',
-    default:
-      'Accessible Agents - All-in-One Platform for Realtors, by Realtors',
+    default: 'Accessible Agents - All-in-One Platform for Realtors, by Realtors',
   },
 }
 
@@ -19,8 +19,10 @@ export default function RootLayout({ children }) {
         />
         <Script src="https://api.accessibleagents.com/js/form_embed.js" />
       </head>
-      {/* <body className="text-gray-950 antialiased">{children}</body> */}
-      <body className="antialiased bg-background-1">{children}</body>
+      <body className="antialiased bg-background-1">
+        {children}
+        <ChatWidget />
+      </body>
     </html>
   )
 }

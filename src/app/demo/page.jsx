@@ -262,7 +262,7 @@ export default function Demo() {
                         href="/about-us#inline-CJncaycrRh5hGpavAAmu"
                         className="bg-primary-2 text-white hover:bg-hover-1 text-lg px-8 py-4 text-xl"
                       >
-                        Get Started Free
+                        Get Started Today
                       </Button>
                     </div>
                 </motion.div>

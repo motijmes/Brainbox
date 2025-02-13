@@ -300,7 +300,7 @@ function PricingCard({ tier, index, isAnnual }) {
                       <p>per {isAnnual ? 'year' : 'month'}</p>
                     </div>
                   </div>
-                  <div className="relative z-0 mt-6">
+                  {/* <div className="relative z-0 mt-6">
                     <Button
                       href={tier.href}
                       variant="trial"
@@ -311,7 +311,7 @@ function PricingCard({ tier, index, isAnnual }) {
                     >
                       Get Started Today
                     </Button>
-                  </div>
+                  </div> */}
                 </div>
                 <div className="mt-6 sm:mt-8">
                   <h4 className="text-sm font-semibold text-primary-3">

@@ -167,9 +167,9 @@ export function BeamFlowDemo() {
             viewport={{ once: true }}
             className="flex-1"
           >
-            <GradientBorder className="relative mx-auto w-full max-w-lg">
+            <GradientBorder className="relative mx-auto w-full max-w-lg h-[500px]">
               <div
-                className="relative flex h-[500px] w-full items-center justify-center overflow-hidden p-10 shadow-2xl shadow-black/5 ring-black/5 backdrop-blur-sm"
+                className="relative flex h-full w-full items-center justify-center overflow-hidden p-10 rounded-[14px]"
                 ref={containerRef}
               >
                 <div className="flex w-full items-center justify-between">
@@ -190,8 +190,7 @@ export function BeamFlowDemo() {
                   </div>
 
                   {/* Center - Bot */}
-                  <Circle ref={botRef} className="">
-                    {/* <Bot className="h-10 w-10 text-primary-2" /> */}
+                  <Circle ref={botRef}>
                     <Logo className="h-9 text-primary-2" variant={'orignal'} />
                   </Circle>
 
@@ -237,10 +236,6 @@ export function BeamFlowDemo() {
                     reverse
                   />
                 ))}
-
-                {/* Decorative elements */}
-                {/* <div className="absolute -right-6 -bottom-6 h-32 w-32 rounded-full bg-gradient-to-br from-primary-1/30 to-primary-2/30 blur-xl" />
-              <div className="absolute -top-6 -left-6 h-32 w-32 rounded-full bg-gradient-to-br from-primary-2/30 to-primary-1/30 blur-xl" /> */}
               </div>
             </GradientBorder>
           </motion.div>

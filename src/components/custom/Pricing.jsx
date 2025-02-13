@@ -1,11 +1,11 @@
 'use client'
 
+import React, { useState, useEffect } from 'react'
 import { Button } from '@/components/button'
 import { Container } from '@/components/container'
 import { GradientBackgroundSection, GradientBorder, GradientLight } from '@/components/gradient'
 import { Heading, Lead, Subheading } from '@/components/text'
 import { motion } from 'framer-motion'
-import { useState } from 'react'
 import PricingToggle from '../pricing-toggle'
 
 const tiers = [
@@ -228,31 +228,90 @@ function FeatureItem({ description, disabled = false, delay = 0 }) {
 }
 
 function PricingCard({ tier, index, isAnnual }) {
-  const [isFlipped, setIsFlipped] = useState(false);
-  
+  const [isFlipped, setIsFlipped] = useState(false)
+  const [isMobile, setIsMobile] = useState(false)
+
+  useEffect(() => {
+    const checkIfMobile = () => {
+      setIsMobile(window.innerWidth < 768)
+    }
+
+    checkIfMobile()
+    window.addEventListener('resize', checkIfMobile)
+
+    return () => window.removeEventListener('resize', checkIfMobile)
+  }, [])
+
   const calculatePrice = () => {
     if (isAnnual) {
-      const annualPrice = tier.priceMonthly * 12;
-      const discount = annualPrice * 0.1;
-      return (annualPrice - discount).toFixed(0);
+      const annualPrice = tier.priceMonthly * 12
+      const discount = annualPrice * 0.1
+      return (annualPrice - discount).toFixed(0)
     }
-    return tier.priceMonthly;
-  };
+    return tier.priceMonthly
+  }
 
-  const price = calculatePrice();
+  const price = calculatePrice()
 
   const handleClick = (e) => {
-    // Don't flip if clicking a button
-    if (!e.target.closest('button')) {
-      setIsFlipped(!isFlipped);
+    if (isMobile && !e.target.closest('button')) {
+      setIsFlipped(!isFlipped)
     }
-  };
+  }
 
+  const handleMouseEnter = () => {
+    if (!isMobile) {
+      setIsFlipped(true)
+    }
+  }
+
+  const handleMouseLeave = () => {
+    if (!isMobile) {
+      setIsFlipped(false)
+    }
+  }
+
+  // Function to format keys without spaces between capital letters
+  const formatKey = (key) => {
+    // Replace common abbreviations before adding spaces
+    const abbreviations = {
+      'IVR': 'IVR',
+      'API': 'API',
+      'ROI': 'ROI',
+      'SMS': 'SMS',
+      'MMS': 'MMS',
+      'DM': 'DM',
+      'SEO': 'SEO',
+      'A P I': 'API',
+      'I V R': 'IVR',
+      'D M': 'DM'
+    }
+
+    // Check if the key is a known abbreviation
+    for (const [abbr, replacement] of Object.entries(abbreviations)) {
+      if (key.includes(abbr)) {
+        return key.replace(abbr, replacement).replace(/([A-Z])/g, ' $1').trim()
+      }
+    }
+
+    // Default case: add space before capitals, but not between consecutive capitals
+    return key.replace(/([a-z])([A-Z])/g, '$1 $2').trim()
+  }
+  const getDisplayText = (key) => {
+    const specialCases = {
+      'customIVR': 'Custom IVR',
+      'enterpriseAPI': 'Enterprise API',
+      'instagramDM': 'Instagram DM'
+    }
+    return specialCases[key] || formatKey(key)
+  }
   return (
     <GradientBorder>
       <div
         className="perspective-1000 relative h-[600px] w-full min-w-[280px]"
         onClick={handleClick}
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
       >
         <div
           className={`transform-style-3d relative h-full w-full transition-transform duration-500 ${
@@ -302,7 +361,7 @@ function PricingCard({ tier, index, isAnnual }) {
                   Additional Details
                 </h3>
 
-                {/* Usage Costs */}
+                {/* Usage Costs with special case handling */}
                 <div className="mt-3">
                   <h4 className="text-sm font-medium text-primary-3">
                     Usage Costs:
@@ -310,7 +369,7 @@ function PricingCard({ tier, index, isAnnual }) {
                   <ul className="mt-1 space-y-1 text-xs text-primary-3 sm:text-sm">
                     {Object.entries(tier.usageCosts).map(([key, value]) => (
                       <li key={key} className="flex justify-between gap-2">
-                        <span>{key.replace(/([A-Z])/g, ' $1').trim()}:</span>
+                        <span>{getDisplayText(key)}:</span>
                         <span className="text-right">{value}</span>
                       </li>
                     ))}
@@ -325,7 +384,7 @@ function PricingCard({ tier, index, isAnnual }) {
                   <ul className="mt-1 space-y-1 text-xs text-primary-3 sm:text-sm">
                     {Object.entries(tier.addOns).map(([key, value]) => (
                       <li key={key} className="flex justify-between gap-2">
-                        <span>{key.replace(/([A-Z])/g, ' $1').trim()}:</span>
+                        <span>{formatKey(key)}:</span>
                         <span className="text-right">{value}</span>
                       </li>
                     ))}
@@ -349,8 +408,9 @@ function PricingCard({ tier, index, isAnnual }) {
         </div>
       </div>
     </GradientBorder>
-  );
+  )
 }
+
 function PricingCards({ isAnnual }) {
   const firstRowTiers = tiers.slice(0, 3)
   const secondRowTiers = tiers.slice(3, 5)

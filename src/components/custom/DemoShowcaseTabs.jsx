@@ -51,7 +51,7 @@ const DemoShowcase = () => {
         gradient: 'Voice AI',
       },
       description:
-        ' Your clients receive instant, 24/7 responsiveness—never miss another opportunity. Stand out from the competition with premium service that works while you sleep. Welcome to modern real estate: where exceptional service never takes a break.',
+        'Your clients receive instant, 24/7 responsiveness—never miss another opportunity. Stand out from the competition with premium service that works while you sleep. Welcome to modern real estate: where exceptional service never takes a break.',
       icon: Bot,
       video: {
         type: 'direct',
@@ -71,15 +71,15 @@ const DemoShowcase = () => {
         gradient: ' in Action',
       },
       description:
-        `Transform your customer lead integration with AI-powered automation. Provide instant responses, book appointments, and maintain high satisfaction levels around the clock.`,
+        'Transform your customer lead integration with AI-powered automation. Provide instant responses, book appointments, and maintain high satisfaction levels around the clock.',
       icon: MessagesSquare,
       video: {
         type: 'direct',
         videoSrc: '/demos/smart chatbot in action.mp4',
       },
       features: [
-        { icon: CheckCircle2, text: '“Erika” Chatbot interacts like a human' },
-        { icon: CheckCircle2, text: '"Erika” books appointments' },
+        { icon: CheckCircle2, text: '"Erika" Chatbot interacts like a human' },
+        { icon: CheckCircle2, text: '"Erika" books appointments' },
         { icon: CheckCircle2, text: '24/7 Customer Support' },
         { icon: CheckCircle2, text: 'No Lead Left Behind' },
       ],
@@ -114,16 +114,6 @@ const DemoShowcase = () => {
           viewport={{ once: true }}
           className="mb-16 text-center mt-5"
         >
-          {/* <motion.div
-            initial={{ opacity: 0, y: 10 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2 }}
-            viewport={{ once: true }}
-            className="mb-8 inline-flex items-center gap-2 rounded-full border-primary-2 bg-background-2 px-4 py-2 text-sm font-medium text-primary-2"
-          >
-            <SparklesIcon className="h-4 w-4" />
-            Product Demo
-          </motion.div> */}
           <h2 className="font-display text-3xl/tight font-medium tracking-tight sm:text-4xl/tight">
             <span className="text-primary-3">See How It </span>
             <span className="bg-gradient-to-r from-primary-1 to-primary-2 bg-clip-text text-transparent">
@@ -134,30 +124,31 @@ const DemoShowcase = () => {
 
         <Tab.Group selectedIndex={selectedIndex} onChange={setSelectedIndex}>
           {/* Tab Navigation */}
-          <div className="mb-16 flex justify-center">
-            <div className="inline-flex rounded-xl bg-background-2 p-2 gap-2">
+          <div className="mb-16 flex justify-center px-4">
+            <div className="inline-flex w-full max-w-2xl flex-col sm:flex-row rounded-xl bg-background-2 p-2 gap-2">
               {demos.map((demo) => (
                 <Tab
                   key={demo.title.regular}
-                  className="focus:outline-none focus-visible:outline-none min-w-[200px] text-primary-2 hover:text-hover-1 flex gap-2 border-[2px] rounded-lg border-primary-2"
+                  className="focus:outline-none focus-visible:outline-none flex-1"
                 >
                   {({ selected }) => (
                     <div
                       className={clsx(
                         'relative flex items-center justify-center w-full gap-2 px-6 py-3 text-sm font-medium',
+                        'rounded-lg border-2 border-primary-2',
                         'transition-all duration-200',
                         selected
-                          ? ' bg-primary-2 text-white shadow-sm'
-                          : '',
+                          ? 'bg-primary-2 text-white shadow-sm'
+                          : 'text-primary-2 hover:text-hover-1'
                       )}
                     >
                       {createElement(demo.icon, {
                         className: clsx(
                           'h-5 w-5',
-                          selected ? 'text-white' : 'text-primary-2',
+                          selected ? 'text-white' : 'text-primary-2'
                         ),
                       })}
-                      <span>{demo.tabTitle}</span>
+                      <span className="whitespace-nowrap">{demo.tabTitle}</span>
                     </div>
                   )}
                 </Tab>
@@ -218,7 +209,7 @@ const DemoShowcase = () => {
 
                     {/* CTA Button */}
                     <div className="mt-16 flex items-center gap-4">
-                    <Button
+                      <Button
                         href="/about-us#inline-CJncaycrRh5hGpavAAmu"
                         className="bg-primary-2 text-white hover:bg-hover-1 text-lg px-8 py-4 text-xl"
                       >
@@ -228,7 +219,7 @@ const DemoShowcase = () => {
                   </motion.div>
 
                   {/* Right side video preview */}
-                  <GradientBorder className="relative mx-auto w-full max-w-lg ">
+                  <GradientBorder className="relative mx-auto w-full max-w-lg">
                     <motion.div
                       initial={{ opacity: 0, scale: 0.95 }}
                       animate={{ opacity: 1, scale: 1 }}

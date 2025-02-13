@@ -260,9 +260,9 @@ function PricingCard({ tier, index, isAnnual }) {
           }`}
         >
           {/* Front of card */}
-          <div className="absolute h-full w-full backface-hidden bg-background-2">
-            <div className="h-full rounded-xl shadow-md">
-              <div className="flex h-full flex-col rounded-xl p-4 shadow-2xl sm:p-6">
+          <div className="absolute h-full w-full backface-hidden bg-background-2 rounded-[14px]">
+            <div className="h-full rounded-[14px]">
+              <div className="flex h-full flex-col rounded-[14px] p-4 sm:p-6">
                 <div>
                   <h3 className="text-base font-semibold break-words text-primary-2">
                     {tier.name}
@@ -295,9 +295,9 @@ function PricingCard({ tier, index, isAnnual }) {
           </div>
 
           {/* Back of card */}
-          <div className="absolute h-full w-full rotate-y-180 backface-hidden bg-background-2">
-            <div className="h-full rounded-xl p-2 shadow-md shadow-black/5">
-              <div className="flex h-full flex-col overflow-y-auto rounded-xl p-4 ring-1 shadow-2xl ring-black/5 sm:p-6">
+          <div className="absolute h-full w-full rotate-y-180 backface-hidden bg-background-2 rounded-[14px]">
+            <div className="h-full rounded-[14px] p-2">
+              <div className="flex h-full flex-col overflow-y-auto rounded-[14px] p-4 sm:p-6">
                 <h3 className="text-base font-semibold text-primary-2">
                   Additional Details
                 </h3>

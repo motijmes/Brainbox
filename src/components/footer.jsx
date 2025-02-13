@@ -60,7 +60,7 @@ function CallToAction() {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             className="bg-primary-2 hover:bg-hover-1 text-primary-3"
-            href="#"
+            href="/about-us#inline-CJncaycrRh5hGpavAAmu"
           >
             Get started
           </Button>

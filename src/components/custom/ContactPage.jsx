@@ -7,12 +7,24 @@ import {
   MailIcon, 
   MessageSquare, 
   Phone,
-  Loader2
+  Loader2,
+  AlertCircle
 } from 'lucide-react';
+
+const LOADING_TIMEOUT = 10000; // 10 seconds timeout
+
+// Custom Alert Component
+const CustomAlert = ({ children }) => (
+  <div className="flex items-center gap-2 p-4 text-red-400 bg-red-950/20 border border-red-900/50 rounded-lg">
+    <AlertCircle className="h-5 w-5 shrink-0" />
+    <span className="text-sm">{children}</span>
+  </div>
+);
 
 const ContactPage = () => {
   const [iframeLoaded, setIframeLoaded] = useState(false);
   const [shouldRenderIframe, setShouldRenderIframe] = useState(true);
+  const [loadingError, setLoadingError] = useState(false);
 
   // Handle hash change and iframe reset
   useEffect(() => {
@@ -20,6 +32,7 @@ const ContactPage = () => {
       if (window.location.hash.includes('inline-CJncaycrRh5hGpavAAmu')) {
         setShouldRenderIframe(false);
         setIframeLoaded(false);
+        setLoadingError(false);
         
         // Brief delay to allow state reset before re-rendering
         setTimeout(() => {
@@ -39,12 +52,102 @@ const ContactPage = () => {
     return () => window.removeEventListener('hashchange', handleHashChange);
   }, []);
 
+  // Handle loading timeout
+  useEffect(() => {
+    let timeoutId;
+
+    if (shouldRenderIframe && !iframeLoaded) {
+      timeoutId = setTimeout(() => {
+        if (!iframeLoaded) {
+          setLoadingError(true);
+          setShouldRenderIframe(false);
+        }
+      }, LOADING_TIMEOUT);
+    }
+
+    return () => {
+      if (timeoutId) {
+        clearTimeout(timeoutId);
+      }
+    };
+  }, [shouldRenderIframe, iframeLoaded]);
+
   // Handle iframe load completion
   const handleIframeLoad = () => {
-    // Short delay to ensure smooth transition
     setTimeout(() => {
       setIframeLoaded(true);
+      setLoadingError(false);
     }, 300);
+  };
+
+  // Handle retry button click
+  const handleRetry = () => {
+    setLoadingError(false);
+    setShouldRenderIframe(false);
+    setIframeLoaded(false);
+    
+    setTimeout(() => {
+      setShouldRenderIframe(true);
+    }, 100);
+  };
+
+  const renderFormContent = () => {
+    if (loadingError) {
+      return (
+        <div className="flex flex-col items-center justify-center h-full space-y-4 p-4">
+          <CustomAlert>
+            The form is taking longer than expected to load.
+          </CustomAlert>
+          <button
+            onClick={handleRetry}
+            className="px-4 py-2 bg-[#FF66FF]/20 text-[#FF66FF] rounded-md hover:bg-[#FF66FF]/30 transition-colors"
+          >
+            Try Again
+          </button>
+        </div>
+      );
+    }
+
+    return (
+      <>
+        {(!iframeLoaded || !shouldRenderIframe) && (
+          <div className="absolute inset-0 flex items-center justify-center">
+            <Loader2 className="h-8 w-8 animate-spin text-[#FF66FF]" />
+          </div>
+        )}
+        {shouldRenderIframe && (
+          <iframe
+            src="https://api.accessibleagents.com/widget/form/CJncaycrRh5hGpavAAmu"
+            style={{ 
+              width: '100%', 
+              height: '100%', 
+              border: 'none', 
+              borderRadius: '12px',
+              backgroundColor: 'transparent',
+              marginBottom: '-20px',
+              opacity: iframeLoaded ? 1 : 0,
+              transition: 'opacity 0.3s ease-in-out'
+            }}
+            id="inline-CJncaycrRh5hGpavAAmu" 
+            data-layout="{'id':'INLINE'}"
+            data-trigger-type="alwaysShow"
+            data-trigger-value=""
+            data-activation-type="alwaysActivated"
+            data-activation-value=""
+            data-deactivation-type="neverDeactivate"
+            data-deactivation-value=""
+            data-form-name="Accessible Agents New Website Form"
+            data-height="580"
+            data-layout-iframe-id="inline-CJncaycrRh5hGpavAAmu"
+            data-form-id="CJncaycrRh5hGpavAAmu"
+            title="Accessible Agents New Website Form"
+            onLoad={handleIframeLoad}
+            loading="eager"
+            fetchpriority="high"
+          />
+        )}
+      </>
+    );
   };
 
   return (
@@ -102,42 +205,7 @@ const ContactPage = () => {
             className="rounded-3xl bg-[#121212] p-6 ring-1 shadow-2xl shadow-black/5 ring-black/5 backdrop-blur-sm lg:p-8"
           >
             <div className="relative h-[900px] mb-20 lg:h-[700px]">
-              {(!iframeLoaded || !shouldRenderIframe) && (
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <Loader2 className="h-8 w-8 animate-spin text-primary-2" />
-                </div>
-              )}
-              {shouldRenderIframe && (
-                <iframe
-                  src="https://api.accessibleagents.com/widget/form/CJncaycrRh5hGpavAAmu"
-                  style={{ 
-                    width: '100%', 
-                    height: '100%', 
-                    border: 'none', 
-                    borderRadius: '12px',
-                    backgroundColor: 'transparent',
-                    marginBottom: '-20px',
-                    opacity: iframeLoaded ? 1 : 0,
-                    transition: 'opacity 0.3s ease-in-out'
-                  }}
-                  id="inline-CJncaycrRh5hGpavAAmu" 
-                  data-layout="{'id':'INLINE'}"
-                  data-trigger-type="alwaysShow"
-                  data-trigger-value=""
-                  data-activation-type="alwaysActivated"
-                  data-activation-value=""
-                  data-deactivation-type="neverDeactivate"
-                  data-deactivation-value=""
-                  data-form-name="Accessible Agents New Website Form"
-                  data-height="580"
-                  data-layout-iframe-id="inline-CJncaycrRh5hGpavAAmu"
-                  data-form-id="CJncaycrRh5hGpavAAmu"
-                  title="Accessible Agents New Website Form"
-                  onLoad={handleIframeLoad}
-                  loading="eager"
-                  fetchpriority="high"
-                />
-              )}
+              {renderFormContent()}
             </div>
           </motion.div>
 

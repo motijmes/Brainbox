@@ -229,7 +229,6 @@ function FeatureItem({ description, disabled = false, delay = 0 }) {
 
 function PricingCard({ tier, index, isAnnual }) {
   const [isFlipped, setIsFlipped] = useState(false);
-  const [touchStartTime, setTouchStartTime] = useState(null);
   
   const calculatePrice = () => {
     if (isAnnual) {
@@ -258,27 +257,16 @@ function PricingCard({ tier, index, isAnnual }) {
   // Handle touch events for mobile
   const handleTouchStart = (e) => {
     if (!e.target.closest('button')) {
-      setTouchStartTime(Date.now());
       setIsFlipped(true);
     }
   };
 
   const handleTouchEnd = (e) => {
     if (!e.target.closest('button')) {
-      // Only flip back if it was a quick tap
-      const touchDuration = Date.now() - touchStartTime;
-      if (touchDuration < 200) { // Less than 200ms is considered a tap
-        setIsFlipped(false);
-      }
+      setIsFlipped(false);
     }
-    setTouchStartTime(null);
   };
 
-  // Handle touch cancel/leave
-  const handleTouchCancel = () => {
-    setIsFlipped(false);
-    setTouchStartTime(null);
-  };
   return (
     <GradientBorder>
       <div
@@ -287,14 +275,14 @@ function PricingCard({ tier, index, isAnnual }) {
         onMouseLeave={handleMouseLeave}
         onTouchStart={handleTouchStart}
         onTouchEnd={handleTouchEnd}
-        onTouchCancel={handleTouchCancel}
-        onTouchMove={(e) => e.preventDefault()} // Prevent scrolling while touching card
+        onTouchCancel={() => setIsFlipped(false)}
       >
         <div
           className={`transform-style-3d relative h-full w-full transition-transform duration-500 ${
             isFlipped ? 'rotate-y-180' : ''
           }`}
         >
+
           {/* Front of card */}
           <div className="absolute h-full w-full backface-hidden">
             <div className="h-full rounded-xl shadow-md">

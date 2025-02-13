@@ -241,27 +241,10 @@ function PricingCard({ tier, index, isAnnual }) {
 
   const price = calculatePrice();
 
-  const handleMouseEnter = (e) => {
+  const handleClick = (e) => {
+    // Don't flip if clicking a button
     if (!e.target.closest('button')) {
-      setIsFlipped(true);
-    }
-  };
-
-  const handleMouseLeave = (e) => {
-    if (!e.target.closest('button')) {
-      setIsFlipped(false);
-    }
-  };
-
-  const handleTouchStart = (e) => {
-    if (!e.target.closest('button')) {
-      setIsFlipped(true);
-    }
-  };
-
-  const handleTouchEnd = (e) => {
-    if (!e.target.closest('button')) {
-      setIsFlipped(false);
+      setIsFlipped(!isFlipped);
     }
   };
 
@@ -269,11 +252,7 @@ function PricingCard({ tier, index, isAnnual }) {
     <GradientBorder>
       <div
         className="perspective-1000 relative h-[600px] w-full min-w-[280px]"
-        onMouseEnter={handleMouseEnter}
-        onMouseLeave={handleMouseLeave}
-        onTouchStart={handleTouchStart}
-        onTouchEnd={handleTouchEnd}
-        onTouchCancel={() => setIsFlipped(false)}
+        onClick={handleClick}
       >
         <div
           className={`transform-style-3d relative h-full w-full transition-transform duration-500 ${
@@ -300,18 +279,6 @@ function PricingCard({ tier, index, isAnnual }) {
                       <p>per {isAnnual ? 'year' : 'month'}</p>
                     </div>
                   </div>
-                  {/* <div className="relative z-0 mt-6">
-                    <Button
-                      href={tier.href}
-                      variant="trial"
-                      onMouseEnter={(e) => {
-                        e.stopPropagation();
-                        setIsFlipped(false);
-                      }}
-                    >
-                      Get Started Today
-                    </Button>
-                  </div> */}
                 </div>
                 <div className="mt-6 sm:mt-8">
                   <h4 className="text-sm font-semibold text-primary-3">

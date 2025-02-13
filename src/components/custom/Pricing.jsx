@@ -416,12 +416,13 @@ function PricingCards({ isAnnual }) {
   const secondRowTiers = tiers.slice(3, 5)
 
   return (
-    <div className="relative py-12">
+    <div className="relative py-12 z-10">
       <motion.div
         initial={{ opacity: 0, scale: 0.95 }}
         whileInView={{ opacity: 1, scale: 1 }}
         viewport={{ once: true }}
         transition={{ duration: 0.5 }}
+        className="relative"
       >
         <GradientLight className="absolute inset-0 rounded-[24px] ring-1 ring-black/5 ring-inset" />
       </motion.div>
@@ -465,26 +466,30 @@ function PricingCards({ isAnnual }) {
   )
 }
 
+
 function Header({ handleBillingChange }) {
   return (
-    <Container className="mt-16">
+    <Container className="relative pt-16 mb-8">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.5 }}
+        className="relative"
       >
         <Heading
           as="h1"
-          className="bg-gradient-to-r from-primary-1 to-primary-2 bg-clip-text text-transparent"
+          className="relative pb-2 z-10 bg-gradient-to-r from-primary-1 to-primary-2 bg-clip-text text-transparent"
         >
           Pricing Plans
         </Heading>
-        <Lead className="mt-6 max-w-3xl text-primary-3">
+        <Lead className="relative z-10 mt-6 max-w-3xl text-primary-3">
           Our pricing plans are crafted to support real estate professionals at
           every level, from solo agents to large organizations.
         </Lead>
-        <PricingToggle onChange={handleBillingChange} />
+        <div className="relative z-10">
+          <PricingToggle onChange={handleBillingChange} />
+        </div>
       </motion.div>
     </Container>
   )
@@ -498,15 +503,22 @@ export default function Pricing() {
   }
 
   return (
-    <main className="relative">
-      <GradientBackgroundSection
-        size="sm"
-        opacity={0.3}
-        position={{ top: '0', right: '0' }}
-      />
-      <div className="overflow-hidden">
-        <Header handleBillingChange={handleBillingChange} />
-        <PricingCards isAnnual={isAnnual} />
+    <main className="relative min-h-screen">
+      <div className="relative z-0">
+        <GradientBackgroundSection
+          size="sm"
+          opacity={0.3}
+          position={{ top: '0', right: '0' }}
+        />
+      </div>
+      
+      <div className="relative z-10">
+        <div className="pb-12">
+          <Header handleBillingChange={handleBillingChange} />
+        </div>
+        <div className="relative">
+          <PricingCards isAnnual={isAnnual} />
+        </div>
       </div>
     </main>
   )

@@ -8,7 +8,6 @@ import { Logo } from './logo'
 import { Subheading } from './text'
 import { Facebook, Instagram } from 'lucide-react'
 
-
 function CallToAction() {
   return (
     <div className="relative pt-20 pb-16 text-center sm:py-24">
@@ -146,6 +145,7 @@ function Sitemap() {
           </SitemapLink>
         </SitemapLinks>
       </div>
+      {/* Connect With Us section - temporarily commented out
       <div>
         <SitemapHeading>Connect With Us</SitemapHeading>
         <SitemapLinks delay={0.4}>
@@ -157,6 +157,7 @@ function Sitemap() {
           </SitemapLink>
         </SitemapLinks>
       </div>
+      */}
     </>
   )
 }
@@ -197,6 +198,7 @@ function SocialLinks() {
     </>
   )
 }
+
 function Copyright() {
   return (
     <motion.div
@@ -251,7 +253,16 @@ export function Footer() {
                     viewport={{ once: true }}
                     className="text-white [&_a]:text-white [&_svg]:text-white [&_img]:brightness-0 [&_img]:invert"
                   >
-                    <Logo className="h-9" />
+                    {/* <Logo className="h-20 w-48" /> Increased logo size */}
+                    <div className="relative flex gap-6">
+            
+                <Logo
+                  className="block transform scale-150 w-32 mb-2 text-text-white"
+                />
+              
+            
+
+          </div>
                   </motion.div>
                 </PlusGridItem>
               </div>
@@ -268,7 +279,7 @@ export function Footer() {
             </div>
             <div className="flex">
               <PlusGridItem className="flex items-center gap-8 py-3">
-                <SocialLinks />
+                {/* <SocialLinks /> */}
               </PlusGridItem>
             </div>
           </PlusGridRow>

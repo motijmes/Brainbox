@@ -228,37 +228,67 @@ function FeatureItem({ description, disabled = false, delay = 0 }) {
 }
 
 function PricingCard({ tier, index, isAnnual }) {
-  const [isFlipped, setIsFlipped] = useState(false)
-
+  const [isFlipped, setIsFlipped] = useState(false);
+  const [touchStartTime, setTouchStartTime] = useState(null);
+  
   const calculatePrice = () => {
     if (isAnnual) {
-      const annualPrice = tier.priceMonthly * 12
-      const discount = annualPrice * 0.1
-      return (annualPrice - discount).toFixed(0)
+      const annualPrice = tier.priceMonthly * 12;
+      const discount = annualPrice * 0.1;
+      return (annualPrice - discount).toFixed(0);
     }
-    return tier.priceMonthly
-  }
+    return tier.priceMonthly;
+  };
 
-  const price = calculatePrice()
+  const price = calculatePrice();
 
+  // Handle mouse events for desktop
   const handleMouseEnter = (e) => {
     if (!e.target.closest('button')) {
-      setIsFlipped(true)
+      setIsFlipped(true);
     }
-  }
+  };
 
   const handleMouseLeave = (e) => {
     if (!e.target.closest('button')) {
-      setIsFlipped(false)
+      setIsFlipped(false);
     }
-  }
+  };
 
+  // Handle touch events for mobile
+  const handleTouchStart = (e) => {
+    if (!e.target.closest('button')) {
+      setTouchStartTime(Date.now());
+      setIsFlipped(true);
+    }
+  };
+
+  const handleTouchEnd = (e) => {
+    if (!e.target.closest('button')) {
+      // Only flip back if it was a quick tap
+      const touchDuration = Date.now() - touchStartTime;
+      if (touchDuration < 200) { // Less than 200ms is considered a tap
+        setIsFlipped(false);
+      }
+    }
+    setTouchStartTime(null);
+  };
+
+  // Handle touch cancel/leave
+  const handleTouchCancel = () => {
+    setIsFlipped(false);
+    setTouchStartTime(null);
+  };
   return (
     <GradientBorder>
       <div
         className="perspective-1000 relative h-[600px] w-full min-w-[280px]"
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
+        onTouchStart={handleTouchStart}
+        onTouchEnd={handleTouchEnd}
+        onTouchCancel={handleTouchCancel}
+        onTouchMove={(e) => e.preventDefault()} // Prevent scrolling while touching card
       >
         <div
           className={`transform-style-3d relative h-full w-full transition-transform duration-500 ${
@@ -294,7 +324,7 @@ function PricingCard({ tier, index, isAnnual }) {
                         setIsFlipped(false)
                       }}
                     >
-                      Start Get Started Today
+                      Get Started Today
                     </Button>
                   </div>
                 </div>
@@ -313,7 +343,7 @@ function PricingCard({ tier, index, isAnnual }) {
           </div>
 
           {/* Back of card */}
-          <div className="absolute h-full w-full rotate-y-180 backface-hidden">
+           <div className="absolute h-full w-full rotate-y-180 backface-hidden">
             <div className="h-full rounded-xl p-2 shadow-md shadow-black/5">
               <div className="flex h-full flex-col overflow-y-auto rounded-xl bg-background-2 p-4 ring-1 shadow-2xl ring-black/5 sm:p-6">
                 <h3 className="text-base font-semibold text-primary-2">

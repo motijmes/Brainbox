@@ -10,7 +10,7 @@ const IntegrationSection = () => {
       color: 'from-blue-500/30 to-blue-600/30',
     },
     {
-      name: 'Zapier',
+      name: 'Instagram',
       logo: '/assets/integration2.png',
       color: 'from-purple-500/30 to-purple-600/30',
     },

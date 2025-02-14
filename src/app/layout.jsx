@@ -21,7 +21,7 @@ export default function RootLayout({ children }) {
       </head>
       <body className="antialiased bg-background-1">
         {children}
-        <ChatWidget />
+        {/* <ChatWidget /> */}
       </body>
     </html>
   )

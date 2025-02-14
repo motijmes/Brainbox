@@ -496,7 +496,7 @@ function Header({ handleBillingChange }) {
 }
 
 export default function Pricing() {
-  const [isAnnual, setIsAnnual] = useState(true)
+  const [isAnnual, setIsAnnual] = useState(false)
 
   const handleBillingChange = (isAnnual) => {
     setIsAnnual(isAnnual)

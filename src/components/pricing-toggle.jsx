@@ -1,9 +1,10 @@
+// PricingToggle.jsx
 import React, { useState } from 'react';
 import { Switch } from '@headlessui/react';
 import { motion } from 'framer-motion';
 
 const PricingToggle = ({ onChange }) => {
-  const [enabled, setEnabled] = useState(true);
+  const [enabled, setEnabled] = useState(false); // Changed initial state to false for monthly
 
   const handleChange = (checked) => {
     setEnabled(checked);
@@ -45,18 +46,18 @@ const PricingToggle = ({ onChange }) => {
           Annual
         </span>
         <motion.span
-          initial={{ opacity: 1, scale: 1 }}
+          initial={{ opacity: 0, scale: 0.8 }} // Changed initial state for the "Save 10%" badge
           animate={{
             opacity: enabled ? 1 : 0,
             scale: enabled ? 1 : 0.8,
           }}
-          className="rounded-full bg-primary-2 px-2 py-1 text-xs font-medium text-primary-3 transition-colors duration-300 "
+          className="rounded-full bg-primary-2 px-2 py-1 text-xs font-medium text-primary-3 transition-colors duration-300"
         >
           Save 10%
         </motion.span>
       </div>
     </div>
-  )
+  );
 };
 
 export default PricingToggle;

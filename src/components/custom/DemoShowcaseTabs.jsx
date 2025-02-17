@@ -75,7 +75,7 @@ const DemoShowcase = () => {
       icon: MessagesSquare,
       video: {
         type: 'direct',
-        videoSrc: '/demos/smart chatbot in action.mp4',
+        videoSrc: '/demos/client-provided-sms-demo-16_9.mp4',
       },
       features: [
         { icon: CheckCircle2, text: '"Erika" Chatbot interacts like a human' },

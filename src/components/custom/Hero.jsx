@@ -22,11 +22,7 @@ function Hero() {
   }
 
   const handleOpenChat = () => {
-    if (typeof setIsChatOpen === 'function') {
-      setIsChatOpen(true);
-    } else {
-      console.error('setIsChatOpen is not a function');
-    }
+    window.leadConnector.chatWidget.openWidget()
   };
 
 

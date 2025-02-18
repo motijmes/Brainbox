@@ -145,7 +145,7 @@ export default function Demo() {
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.6, delay: 0.4 }}
                 >
-                  Get Started Today
+                  Book a 15 Minute Demo
                 </motion.span>
                 <motion.span
                   initial={{ opacity: 0, x: -10 }}
@@ -262,7 +262,7 @@ export default function Demo() {
                         href="/about-us#inline-CJncaycrRh5hGpavAAmu"
                         className="bg-primary-2 text-white hover:bg-hover-1 text-lg px-8 py-4 text-xl"
                       >
-                        Get Started Today
+                        Book a 15 Minute Demo
                       </Button>
                     </div>
                 </motion.div>

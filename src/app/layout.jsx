@@ -1,15 +1,25 @@
+'use client'
+
+import React from 'react'
 import '@/styles/tailwind.css'
 import Script from 'next/script'
 import ChatWidget from '@/components/ui/ChatWidget'
+import { useState } from 'react'
 
-export const metadata = {
-  title: {
-    template: '%s - Accessible Agents',
-    default: 'Accessible Agents - All-in-One Platform for Realtors, by Realtors',
-  },
-}
+function RootLayout({ children }) {
+  const [isChatOpen, setIsChatOpen] = useState(false);
 
-export default function RootLayout({ children }) {
+  // Pass both isChatOpen and setIsChatOpen to page component
+  const childrenWithProps = React.Children.map(children, child => {
+    if (React.isValidElement(child)) {
+      return React.cloneElement(child, { 
+        isChatOpen,
+        setIsChatOpen 
+      });
+    }
+    return child;
+  });
+
   return (
     <html lang="en">
       <head>
@@ -20,9 +30,11 @@ export default function RootLayout({ children }) {
         <Script src="https://api.accessibleagents.com/js/form_embed.js" />
       </head>
       <body className="antialiased bg-background-1">
-        {children}
-        {/* <ChatWidget /> */}
+        {childrenWithProps}
+        <ChatWidget isChatOpen={isChatOpen} />
       </body>
     </html>
   )
 }
+
+export default RootLayout

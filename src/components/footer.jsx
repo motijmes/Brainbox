@@ -35,7 +35,7 @@ function CallToAction() {
         >
           Ready to dive in?
           <br />
-          Get Started Today today.
+          Book a 15 Minute Demo today.
         </motion.p>
         <motion.p
           className="mx-auto mt-6 max-w-xs text-sm/6 text-primary-3"

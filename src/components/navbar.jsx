@@ -11,6 +11,9 @@ import { Link } from './link'
 import { Logo } from './logo'
 import { PlusGrid, PlusGridItem, PlusGridRow } from './plus-grid'
 import { usePathname } from 'next/navigation'
+
+// Comment out the links array
+/*
 const links = [
   { href: '/', label: 'Home' },
   { href: '/about-us', label: 'About Us' },
@@ -18,12 +21,14 @@ const links = [
   { href: '/demo', label: 'Demo' },
   { href: '/policy', label: 'Privacy Policy' },
 ]
+*/
 
 function DesktopNav({isHome}) {
   const pathname = usePathname()
 
   return (
     <nav className="relative hidden lg:flex items-center">
+      {/* Commented out navigation links
       {links.map(({ href, label }) => (
         <PlusGridItem key={href} className="relative flex">
           <Link
@@ -39,6 +44,7 @@ function DesktopNav({isHome}) {
           </Link>
         </PlusGridItem>
       ))}
+      */}
     </nav>
   )
 }
@@ -60,6 +66,7 @@ function MobileNav({ isHome }) {
   return (
     <DisclosurePanel className="lg:hidden">
       <div className="flex flex-col gap-6 py-4">
+        {/* Commented out navigation links
         {links.map(({ href, label }, linkIndex) => (
           <motion.div
             initial={{ opacity: 0, rotateX: -90 }}
@@ -85,6 +92,7 @@ function MobileNav({ isHome }) {
             </Link>
           </motion.div>
         ))}
+        */}
       </div>
       <div className="absolute left-1/2 w-screen -translate-x-1/2">
         <div className="absolute inset-x-0 top-0 border-t border-text-white/10" />
@@ -100,20 +108,22 @@ export function Navbar({ banner, section }) {
   return (
     <Disclosure as="header" className="pt-12 sm:pt-16">
       <PlusGrid>
-        <PlusGridRow className="relative flex justify-between items-center" isHome={isHome}>
+        <PlusGridRow className="relative flex justify-center items-center" isHome={isHome}>
           <div className="relative flex gap-6">
             <PlusGridItem className="py-2">
-              <Link href="/" title="Home" className="block transform scale-150">
+              <Link href="/" title="Home" className="block transform scale-250">
                 <Logo
                   className="w-32 mb-2 text-text-white"
                 />
               </Link>
             </PlusGridItem>
+            {/* Commented out banner/Book a 15 Minute Demo button
             {banner && (
               <div className="relative hidden items-center py-2 lg:flex">
                 {banner}
               </div>
             )}
+            */}
           </div>
           <DesktopNav isHome={isHome} />
           <MobileNavButton isHome={isHome} />

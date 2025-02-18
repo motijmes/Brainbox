@@ -123,9 +123,9 @@ function Sitemap() {
           <SitemapLink href="/about-us" index={0}>
             About Us
           </SitemapLink>
-          <SitemapLink href="/pricing" index={1}>
+          {/* <SitemapLink href="/pricing" index={1}>
             Pricing
-          </SitemapLink>
+          </SitemapLink> */}
           <SitemapLink href="/demo" index={2}>
             Demo
           </SitemapLink>

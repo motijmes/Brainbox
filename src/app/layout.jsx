@@ -31,7 +31,7 @@ function RootLayout({ children }) {
       </head>
       <body className="antialiased bg-background-1">
         {childrenWithProps}
-        <ChatWidget isChatOpen={isChatOpen} />
+        <ChatWidget/>
       </body>
     </html>
   )

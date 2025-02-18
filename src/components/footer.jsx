@@ -61,7 +61,7 @@ function CallToAction() {
             className="bg-primary-2 hover:bg-hover-1 text-primary-3"
             href="/about-us#inline-CJncaycrRh5hGpavAAmu"
           >
-            Get started Today
+            Book a 15 Minute Demo
           </Button>
         </motion.div>
       </motion.div>

@@ -9,6 +9,24 @@ import { Subheading } from './text'
 import { Facebook, Instagram } from 'lucide-react'
 
 function CallToAction() {
+  const textVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.6,
+        ease: 'easeOut',
+      },
+    },
+  }
+  const handleOpenChat = () => {
+    if (window.leadConnector?.chatWidget?.openWidget) {
+      window.leadConnector.chatWidget.openWidget();
+    } else {
+      console.warn('Chat widget is not yet loaded');
+    }
+  };
   return (
     <div className="relative pt-20 pb-16 text-center sm:py-24">
       <motion.div
@@ -53,13 +71,14 @@ function CallToAction() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.4 }}
           viewport={{ once: true }}
+          variants={textVariants}
         >
           <Button
             as={motion.a}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             className="bg-primary-2 hover:bg-hover-1 text-primary-3"
-            href="/about-us#inline-CJncaycrRh5hGpavAAmu"
+            onClick={handleOpenChat}
           >
             Book a 15 Minute Demo
           </Button>

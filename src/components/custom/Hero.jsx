@@ -22,7 +22,11 @@ function Hero() {
   }
 
   const handleOpenChat = () => {
-    window.leadConnector.chatWidget.openWidget()
+    if (window.leadConnector?.chatWidget?.openWidget) {
+      window.leadConnector.chatWidget.openWidget();
+    } else {
+      console.warn('Chat widget is not yet loaded');
+    }
   };
 
 
@@ -91,16 +95,16 @@ function Hero() {
             </motion.p>
 
             <motion.div
-          variants={textVariants}
-          className="mt-8 flex flex-col gap-x-6 gap-y-4 sm:flex-row lg:mt-12"
-        >
-          <Button
-            onClick={handleOpenChat}
-            className="bg-primary-2 text-white hover:bg-hover-1 text-lg px-8 py-4 text-xl"
-          >
-            Book a Demo!
-          </Button>
-        </motion.div>
+              variants={textVariants}
+              className="mt-8 flex flex-col gap-x-6 gap-y-4 sm:flex-row lg:mt-12"
+            >
+              <Button
+                onClick={handleOpenChat}
+                className="bg-primary-2 text-white hover:bg-hover-1 text-lg px-8 py-4 text-xl"
+              >
+                Book a Demo!
+              </Button>
+            </motion.div>
           </motion.div>
 
           <motion.div

@@ -73,7 +73,24 @@ const FeatureSection = () => {
       image: '/assets/feature3.png'
     },
   ]
-
+  const textVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.6,
+        ease: 'easeOut',
+      },
+    },
+  }
+  const handleOpenChat = () => {
+    if (window.leadConnector?.chatWidget?.openWidget) {
+      window.leadConnector.chatWidget.openWidget();
+    } else {
+      console.warn('Chat widget is not yet loaded');
+    }
+  };
 const renderImageInterface = (section, index) => (
   <div className="relative rounded-2xl bg-background-2 p-2 ring-1 shadow-2xl shadow-black/5 ring-black/5 backdrop-blur-sm">
     {/* Top gradient line */}
@@ -202,16 +219,17 @@ const renderImageInterface = (section, index) => (
                 </div>
 
                 {/* CTA buttons - only for first section */}
-                {index === 0 && (
-                  <div className="mt-16 flex items-center gap-4">
-                    <Button
-                      href="/about-us#inline-CJncaycrRh5hGpavAAmu"
-                      className="bg-primary-2 text-white hover:bg-hover-1 text-lg px-8 py-4 text-xl"
-                    >
-                      Book a 15 Minute Demo
-                    </Button>
-                  </div>
-                )}
+                <motion.div
+                  variants={textVariants}
+                  className="mt-8 flex flex-col gap-x-6 gap-y-4 sm:flex-row lg:mt-12"
+                >
+                  <Button
+                    onClick={handleOpenChat}
+                    className="bg-primary-2 text-white hover:bg-hover-1 text-lg px-8 py-4 text-xl"
+                  >
+                    Book a 15 Minute Demo!
+                  </Button>
+                </motion.div>
               </motion.div>
 
               {/* Mockup section */}

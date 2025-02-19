@@ -14,6 +14,24 @@ import ImageSlider from './ImageSlider'
 import { Button } from '@/components/button'
 import { Link } from '@/components/link' 
 export default function ModernUserflow() {
+  const textVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.6,
+        ease: 'easeOut',
+      },
+    },
+  }
+  const handleOpenChat = () => {
+    if (window.leadConnector?.chatWidget?.openWidget) {
+      window.leadConnector.chatWidget.openWidget();
+    } else {
+      console.warn('Chat widget is not yet loaded');
+    }
+  };
   return (
     <div className="relative">
       <GradientBackgroundSection
@@ -96,15 +114,17 @@ export default function ModernUserflow() {
             </div>
 
             {/* CTA button */}
-            <div className="mt-16 flex items-center gap-4">
-              <Link href="/about-us#inline-CJncaycrRh5hGpavAAmu">
-                <Button
-                  className="bg-primary-2 text-white hover:bg-hover-1 text-lg px-8 py-4 text-xl"
-                >
-                  Book a 15 Minute Demo
-                </Button>
-              </Link>
-            </div>
+            <motion.div
+              variants={textVariants}
+              className="mt-8 flex flex-col gap-x-6 gap-y-4 sm:flex-row lg:mt-12"
+            >
+              <Button
+                onClick={handleOpenChat}
+                className="bg-primary-2 text-white hover:bg-hover-1 text-lg px-8 py-4 text-xl"
+              >
+                Book a 15 Minute Demo!
+              </Button>
+            </motion.div>
           </motion.div>
 
           {/* Userflow animation section */}

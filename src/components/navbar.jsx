@@ -106,12 +106,12 @@ export function Navbar({ banner, section }) {
   const isAboutUs = section === 'aboutUs'
   const isHome = section === 'home'
   return (
-    <Disclosure as="header" className="pt-12 sm:pt-16">
+    <Disclosure as="header" className="pt-4 sm:pt-6">
       <PlusGrid>
         <PlusGridRow className="relative flex justify-center items-center" isHome={isHome}>
           <div className="relative flex gap-6">
             <PlusGridItem className="py-2">
-              <Link href="/" title="Home" className="block transform scale-250">
+              <Link href="/" title="Home" className="block transform scale-300">
                 <Logo
                   className="w-32 mb-2 text-text-white"
                 />

@@ -64,7 +64,7 @@ function Hero() {
           />
         </motion.div>
 
-        <div className="flex flex-col items-center justify-between pt-8 pb-12 sm:pt-16 sm:pb-20 lg:flex-row lg:pt-24 lg:pb-32">
+        <div className="flex flex-col items-center justify-between pt-0 pb-12 sm:pt-4 sm:pb-20 lg:flex-row lg:pt-6 lg:pb-32">
           <motion.div
             className="mb-12 w-full lg:mb-0 lg:max-w-2xl"
             initial="hidden"

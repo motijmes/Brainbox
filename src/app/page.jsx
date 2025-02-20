@@ -16,7 +16,7 @@ export default function Home() {
   return (
     <div className="overflow-hidden">
        <Hero />
-      <main className="mt-8 sm:mt-10 md:mt-14">
+       <main className="mt-4 sm:mt-6 md:mt-10">
         <h2 className="font-display text-6xl/tight font-medium tracking-tight sm:text-7xl/tight text-center">
           <span className="bg-gradient-to-r from-primary-1 to-primary-2 bg-clip-text text-transparent">
             How it works

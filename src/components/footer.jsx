@@ -191,7 +191,7 @@ function SocialLinks() {
         viewport={{ once: true }}
       >
         <Link
-          href="https://facebook.com"
+          href="https://www.facebook.com/RowdyRealtor"
           target="_blank"
           aria-label="Visit us on Facebook"
           className="text-primary-3 transition-colors duration-200 hover:text-violet-600"
@@ -206,7 +206,7 @@ function SocialLinks() {
         viewport={{ once: true }}
       >
         <Link
-          href="https://instagram.com"
+          href="https://www.instagram.com/martintijmes?igsh=Z2ZxcDA4bGhrdTAw"
           target="_blank"
           aria-label="Visit us on Instagram"
           className="text-primary-3 transition-colors duration-200 hover:text-fuchsia-600"
@@ -298,7 +298,7 @@ export function Footer() {
             </div>
             <div className="flex">
               <PlusGridItem className="flex items-center gap-8 py-3">
-                {/* <SocialLinks /> */}
+                <SocialLinks />
               </PlusGridItem>
             </div>
           </PlusGridRow>

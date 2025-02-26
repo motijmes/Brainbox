@@ -83,7 +83,7 @@ function Hero() {
             >
               All-in-One AI Platform{' '}
               <span className="bg-gradient-to-r from-primary-1 to-primary-2 bg-clip-text text-transparent">
-                for Realtors, by Realtors
+                for Agents, by Agents
               </span>
             </motion.h1>
 

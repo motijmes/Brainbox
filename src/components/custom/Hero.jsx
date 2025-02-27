@@ -79,12 +79,9 @@ function Hero() {
           >
             <motion.h1
               variants={textVariants}
-              className="font-display text-4xl/tight text-primary-3 font-medium tracking-tight sm:text-5xl lg:text-7xl/[0.8]"
-            >
-              All-in-One AI Platform{' '}
-              <!-- <span className="bg-gradient-to-r from-primary-1 to-primary-2 bg-clip-text text-transparent">
-                for Agents, by Agents
-              </span> -->
+              className="font-display text-4xl/tight bg-gradient-to-r from-primary-1 to-primary-2 bg-clip-text text-transparent font-medium tracking-tight sm:text-5xl lg:text-7xl/[0.8]"
+              >
+              All-in-One AI Platform
             </motion.h1>
 
             <motion.p

@@ -8,7 +8,7 @@ export default function ChatWidget() {
     const script = document.createElement('script');
     script.src = 'https://widgets.leadconnectorhq.com/loader.js';
     script.setAttribute('data-resources-url', 'https://widgets.leadconnectorhq.com/chat-widget/loader.js');
-    script.setAttribute('data-widget-id', '6750ae1674e93bce4b94e7b8');
+    script.setAttribute('data-widget-id', '67d1e34737cef44f58d23f86');
     document.body.appendChild(script);
 
     // Create and inject the typing indicator script

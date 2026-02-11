@@ -88,7 +88,7 @@ function Hero() {
               variants={textVariants}
               className="mt-6 max-w-3xl text-lg/7 font-medium text-primary-3 sm:text-xl/8 lg:mt-8"
             >
-              AI-powered platform built by award-winning Agents who understand your daily challenges firsthand. Transform your business with automated email campaigns, instant ad creation, and smart lead generation. Let our AI qualify leads and schedule appointments while you focus on what matters most: closing deals. 
+              AI-powered platform built by award-winning Sales Agents who understand your daily challenges firsthand. Transform your business with automated email campaigns, instant ad creation, and smart lead generation. Let our AI qualify leads and schedule appointments while you focus on what matters most: closing deals. 
             </motion.p>
 
             <motion.div
@@ -99,7 +99,7 @@ function Hero() {
                 onClick={handleOpenChat}
                 className="bg-primary-2 text-white hover:bg-hover-1 text-lg px-8 py-4 text-xl"
               >
-                Book a 15 Minute Demo!
+                Book a Quick Demo!
               </Button>
             </motion.div>
           </motion.div>

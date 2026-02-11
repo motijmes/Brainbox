@@ -51,7 +51,7 @@ const DemoShowcase = () => {
         gradient: 'Voice AI',
       },
       description:
-        'Your clients receive instant, 24/7 responsiveness—never miss another opportunity. Stand out from the competition with premium service that works while you sleep. Welcome to modern real estate: where exceptional service never takes a break.',
+        'Your clients receive instant, 24/7 responsiveness—never miss another opportunity. Stand out from the competition with premium service that works while you sleep. Welcome to modern business: where exceptional service never takes a break.',
       icon: Bot,
       video: {
         type: 'direct',

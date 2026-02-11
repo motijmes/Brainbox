@@ -29,7 +29,7 @@ function Header() {
         gradient: 'Real Estate Management',
       },
       description:
-        'We are a team of real estate professionals and tech innovators dedicated to transforming how agents manage and grow their business. With deep industry experience, we understand the unique demands realtors face every day. Our all-in-one platform was crafted to meet those needs directly, using cutting-edge technology and an integrated AI engine to streamline lead management, automate communication, and boost client engagement.',
+        'We are a team of sales professionals and tech innovators dedicated to transforming how sales agents manage and grow their business. With deep industry experience, we understand the unique demands sales agents face every day. Our all-in-one platform was crafted to meet those needs directly, using cutting-edge technology and an integrated AI engine to streamline lead management, automate communication, and boost client engagement.',
       features: [
         {
           icon: SparklesIcon,
@@ -53,11 +53,11 @@ function Header() {
         gradient: 'Smarter Platform',
       },
       description:
-        'Our journey began with a simple observation: real estate professionals are juggling too much. Between managing leads, scheduling showings, following up with clients, and staying visible across digital channels, we saw that agents needed a smarter way to handle their workload without sacrificing quality or personal touch.',
+        'Our journey began with a simple observation: sales professionals are juggling too much. Between managing leads, scheduling showings, following up with clients, and staying visible across digital channels, we saw that agents needed a smarter way to handle their workload without sacrificing quality or personal touch.',
       features: [
         {
           icon: CheckCircleIcon,
-          text: 'Platform designed by realtors, for realtors',
+          text: 'Platform designed by sales agents, for sales agents',
         },
         {
           icon: CheckCircleIcon,

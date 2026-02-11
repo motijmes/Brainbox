@@ -40,7 +40,7 @@ const FeatureSection = () => {
         gradient: 'Without Burnout',
       },
       description:
-        'Empower your real estate business with tools that work as hard as you do. Create, schedule, and deploy marketing campaigns effortlessly with automated workflows for email and social media, maintaining consistent outreach across platforms.',
+        'Empower your business with tools that work as hard as you do. Create, schedule, and deploy marketing campaigns effortlessly with automated workflows for email and social media, maintaining consistent outreach across platforms.',
       features: [
         {
           icon: CheckCircleIcon,
@@ -227,7 +227,7 @@ const renderImageInterface = (section, index) => (
                     onClick={handleOpenChat}
                     className="bg-primary-2 text-white hover:bg-hover-1 text-lg px-8 py-4 text-xl"
                   >
-                    Book a 15 Minute Demo!
+                    Book a Quick Demo!
                   </Button>
                 </motion.div>
               </motion.div>

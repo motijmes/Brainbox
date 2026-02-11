@@ -85,8 +85,8 @@ export default function ModernUserflow() {
 
             {/* Description */}
             <p className="mt-4 text-base/relaxed text-primary-3">
-            Stop drowning in tasks—our intuitive real estate platform streamlines your business
-            instantly. Built by Realtors who get it: no steep learning curves, no complex systems, just
+            Stop drowning in tasks—our intuitive AI platform streamlines your business
+            instantly. Built by Sales Agents who get it: no steep learning curves, no complex systems, just
             simple solutions that work. Focus on closing deals while Accessible Agents handles the
             rest of your business on autopilot.
             </p>
@@ -122,7 +122,7 @@ export default function ModernUserflow() {
                 onClick={handleOpenChat}
                 className="bg-primary-2 text-white hover:bg-hover-1 text-lg px-8 py-4 text-xl"
               >
-                Book a 15 Minute Demo!
+                Book a Quick Demo!
               </Button>
             </motion.div>
           </motion.div>
